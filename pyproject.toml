@@ -42,7 +42,16 @@ ml = [
     "transformers==4.57.1",
 ]
 
-cpu = ["sentencepiece==0.2.1", "torch==2.6.0", "sentence-transformers==5.1.2", "transformers==4.57.1", "numpy==2.3.4", "safetensors==0.6.2", "huggingface-hub==0.36.0", "scikit-learn==1.7.2"]
+cpu = [
+    "huggingface-hub==0.36.0",
+    "numpy==2.3.4",
+    "safetensors==0.6.2",
+    "scikit-learn==1.7.2",
+    "sentence-transformers==5.1.2",
+    "sentencepiece==0.2.1",
+    "torch==2.6.0",
+    "transformers==4.57.1",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/patchdedup"]
