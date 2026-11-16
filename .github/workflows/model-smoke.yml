@@ -24,3 +24,8 @@ jobs:
           HF_HUB_OFFLINE: '1'
           TRANSFORMERS_OFFLINE: '1'
           PATCHDEDUP_MODEL: artifacts/hub-model
+      - name: Build bundled Docker image and verify real offline inference
+        run: bash scripts/docker_smoke.sh artifacts/hub-model
+        env:
+          PATCHDEDUP_BUNDLED: '1'
+          PATCHDEDUP_IMAGE: patchdedup:model-smoke

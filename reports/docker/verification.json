@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-16",
+  "local_only": true,
+  "registry_published": false,
+  "model_training_performed": false,
+  "model_source": "enzoferracini/patchdedup-ptbr-mdeberta",
+  "model_source_revision": "f12d3936968d37b80a750c4a691e66b09edd83a9",
+  "docker": {
+    "external_mount": {
+      "image_id": "sha256:6e377693976877d2eb7492927e79fe2dbe0ef1dedf9eb62aebc2c3a2fdec7457",
+      "bundled": false,
+      "network": "none",
+      "read_only": true,
+      "non_root": true,
+      "cpu_limit": 2,
+      "memory_limit": "4g",
+      "model_metadata": {
+        "model_version": "0.3.0-experimental",
+        "model_revision": "sha256:058be8f2224e2f995de5fd3c7b4b14bc3df19abc7874be82793727af2c1b68bf",
+        "embedding_model_revision": "sha256:6c29d90e982da340a9dfc970df69d4455b7669bef929d2a9b84d0cc378effdf1",
+        "embedding_directory": "embeddings",
+        "score_pipeline": true,
+        "decision_source": "cross_encoder",
+        "decision_policy_version": "0.3.0",
+        "research_graph_sha256": "26cf84ad3fdc84c8fc9ce7feb3068c21ca0afdeb248892cae1a75885ff5dbc94",
+        "calibration_pairs": 20,
+        "primary_component": "hpo_5::min"
+      },
+      "model_manifest_sha256": "706108c49d508c66605fbf8bd901319262f7ef3566e57af413dab2c1c9623b1a",
+      "valid_predictions": 3,
+      "expected_invalid_records": 1,
+      "decisions": [
+        "redundant",
+        "redundant",
+        "not_redundant"
+      ],
+      "symmetry_verified": true,
+      "compare_matches_batch": true,
+      "examples": "constructed smoke examples; not an ML benchmark"
+    },
+    "bundled": {
+      "image_id": "sha256:1da66e74c71d8f09b3d5bf310a3bb10e5ac9bd163df73f8990549b8c761d509b",
+      "bundled": true,
+      "network": "none",
+      "read_only": true,
+      "non_root": true,
+      "cpu_limit": 2,
+      "memory_limit": "4g",
+      "model_metadata": {
+        "model_version": "0.3.0-experimental",
+        "model_revision": "sha256:058be8f2224e2f995de5fd3c7b4b14bc3df19abc7874be82793727af2c1b68bf",
+        "embedding_model_revision": "sha256:6c29d90e982da340a9dfc970df69d4455b7669bef929d2a9b84d0cc378effdf1",
+        "embedding_directory": "embeddings",
+        "score_pipeline": true,
+        "decision_source": "cross_encoder",
+        "decision_policy_version": "0.3.0",
+        "research_graph_sha256": "26cf84ad3fdc84c8fc9ce7feb3068c21ca0afdeb248892cae1a75885ff5dbc94",
+        "calibration_pairs": 20,
+        "primary_component": "hpo_5::min"
+      },
+      "model_manifest_sha256": "706108c49d508c66605fbf8bd901319262f7ef3566e57af413dab2c1c9623b1a",
+      "valid_predictions": 3,
+      "expected_invalid_records": 1,
+      "decisions": [
+        "redundant",
+        "redundant",
+        "not_redundant"
+      ],
+      "symmetry_verified": true,
+      "compare_matches_batch": true,
+      "examples": "constructed smoke examples; not an ML benchmark"
+    }
+  },
+  "checks": {
+    "pytest_passed": 160,
+    "pytest_skipped": 1,
+    "explicit_real_model_test_passed": 1,
+    "ruff_check": true,
+    "ruff_format_check": true,
+    "uv_build": true,
+    "bash_syntax": true,
+    "checkpoint_allowlist_checked": true,
+    "cpu_only_torch_checked": true
+  },
+  "source_sha256": {
+    "Dockerfile": "f7af7253b806590df8a4341e10f407367f78231966991a09b313b6852644e9b0",
+    "scripts/docker_smoke.sh": "d25c6d035d1186bbee7aa028e60297b6c1b761973f6db8845d897d06ae049a01",
+    "src/patchdedup/batch.py": "2c25af76fce3b2ddc58f577c65f4df56fed1cb5eda21121c538e067e1138cc97",
+    "src/patchdedup/cli.py": "27e6eb7b51d3a3df44c1f8312de43371b8fb6559c20768878c226d06159aba89",
+    "src/patchdedup/deployment.py": "7988a1e5fafce7d74ec64e7c468518c2a177af8373a2aea39b3170355f45f5a3",
+    "examples/pairs.jsonl": "45e21d16ca5a8863666ecd41c8bbb213076f7b8abefcef55ed272508f21de747",
+    "uv.lock": "b1763144a2824d3ee3dfd4af7154732505f846d9ba596791f37895d8119c7fca"
+  }
+}

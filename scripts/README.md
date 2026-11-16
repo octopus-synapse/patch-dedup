@@ -9,6 +9,7 @@ experimentos, verificações e preparação de artefatos.
 | Objetivo | Entrada |
 |---|---|
 | Verificar Docker CPU offline | `bash scripts/docker_smoke.sh artifacts/model` |
+| Construir e verificar imagem com checkpoint embutido | `PATCHDEDUP_BUNDLED=1 bash scripts/docker_smoke.sh artifacts/model` |
 | Retomar a bateria v03 | `bash scripts/finish_remaining.sh --background` |
 | Buscar metas conjuntas em desenvolvimento | `bash scripts/search_targets.sh --background` |
 | Executar o primeiro fine-tuning ASSIN | `uv run --locked --extra ml python scripts/finetune_assin.py` |

@@ -9,6 +9,7 @@ a especificação inclui propostas que ainda não foram implementadas.
 | Documento | Conteúdo |
 |---|---|
 | [Contratos](CONTRACTS.md) | Entradas, saídas, scores e decisão |
+| [Docker](DOCKER.md) | Imagem com checkpoint, lote, limites de recursos e verificação offline |
 | [Avaliação](EVALUATION.md) | Splits, métricas e política de seleção |
 | [Anotação](ANNOTATION_GUIDELINES.md) | Redundância, sobreposição, contradição e ambiguidade |
 | [Dados](../data/README.md) | Proveniência e separação dos conjuntos |

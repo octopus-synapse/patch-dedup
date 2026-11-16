@@ -9,6 +9,10 @@ O projeto reúne preparação de dados, treinamento, seleção por validação, 
 CLI e inferência local com Docker. Scores não são probabilidades calibradas.
 A saída apoia revisão de texto; não exclui realizações nem classifica pessoas.
 
+Para executar a imagem com o checkpoint embutido, veja o
+[guia Docker](docs/DOCKER.md). Há também inferência JSONL em lote, com uma única
+carga do modelo por execução.
+
 ## Executar
 
 Requer Python 3.11 e [uv](https://docs.astral.sh/uv/). Para usar o checkpoint público,
@@ -27,6 +31,18 @@ uv run --locked --extra cpu patchdedup compare --model artifacts/model \
 A CLI executa o grafo de scores, a calibração e a política do bundle. Os pesos NLI
 na raiz, carregados isoladamente pelo Transformers, retornam logits das classes NLI.
 O cosseno vem do encoder em `embeddings/` e é informado separadamente do score de decisão.
+
+Para comparar vários pares no mesmo processo:
+
+```bash
+uv run --locked --extra cpu patchdedup batch --model artifacts/model \
+  --input examples/pairs.jsonl > resultados.jsonl
+```
+
+Cada linha de saída contém `line` e `result` ou `error`; textos inválidos não
+interrompem os demais pares. A entrada também pode vir de stdin com `--input -`.
+O contrato público declara português; suporte multilíngue das bases e controles
+pontuais em inglês não constituem validação bilíngue.
 
 ## Resultados e limites
 
