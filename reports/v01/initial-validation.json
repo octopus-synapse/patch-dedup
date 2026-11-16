@@ -1,0 +1,570 @@
+{
+  "candidate": {
+    "name": "initial",
+    "directory": "artifacts/run-42/initial/model",
+    "policy": {
+      "binary_threshold": 0.36051827669143677,
+      "thresholds": {
+        "low": 0.3982321321964264,
+        "high": 0.8451306223869324,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "validation": {
+      "support": 72,
+      "positive_support": 27,
+      "precision": 0.52,
+      "recall": 0.9629629629629629,
+      "f1": 0.6753246753246753,
+      "macro_f1": 0.6510951734832332,
+      "average_precision": 0.6791314460928419,
+      "confusion_matrix": [
+        [
+          21,
+          24
+        ],
+        [
+          1,
+          26
+        ]
+      ],
+      "coverage": 0.4166666666666667,
+      "review_rate": 0.5833333333333334,
+      "review_count": 42,
+      "redundant_count": 7,
+      "not_redundant_count": 23,
+      "selective_precision": 1.0,
+      "negative_predictive_value": 0.9130434782608695
+    },
+    "training": {
+      "config": {
+        "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+        "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+        "base_directory": "artifacts/base",
+        "dataset": "data/v01",
+        "refinement_dataset": "data/refinement",
+        "seed": 42,
+        "epochs": 3,
+        "batch_size": 8,
+        "gradient_accumulation": 2,
+        "learning_rate": 2e-05,
+        "refinement_learning_rate": 1e-05,
+        "loss": "cosine",
+        "selection": "validation average_precision, then binary F1; earliest tie",
+        "refinement_candidates": [
+          "cosine",
+          "cosent"
+        ],
+        "test_policy": "Score once after all candidate and threshold selection is frozen",
+        "model_version": "0.1.0-initial"
+      },
+      "training_pairs": 336,
+      "validation_pairs": 72,
+      "selected_epoch": 3,
+      "selected_parameter_delta_l2": 0.06888748705387115,
+      "optimizer_steps": 63,
+      "history": [
+        {
+          "epoch": 1,
+          "train_loss": 0.307267807778858,
+          "validation": {
+            "support": 72,
+            "positive_support": 27,
+            "precision": 0.4576271186440678,
+            "recall": 1.0,
+            "f1": 0.627906976744186,
+            "macro_f1": 0.5380914194065758,
+            "average_precision": 0.633147905029831,
+            "confusion_matrix": [
+              [
+                13,
+                32
+              ],
+              [
+                0,
+                27
+              ]
+            ],
+            "coverage": 0.2222222222222222,
+            "review_rate": 0.7777777777777778,
+            "review_count": 56,
+            "redundant_count": 0,
+            "not_redundant_count": 16,
+            "selective_precision": null,
+            "negative_predictive_value": 0.9375
+          }
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.19594303305659974,
+          "validation": {
+            "support": 72,
+            "positive_support": 27,
+            "precision": 0.48148148148148145,
+            "recall": 0.9629629629629629,
+            "f1": 0.6419753086419753,
+            "macro_f1": 0.5908289241622575,
+            "average_precision": 0.6601955267541066,
+            "confusion_matrix": [
+              [
+                17,
+                28
+              ],
+              [
+                1,
+                26
+              ]
+            ],
+            "coverage": 0.3888888888888889,
+            "review_rate": 0.6111111111111112,
+            "review_count": 44,
+            "redundant_count": 7,
+            "not_redundant_count": 21,
+            "selective_precision": 1.0,
+            "negative_predictive_value": 0.9047619047619048
+          }
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.12604842689775286,
+          "validation": {
+            "support": 72,
+            "positive_support": 27,
+            "precision": 0.52,
+            "recall": 0.9629629629629629,
+            "f1": 0.6753246753246753,
+            "macro_f1": 0.6510951734832332,
+            "average_precision": 0.6791314460928419,
+            "confusion_matrix": [
+              [
+                21,
+                24
+              ],
+              [
+                1,
+                26
+              ]
+            ],
+            "coverage": 0.4166666666666667,
+            "review_rate": 0.5833333333333334,
+            "review_count": 42,
+            "redundant_count": 7,
+            "not_redundant_count": 23,
+            "selective_precision": 1.0,
+            "negative_predictive_value": 0.9130434782608695
+          }
+        }
+      ],
+      "policy": {
+        "binary_threshold": 0.36051827669143677,
+        "thresholds": {
+          "low": 0.3982321321964264,
+          "high": 0.8451306223869324,
+          "positive_enabled": true,
+          "negative_enabled": true
+        },
+        "selection_split": "validation",
+        "precision_target": 0.9,
+        "negative_predictive_value_target": 0.9,
+        "minimum_support": 5,
+        "decision_policy_version": "0.1.0"
+      },
+      "selection": "validation average_precision, then binary F1; earliest tie",
+      "duration_seconds": 105.84528566199879,
+      "environment": {
+        "python": "3.11.14",
+        "platform": "Linux-7.1.8+deb13-amd64-x86_64-with-glibc2.41",
+        "code_commit": "204b2d55a8f15260f93bc10f13aef1c5aab20da8",
+        "source_sha256": {
+          "cli.py": "8462dd1c90e06165826a5053c740c2e4379bc4db1a3fafacb38eccc866f007ab",
+          "decision.py": "ce69d18701fb687f0fd94217a121f7ebdd29e9397c0c7a18c899dcede96f5e2a",
+          "encoder.py": "73ff3df57da2d105ce400db563768691500f015010f3f3216e1cb553f7ee1858",
+          "data.py": "5b8143e617f9166f13159f96081b9048b24fe6d80289b181fc165f1c307b7dde",
+          "experiment.py": "d6cac58f617129f20a3518724d53678d6ef204fee35a9e998d1dc1aafd8af891",
+          "training.py": "3abf834c170968cb96d392f69586c4adbd8cc616ba1389ce94c04074440ceea6",
+          "__main__.py": "b466d3224c1cfa96b82f891d496e36e7bd4ad1eb70fcc530b45c29ce62d3f9c4",
+          "schemas.py": "ecb86544d6f71b5dad802e345438763050ac831732a6c0a126c80c921cfa7aef",
+          "evaluation.py": "4880d0ee9fcf6fc15163204b2edcf4856dc06dfe5aaa3930a9dca236b16d0fd0",
+          "__init__.py": "6f77bebe829dfcc6c5545b6ed57e87ea355244777e5fe8b320589566fd5f9791",
+          "dataset.py": "4425130156f33618fa444ce8390c4f5d6ad578ec50188e9b0fea21741c0d55a5"
+        },
+        "gpu": "NVIDIA RTX A1000 6GB Laptop GPU",
+        "packages": {
+          "torch": "2.6.0",
+          "sentence-transformers": "5.1.2",
+          "transformers": "4.57.1",
+          "numpy": "2.3.4",
+          "scikit-learn": "1.7.2"
+        }
+      }
+    }
+  },
+  "predictions": [
+    {
+      "pair_id": "v01-002-p0",
+      "label": 1,
+      "score": 0.7802147269248962
+    },
+    {
+      "pair_id": "v01-002-p1",
+      "label": 1,
+      "score": 0.6773779392242432
+    },
+    {
+      "pair_id": "v01-002-p2",
+      "label": 1,
+      "score": 0.6030656099319458
+    },
+    {
+      "pair_id": "v01-002-p3",
+      "label": 0,
+      "score": 0.12222728133201599
+    },
+    {
+      "pair_id": "v01-002-p4",
+      "label": 0,
+      "score": 0.7392619848251343
+    },
+    {
+      "pair_id": "v01-002-p5",
+      "label": 0,
+      "score": 0.46509429812431335
+    },
+    {
+      "pair_id": "v01-002-p6",
+      "label": 0,
+      "score": 0.02324191853404045
+    },
+    {
+      "pair_id": "v01-002-p7",
+      "label": 0,
+      "score": 0.5751956701278687
+    },
+    {
+      "pair_id": "v01-005-p0",
+      "label": 1,
+      "score": 0.7078695297241211
+    },
+    {
+      "pair_id": "v01-005-p1",
+      "label": 1,
+      "score": 0.6564239263534546
+    },
+    {
+      "pair_id": "v01-005-p2",
+      "label": 1,
+      "score": 0.7600033283233643
+    },
+    {
+      "pair_id": "v01-005-p3",
+      "label": 0,
+      "score": 0.21128469705581665
+    },
+    {
+      "pair_id": "v01-005-p4",
+      "label": 0,
+      "score": 0.2747276723384857
+    },
+    {
+      "pair_id": "v01-005-p5",
+      "label": 0,
+      "score": 0.11379355192184448
+    },
+    {
+      "pair_id": "v01-005-p6",
+      "label": 0,
+      "score": 0.18492645025253296
+    },
+    {
+      "pair_id": "v01-005-p7",
+      "label": 0,
+      "score": 0.2837899625301361
+    },
+    {
+      "pair_id": "v01-006-p0",
+      "label": 1,
+      "score": 0.6381969451904297
+    },
+    {
+      "pair_id": "v01-006-p1",
+      "label": 1,
+      "score": 0.36051827669143677
+    },
+    {
+      "pair_id": "v01-006-p2",
+      "label": 1,
+      "score": 0.7078622579574585
+    },
+    {
+      "pair_id": "v01-006-p3",
+      "label": 0,
+      "score": 0.4545416235923767
+    },
+    {
+      "pair_id": "v01-006-p4",
+      "label": 0,
+      "score": 0.5706120133399963
+    },
+    {
+      "pair_id": "v01-006-p5",
+      "label": 0,
+      "score": 0.33186784386634827
+    },
+    {
+      "pair_id": "v01-006-p6",
+      "label": 0,
+      "score": 0.31366804242134094
+    },
+    {
+      "pair_id": "v01-006-p7",
+      "label": 0,
+      "score": 0.6838456392288208
+    },
+    {
+      "pair_id": "v01-027-p0",
+      "label": 1,
+      "score": 0.9085564613342285
+    },
+    {
+      "pair_id": "v01-027-p1",
+      "label": 1,
+      "score": 0.8645749092102051
+    },
+    {
+      "pair_id": "v01-027-p2",
+      "label": 1,
+      "score": 0.8878791332244873
+    },
+    {
+      "pair_id": "v01-027-p3",
+      "label": 0,
+      "score": 0.7057029008865356
+    },
+    {
+      "pair_id": "v01-027-p4",
+      "label": 0,
+      "score": 0.7345180511474609
+    },
+    {
+      "pair_id": "v01-027-p5",
+      "label": 0,
+      "score": 0.5191131234169006
+    },
+    {
+      "pair_id": "v01-027-p6",
+      "label": 0,
+      "score": 0.6859530806541443
+    },
+    {
+      "pair_id": "v01-027-p7",
+      "label": 0,
+      "score": 0.7177303433418274
+    },
+    {
+      "pair_id": "v01-034-p0",
+      "label": 1,
+      "score": 0.5571004748344421
+    },
+    {
+      "pair_id": "v01-034-p1",
+      "label": 1,
+      "score": 0.5269402265548706
+    },
+    {
+      "pair_id": "v01-034-p2",
+      "label": 1,
+      "score": 0.9274516105651855
+    },
+    {
+      "pair_id": "v01-034-p3",
+      "label": 0,
+      "score": 0.8416416049003601
+    },
+    {
+      "pair_id": "v01-034-p4",
+      "label": 0,
+      "score": 0.20601314306259155
+    },
+    {
+      "pair_id": "v01-034-p5",
+      "label": 0,
+      "score": 0.5399572849273682
+    },
+    {
+      "pair_id": "v01-034-p6",
+      "label": 0,
+      "score": 0.8323701024055481
+    },
+    {
+      "pair_id": "v01-034-p7",
+      "label": 0,
+      "score": 0.15469881892204285
+    },
+    {
+      "pair_id": "v01-037-p0",
+      "label": 1,
+      "score": 0.902126669883728
+    },
+    {
+      "pair_id": "v01-037-p1",
+      "label": 1,
+      "score": 0.7725841403007507
+    },
+    {
+      "pair_id": "v01-037-p2",
+      "label": 1,
+      "score": 0.8283951282501221
+    },
+    {
+      "pair_id": "v01-037-p3",
+      "label": 0,
+      "score": 0.812131404876709
+    },
+    {
+      "pair_id": "v01-037-p4",
+      "label": 0,
+      "score": 0.7985028028488159
+    },
+    {
+      "pair_id": "v01-037-p5",
+      "label": 0,
+      "score": 0.09210000932216644
+    },
+    {
+      "pair_id": "v01-037-p6",
+      "label": 0,
+      "score": 0.6664497256278992
+    },
+    {
+      "pair_id": "v01-037-p7",
+      "label": 0,
+      "score": 0.7353307604789734
+    },
+    {
+      "pair_id": "v01-043-p0",
+      "label": 1,
+      "score": 0.7705996036529541
+    },
+    {
+      "pair_id": "v01-043-p1",
+      "label": 1,
+      "score": 0.8794235587120056
+    },
+    {
+      "pair_id": "v01-043-p2",
+      "label": 1,
+      "score": 0.8451306223869324
+    },
+    {
+      "pair_id": "v01-043-p3",
+      "label": 0,
+      "score": 0.820412278175354
+    },
+    {
+      "pair_id": "v01-043-p4",
+      "label": 0,
+      "score": 0.631519079208374
+    },
+    {
+      "pair_id": "v01-043-p5",
+      "label": 0,
+      "score": 0.6030999422073364
+    },
+    {
+      "pair_id": "v01-043-p6",
+      "label": 0,
+      "score": 0.6338834762573242
+    },
+    {
+      "pair_id": "v01-043-p7",
+      "label": 0,
+      "score": 0.6800935864448547
+    },
+    {
+      "pair_id": "v01-051-p0",
+      "label": 1,
+      "score": 0.3982321321964264
+    },
+    {
+      "pair_id": "v01-051-p1",
+      "label": 1,
+      "score": 0.21946115791797638
+    },
+    {
+      "pair_id": "v01-051-p2",
+      "label": 1,
+      "score": 0.557390570640564
+    },
+    {
+      "pair_id": "v01-051-p3",
+      "label": 0,
+      "score": 0.22826115787029266
+    },
+    {
+      "pair_id": "v01-051-p4",
+      "label": 0,
+      "score": 0.5930602550506592
+    },
+    {
+      "pair_id": "v01-051-p5",
+      "label": 0,
+      "score": -0.04640315845608711
+    },
+    {
+      "pair_id": "v01-051-p6",
+      "label": 0,
+      "score": 0.18602332472801208
+    },
+    {
+      "pair_id": "v01-051-p7",
+      "label": 0,
+      "score": 0.17433257400989532
+    },
+    {
+      "pair_id": "v01-057-p0",
+      "label": 1,
+      "score": 0.5402315855026245
+    },
+    {
+      "pair_id": "v01-057-p1",
+      "label": 1,
+      "score": 0.4916313886642456
+    },
+    {
+      "pair_id": "v01-057-p2",
+      "label": 1,
+      "score": 0.43289050459861755
+    },
+    {
+      "pair_id": "v01-057-p3",
+      "label": 0,
+      "score": 0.2955743074417114
+    },
+    {
+      "pair_id": "v01-057-p4",
+      "label": 0,
+      "score": 0.25542333722114563
+    },
+    {
+      "pair_id": "v01-057-p5",
+      "label": 0,
+      "score": 0.1597459465265274
+    },
+    {
+      "pair_id": "v01-057-p6",
+      "label": 0,
+      "score": 0.3437589406967163
+    },
+    {
+      "pair_id": "v01-057-p7",
+      "label": 0,
+      "score": 0.3492541015148163
+    }
+  ]
+}

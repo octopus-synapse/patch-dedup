@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0",
+  "valid": true,
+  "sha256": "921ce4039c0a3b24eae4f44c8869cb6875f8278da1408f0f60e165e0405d1282",
+  "records": 640,
+  "binary_records": 640,
+  "counts": {
+    "splits": {
+      "test": 72,
+      "train": 496,
+      "validation": 72
+    },
+    "relations": {
+      "contradictory": 80,
+      "distinct": 160,
+      "partial_overlap": 160,
+      "redundant": 240
+    },
+    "review_status": {
+      "reviewed": 640
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "NEAR_DUPLICATES_AND_TEMPLATE_FAMILIES_REQUIRE_REVIEW"
+  ]
+}

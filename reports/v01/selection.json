@@ -1,0 +1,806 @@
+{
+  "chosen_finetuned": "refined_cosent",
+  "candidates": [
+    {
+      "name": "lexical",
+      "directory": null,
+      "policy": {
+        "binary_threshold": 0.40359210011154734,
+        "thresholds": {
+          "low": -1.0,
+          "high": 1.0,
+          "positive_enabled": false,
+          "negative_enabled": false
+        },
+        "selection_split": "validation",
+        "precision_target": 0.9,
+        "negative_predictive_value_target": 0.9,
+        "minimum_support": 5,
+        "decision_policy_version": "0.1.0"
+      },
+      "validation": {
+        "support": 72,
+        "positive_support": 27,
+        "precision": 0.45652173913043476,
+        "recall": 0.7777777777777778,
+        "f1": 0.5753424657534246,
+        "macro_f1": 0.5693613737217827,
+        "average_precision": 0.3570538122139211,
+        "confusion_matrix": [
+          [
+            20,
+            25
+          ],
+          [
+            6,
+            21
+          ]
+        ],
+        "coverage": 0.0,
+        "review_rate": 1.0,
+        "review_count": 72,
+        "redundant_count": 0,
+        "not_redundant_count": 0,
+        "selective_precision": null,
+        "negative_predictive_value": null
+      }
+    },
+    {
+      "name": "base",
+      "directory": "artifacts/base",
+      "policy": {
+        "binary_threshold": 0.7951657772064209,
+        "thresholds": {
+          "low": 0.6722568273544312,
+          "high": 1.0,
+          "positive_enabled": false,
+          "negative_enabled": true
+        },
+        "selection_split": "validation",
+        "precision_target": 0.9,
+        "negative_predictive_value_target": 0.9,
+        "minimum_support": 5,
+        "decision_policy_version": "0.1.0"
+      },
+      "validation": {
+        "support": 72,
+        "positive_support": 27,
+        "precision": 0.5882352941176471,
+        "recall": 0.7407407407407407,
+        "f1": 0.6557377049180327,
+        "macro_f1": 0.7013628283626308,
+        "average_precision": 0.6631701186120071,
+        "confusion_matrix": [
+          [
+            31,
+            14
+          ],
+          [
+            7,
+            20
+          ]
+        ],
+        "coverage": 0.19444444444444445,
+        "review_rate": 0.8055555555555556,
+        "review_count": 58,
+        "redundant_count": 0,
+        "not_redundant_count": 14,
+        "selective_precision": null,
+        "negative_predictive_value": 0.9285714285714286
+      }
+    },
+    {
+      "name": "initial",
+      "directory": "artifacts/run-42/initial/model",
+      "policy": {
+        "binary_threshold": 0.36051827669143677,
+        "thresholds": {
+          "low": 0.3982321321964264,
+          "high": 0.8451306223869324,
+          "positive_enabled": true,
+          "negative_enabled": true
+        },
+        "selection_split": "validation",
+        "precision_target": 0.9,
+        "negative_predictive_value_target": 0.9,
+        "minimum_support": 5,
+        "decision_policy_version": "0.1.0"
+      },
+      "validation": {
+        "support": 72,
+        "positive_support": 27,
+        "precision": 0.52,
+        "recall": 0.9629629629629629,
+        "f1": 0.6753246753246753,
+        "macro_f1": 0.6510951734832332,
+        "average_precision": 0.6791314460928419,
+        "confusion_matrix": [
+          [
+            21,
+            24
+          ],
+          [
+            1,
+            26
+          ]
+        ],
+        "coverage": 0.4166666666666667,
+        "review_rate": 0.5833333333333334,
+        "review_count": 42,
+        "redundant_count": 7,
+        "not_redundant_count": 23,
+        "selective_precision": 1.0,
+        "negative_predictive_value": 0.9130434782608695
+      },
+      "training": {
+        "config": {
+          "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "base_directory": "artifacts/base",
+          "dataset": "data/v01",
+          "refinement_dataset": "data/refinement",
+          "seed": 42,
+          "epochs": 3,
+          "batch_size": 8,
+          "gradient_accumulation": 2,
+          "learning_rate": 2e-05,
+          "refinement_learning_rate": 1e-05,
+          "loss": "cosine",
+          "selection": "validation average_precision, then binary F1; earliest tie",
+          "refinement_candidates": [
+            "cosine",
+            "cosent"
+          ],
+          "test_policy": "Score once after all candidate and threshold selection is frozen",
+          "model_version": "0.1.0-initial"
+        },
+        "training_pairs": 336,
+        "validation_pairs": 72,
+        "selected_epoch": 3,
+        "selected_parameter_delta_l2": 0.06888748705387115,
+        "optimizer_steps": 63,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.307267807778858,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.4576271186440678,
+              "recall": 1.0,
+              "f1": 0.627906976744186,
+              "macro_f1": 0.5380914194065758,
+              "average_precision": 0.633147905029831,
+              "confusion_matrix": [
+                [
+                  13,
+                  32
+                ],
+                [
+                  0,
+                  27
+                ]
+              ],
+              "coverage": 0.2222222222222222,
+              "review_rate": 0.7777777777777778,
+              "review_count": 56,
+              "redundant_count": 0,
+              "not_redundant_count": 16,
+              "selective_precision": null,
+              "negative_predictive_value": 0.9375
+            }
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.19594303305659974,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.48148148148148145,
+              "recall": 0.9629629629629629,
+              "f1": 0.6419753086419753,
+              "macro_f1": 0.5908289241622575,
+              "average_precision": 0.6601955267541066,
+              "confusion_matrix": [
+                [
+                  17,
+                  28
+                ],
+                [
+                  1,
+                  26
+                ]
+              ],
+              "coverage": 0.3888888888888889,
+              "review_rate": 0.6111111111111112,
+              "review_count": 44,
+              "redundant_count": 7,
+              "not_redundant_count": 21,
+              "selective_precision": 1.0,
+              "negative_predictive_value": 0.9047619047619048
+            }
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.12604842689775286,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.52,
+              "recall": 0.9629629629629629,
+              "f1": 0.6753246753246753,
+              "macro_f1": 0.6510951734832332,
+              "average_precision": 0.6791314460928419,
+              "confusion_matrix": [
+                [
+                  21,
+                  24
+                ],
+                [
+                  1,
+                  26
+                ]
+              ],
+              "coverage": 0.4166666666666667,
+              "review_rate": 0.5833333333333334,
+              "review_count": 42,
+              "redundant_count": 7,
+              "not_redundant_count": 23,
+              "selective_precision": 1.0,
+              "negative_predictive_value": 0.9130434782608695
+            }
+          }
+        ],
+        "policy": {
+          "binary_threshold": 0.36051827669143677,
+          "thresholds": {
+            "low": 0.3982321321964264,
+            "high": 0.8451306223869324,
+            "positive_enabled": true,
+            "negative_enabled": true
+          },
+          "selection_split": "validation",
+          "precision_target": 0.9,
+          "negative_predictive_value_target": 0.9,
+          "minimum_support": 5,
+          "decision_policy_version": "0.1.0"
+        },
+        "selection": "validation average_precision, then binary F1; earliest tie",
+        "duration_seconds": 105.84528566199879,
+        "environment": {
+          "python": "3.11.14",
+          "platform": "Linux-7.1.8+deb13-amd64-x86_64-with-glibc2.41",
+          "code_commit": "204b2d55a8f15260f93bc10f13aef1c5aab20da8",
+          "source_sha256": {
+            "cli.py": "8462dd1c90e06165826a5053c740c2e4379bc4db1a3fafacb38eccc866f007ab",
+            "decision.py": "ce69d18701fb687f0fd94217a121f7ebdd29e9397c0c7a18c899dcede96f5e2a",
+            "encoder.py": "73ff3df57da2d105ce400db563768691500f015010f3f3216e1cb553f7ee1858",
+            "data.py": "5b8143e617f9166f13159f96081b9048b24fe6d80289b181fc165f1c307b7dde",
+            "experiment.py": "d6cac58f617129f20a3518724d53678d6ef204fee35a9e998d1dc1aafd8af891",
+            "training.py": "3abf834c170968cb96d392f69586c4adbd8cc616ba1389ce94c04074440ceea6",
+            "__main__.py": "b466d3224c1cfa96b82f891d496e36e7bd4ad1eb70fcc530b45c29ce62d3f9c4",
+            "schemas.py": "ecb86544d6f71b5dad802e345438763050ac831732a6c0a126c80c921cfa7aef",
+            "evaluation.py": "4880d0ee9fcf6fc15163204b2edcf4856dc06dfe5aaa3930a9dca236b16d0fd0",
+            "__init__.py": "6f77bebe829dfcc6c5545b6ed57e87ea355244777e5fe8b320589566fd5f9791",
+            "dataset.py": "4425130156f33618fa444ce8390c4f5d6ad578ec50188e9b0fea21741c0d55a5"
+          },
+          "gpu": "NVIDIA RTX A1000 6GB Laptop GPU",
+          "packages": {
+            "torch": "2.6.0",
+            "sentence-transformers": "5.1.2",
+            "transformers": "4.57.1",
+            "numpy": "2.3.4",
+            "scikit-learn": "1.7.2"
+          }
+        }
+      }
+    },
+    {
+      "name": "refined_cosine",
+      "directory": "artifacts/run-42/refined_cosine/model",
+      "policy": {
+        "binary_threshold": 0.6093701124191284,
+        "thresholds": {
+          "low": 0.36759403347969055,
+          "high": 0.8660268783569336,
+          "positive_enabled": true,
+          "negative_enabled": true
+        },
+        "selection_split": "validation",
+        "precision_target": 0.9,
+        "negative_predictive_value_target": 0.9,
+        "minimum_support": 5,
+        "decision_policy_version": "0.1.0"
+      },
+      "validation": {
+        "support": 72,
+        "positive_support": 27,
+        "precision": 0.6666666666666666,
+        "recall": 0.7407407407407407,
+        "f1": 0.7017543859649122,
+        "macro_f1": 0.7531760435571688,
+        "average_precision": 0.7198784590319479,
+        "confusion_matrix": [
+          [
+            35,
+            10
+          ],
+          [
+            7,
+            20
+          ]
+        ],
+        "coverage": 0.4027777777777778,
+        "review_rate": 0.5972222222222222,
+        "review_count": 43,
+        "redundant_count": 6,
+        "not_redundant_count": 23,
+        "selective_precision": 1.0,
+        "negative_predictive_value": 0.9130434782608695
+      },
+      "training": {
+        "config": {
+          "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "base_directory": "artifacts/base",
+          "dataset": "data/v01",
+          "refinement_dataset": "data/refinement",
+          "seed": 42,
+          "epochs": 3,
+          "batch_size": 8,
+          "gradient_accumulation": 2,
+          "learning_rate": 1e-05,
+          "refinement_learning_rate": 1e-05,
+          "loss": "cosine",
+          "selection": "validation average_precision, then binary F1; earliest tie",
+          "refinement_candidates": [
+            "cosine",
+            "cosent"
+          ],
+          "test_policy": "Score once after all candidate and threshold selection is frozen",
+          "model_version": "0.1.0-refined-cosine"
+        },
+        "training_pairs": 496,
+        "validation_pairs": 72,
+        "selected_epoch": 3,
+        "selected_parameter_delta_l2": 0.04329230636358261,
+        "optimizer_steps": 93,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 0.14552624493597016,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.52,
+              "recall": 0.9629629629629629,
+              "f1": 0.6753246753246753,
+              "macro_f1": 0.6510951734832332,
+              "average_precision": 0.6758353818193357,
+              "confusion_matrix": [
+                [
+                  21,
+                  24
+                ],
+                [
+                  1,
+                  26
+                ]
+              ],
+              "coverage": 0.3888888888888889,
+              "review_rate": 0.6111111111111112,
+              "review_count": 44,
+              "redundant_count": 5,
+              "not_redundant_count": 23,
+              "selective_precision": 1.0,
+              "negative_predictive_value": 0.9130434782608695
+            }
+          },
+          {
+            "epoch": 2,
+            "train_loss": 0.11610619858988831,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.5102040816326531,
+              "recall": 0.9259259259259259,
+              "f1": 0.6578947368421053,
+              "macro_f1": 0.6377708978328174,
+              "average_precision": 0.6828959769892866,
+              "confusion_matrix": [
+                [
+                  21,
+                  24
+                ],
+                [
+                  2,
+                  25
+                ]
+              ],
+              "coverage": 0.3194444444444444,
+              "review_rate": 0.6805555555555556,
+              "review_count": 49,
+              "redundant_count": 0,
+              "not_redundant_count": 23,
+              "selective_precision": null,
+              "negative_predictive_value": 0.9130434782608695
+            }
+          },
+          {
+            "epoch": 3,
+            "train_loss": 0.0978063405641625,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.6666666666666666,
+              "recall": 0.7407407407407407,
+              "f1": 0.7017543859649122,
+              "macro_f1": 0.7531760435571688,
+              "average_precision": 0.7198784590319479,
+              "confusion_matrix": [
+                [
+                  35,
+                  10
+                ],
+                [
+                  7,
+                  20
+                ]
+              ],
+              "coverage": 0.4027777777777778,
+              "review_rate": 0.5972222222222222,
+              "review_count": 43,
+              "redundant_count": 6,
+              "not_redundant_count": 23,
+              "selective_precision": 1.0,
+              "negative_predictive_value": 0.9130434782608695
+            }
+          }
+        ],
+        "policy": {
+          "binary_threshold": 0.6093701124191284,
+          "thresholds": {
+            "low": 0.36759403347969055,
+            "high": 0.8660268783569336,
+            "positive_enabled": true,
+            "negative_enabled": true
+          },
+          "selection_split": "validation",
+          "precision_target": 0.9,
+          "negative_predictive_value_target": 0.9,
+          "minimum_support": 5,
+          "decision_policy_version": "0.1.0"
+        },
+        "selection": "validation average_precision, then binary F1; earliest tie",
+        "duration_seconds": 155.18134662100056,
+        "environment": {
+          "python": "3.11.14",
+          "platform": "Linux-7.1.8+deb13-amd64-x86_64-with-glibc2.41",
+          "code_commit": "204b2d55a8f15260f93bc10f13aef1c5aab20da8",
+          "source_sha256": {
+            "cli.py": "8462dd1c90e06165826a5053c740c2e4379bc4db1a3fafacb38eccc866f007ab",
+            "decision.py": "ce69d18701fb687f0fd94217a121f7ebdd29e9397c0c7a18c899dcede96f5e2a",
+            "encoder.py": "73ff3df57da2d105ce400db563768691500f015010f3f3216e1cb553f7ee1858",
+            "data.py": "5b8143e617f9166f13159f96081b9048b24fe6d80289b181fc165f1c307b7dde",
+            "experiment.py": "d6cac58f617129f20a3518724d53678d6ef204fee35a9e998d1dc1aafd8af891",
+            "training.py": "3abf834c170968cb96d392f69586c4adbd8cc616ba1389ce94c04074440ceea6",
+            "__main__.py": "b466d3224c1cfa96b82f891d496e36e7bd4ad1eb70fcc530b45c29ce62d3f9c4",
+            "schemas.py": "ecb86544d6f71b5dad802e345438763050ac831732a6c0a126c80c921cfa7aef",
+            "evaluation.py": "4880d0ee9fcf6fc15163204b2edcf4856dc06dfe5aaa3930a9dca236b16d0fd0",
+            "__init__.py": "6f77bebe829dfcc6c5545b6ed57e87ea355244777e5fe8b320589566fd5f9791",
+            "dataset.py": "4425130156f33618fa444ce8390c4f5d6ad578ec50188e9b0fea21741c0d55a5"
+          },
+          "gpu": "NVIDIA RTX A1000 6GB Laptop GPU",
+          "packages": {
+            "torch": "2.6.0",
+            "sentence-transformers": "5.1.2",
+            "transformers": "4.57.1",
+            "numpy": "2.3.4",
+            "scikit-learn": "1.7.2"
+          }
+        }
+      }
+    },
+    {
+      "name": "refined_cosent",
+      "directory": "artifacts/run-42/refined_cosent/model",
+      "policy": {
+        "binary_threshold": 0.47051626443862915,
+        "thresholds": {
+          "low": 0.5057744979858398,
+          "high": 0.8676812648773193,
+          "positive_enabled": true,
+          "negative_enabled": true
+        },
+        "selection_split": "validation",
+        "precision_target": 0.9,
+        "negative_predictive_value_target": 0.9,
+        "minimum_support": 5,
+        "decision_policy_version": "0.1.0"
+      },
+      "validation": {
+        "support": 72,
+        "positive_support": 27,
+        "precision": 0.5192307692307693,
+        "recall": 1.0,
+        "f1": 0.6835443037974683,
+        "macro_f1": 0.6494644595910419,
+        "average_precision": 0.7229152368252679,
+        "confusion_matrix": [
+          [
+            20,
+            25
+          ],
+          [
+            0,
+            27
+          ]
+        ],
+        "coverage": 0.4305555555555556,
+        "review_rate": 0.5694444444444444,
+        "review_count": 41,
+        "redundant_count": 8,
+        "not_redundant_count": 23,
+        "selective_precision": 1.0,
+        "negative_predictive_value": 0.9130434782608695
+      },
+      "training": {
+        "config": {
+          "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+          "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+          "base_directory": "artifacts/base",
+          "dataset": "data/v01",
+          "refinement_dataset": "data/refinement",
+          "seed": 42,
+          "epochs": 3,
+          "batch_size": 8,
+          "gradient_accumulation": 2,
+          "learning_rate": 1e-05,
+          "refinement_learning_rate": 1e-05,
+          "loss": "cosent",
+          "selection": "validation average_precision, then binary F1; earliest tie",
+          "refinement_candidates": [
+            "cosine",
+            "cosent"
+          ],
+          "test_policy": "Score once after all candidate and threshold selection is frozen",
+          "model_version": "0.1.0-refined-cosent"
+        },
+        "training_pairs": 496,
+        "validation_pairs": 72,
+        "selected_epoch": 3,
+        "selected_parameter_delta_l2": 0.04188915342092514,
+        "optimizer_steps": 93,
+        "history": [
+          {
+            "epoch": 1,
+            "train_loss": 2.4839452226884355,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.5454545454545454,
+              "recall": 0.8888888888888888,
+              "f1": 0.676056338028169,
+              "macro_f1": 0.6804939224387421,
+              "average_precision": 0.6941940658701495,
+              "confusion_matrix": [
+                [
+                  25,
+                  20
+                ],
+                [
+                  3,
+                  24
+                ]
+              ],
+              "coverage": 0.4444444444444444,
+              "review_rate": 0.5555555555555556,
+              "review_count": 40,
+              "redundant_count": 7,
+              "not_redundant_count": 25,
+              "selective_precision": 1.0,
+              "negative_predictive_value": 0.92
+            }
+          },
+          {
+            "epoch": 2,
+            "train_loss": 1.6370589726192843,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.5789473684210527,
+              "recall": 0.8148148148148148,
+              "f1": 0.676923076923077,
+              "macro_f1": 0.7055501460564753,
+              "average_precision": 0.6937891366050211,
+              "confusion_matrix": [
+                [
+                  29,
+                  16
+                ],
+                [
+                  5,
+                  22
+                ]
+              ],
+              "coverage": 0.4166666666666667,
+              "review_rate": 0.5833333333333334,
+              "review_count": 42,
+              "redundant_count": 6,
+              "not_redundant_count": 24,
+              "selective_precision": 1.0,
+              "negative_predictive_value": 0.9166666666666666
+            }
+          },
+          {
+            "epoch": 3,
+            "train_loss": 1.2462949729204469,
+            "validation": {
+              "support": 72,
+              "positive_support": 27,
+              "precision": 0.5192307692307693,
+              "recall": 1.0,
+              "f1": 0.6835443037974683,
+              "macro_f1": 0.6494644595910419,
+              "average_precision": 0.7229152368252679,
+              "confusion_matrix": [
+                [
+                  20,
+                  25
+                ],
+                [
+                  0,
+                  27
+                ]
+              ],
+              "coverage": 0.4305555555555556,
+              "review_rate": 0.5694444444444444,
+              "review_count": 41,
+              "redundant_count": 8,
+              "not_redundant_count": 23,
+              "selective_precision": 1.0,
+              "negative_predictive_value": 0.9130434782608695
+            }
+          }
+        ],
+        "policy": {
+          "binary_threshold": 0.47051626443862915,
+          "thresholds": {
+            "low": 0.5057744979858398,
+            "high": 0.8676812648773193,
+            "positive_enabled": true,
+            "negative_enabled": true
+          },
+          "selection_split": "validation",
+          "precision_target": 0.9,
+          "negative_predictive_value_target": 0.9,
+          "minimum_support": 5,
+          "decision_policy_version": "0.1.0"
+        },
+        "selection": "validation average_precision, then binary F1; earliest tie",
+        "duration_seconds": 154.9093456010014,
+        "environment": {
+          "python": "3.11.14",
+          "platform": "Linux-7.1.8+deb13-amd64-x86_64-with-glibc2.41",
+          "code_commit": "e72c7626d9ac91cdb6ffff584bd22d6f8126281a",
+          "source_sha256": {
+            "cli.py": "8462dd1c90e06165826a5053c740c2e4379bc4db1a3fafacb38eccc866f007ab",
+            "decision.py": "ce69d18701fb687f0fd94217a121f7ebdd29e9397c0c7a18c899dcede96f5e2a",
+            "encoder.py": "73ff3df57da2d105ce400db563768691500f015010f3f3216e1cb553f7ee1858",
+            "data.py": "5b8143e617f9166f13159f96081b9048b24fe6d80289b181fc165f1c307b7dde",
+            "experiment.py": "d6cac58f617129f20a3518724d53678d6ef204fee35a9e998d1dc1aafd8af891",
+            "training.py": "3abf834c170968cb96d392f69586c4adbd8cc616ba1389ce94c04074440ceea6",
+            "__main__.py": "b466d3224c1cfa96b82f891d496e36e7bd4ad1eb70fcc530b45c29ce62d3f9c4",
+            "schemas.py": "ecb86544d6f71b5dad802e345438763050ac831732a6c0a126c80c921cfa7aef",
+            "evaluation.py": "4880d0ee9fcf6fc15163204b2edcf4856dc06dfe5aaa3930a9dca236b16d0fd0",
+            "__init__.py": "6f77bebe829dfcc6c5545b6ed57e87ea355244777e5fe8b320589566fd5f9791",
+            "dataset.py": "4425130156f33618fa444ce8390c4f5d6ad578ec50188e9b0fea21741c0d55a5"
+          },
+          "gpu": "NVIDIA RTX A1000 6GB Laptop GPU",
+          "packages": {
+            "torch": "2.6.0",
+            "sentence-transformers": "5.1.2",
+            "transformers": "4.57.1",
+            "numpy": "2.3.4",
+            "scikit-learn": "1.7.2"
+          }
+        }
+      }
+    }
+  ],
+  "config": {
+    "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "base_directory": "artifacts/base",
+    "dataset": "data/v01",
+    "refinement_dataset": "data/refinement",
+    "seed": 42,
+    "epochs": 3,
+    "batch_size": 8,
+    "gradient_accumulation": 2,
+    "learning_rate": 2e-05,
+    "refinement_learning_rate": 1e-05,
+    "loss": "cosine",
+    "selection": "validation average_precision, then binary F1; earliest tie",
+    "refinement_candidates": [
+      "cosine",
+      "cosent"
+    ],
+    "test_policy": "Score once after all candidate and threshold selection is frozen"
+  },
+  "dataset": {
+    "schema_version": "0.1.0",
+    "seed": 42,
+    "groups": 60,
+    "pairs": 480,
+    "groups_by_split": {
+      "train": 42,
+      "test": 9,
+      "validation": 9
+    },
+    "source_sha256": "4539d298a41c756779270c7ab5f69a179249d9dc89e711fd1c530aa37549c6b1",
+    "sha256": {
+      "train.jsonl": "f1a038ea8e5acd0319d15100e8574aa95e1638190ad81adf58a89fa821150d8e",
+      "validation.jsonl": "12083d803d6c13a295c63eaa8bb311e7a0fa07e407374bb13af1567877166696",
+      "test.jsonl": "c857897c9a5b3a72d33927540810a625f5bc4c2ab8f7ea2abf55d54933d71bbd",
+      "all.jsonl": "32c4154fb356a73d28fadd52339a619f5efc288c024d5dadc437ee4d680ff882"
+    },
+    "provenance": {
+      "source": "scenarios.psv",
+      "author": "Codex authoring AI",
+      "reviewer": "same authoring AI; no independent or human review",
+      "human_reviewed": false,
+      "license": "CC-BY-4.0",
+      "limitation": "Shared authored constructions; not representative of real CVs"
+    }
+  },
+  "refinement_dataset": {
+    "schema_version": "0.1.0",
+    "seed": 42,
+    "groups": 20,
+    "pairs": 160,
+    "groups_by_split": {
+      "train": 20
+    },
+    "source_sha256": "cbf531c96059f20f5657de32435272623e8de46e1d08daadaeae206ebcdad2ad",
+    "sha256": {
+      "train.jsonl": "6b3cb804cf877c500aa567b0e583afe9dc684cd5c9fe567cb25593613e28831a"
+    },
+    "provenance": {
+      "source": "refinement.psv",
+      "author": "Codex authoring AI",
+      "reviewer": "same authoring AI; no independent or human review",
+      "human_reviewed": false,
+      "license": "CC-BY-4.0",
+      "limitation": "Shared authored constructions; not representative of real CVs"
+    }
+  },
+  "environment": {
+    "python": "3.11.14",
+    "platform": "Linux-7.1.8+deb13-amd64-x86_64-with-glibc2.41",
+    "code_commit": "e72c7626d9ac91cdb6ffff584bd22d6f8126281a",
+    "source_sha256": {
+      "cli.py": "8462dd1c90e06165826a5053c740c2e4379bc4db1a3fafacb38eccc866f007ab",
+      "decision.py": "ce69d18701fb687f0fd94217a121f7ebdd29e9397c0c7a18c899dcede96f5e2a",
+      "encoder.py": "73ff3df57da2d105ce400db563768691500f015010f3f3216e1cb553f7ee1858",
+      "data.py": "5b8143e617f9166f13159f96081b9048b24fe6d80289b181fc165f1c307b7dde",
+      "experiment.py": "d6cac58f617129f20a3518724d53678d6ef204fee35a9e998d1dc1aafd8af891",
+      "training.py": "3abf834c170968cb96d392f69586c4adbd8cc616ba1389ce94c04074440ceea6",
+      "__main__.py": "b466d3224c1cfa96b82f891d496e36e7bd4ad1eb70fcc530b45c29ce62d3f9c4",
+      "schemas.py": "ecb86544d6f71b5dad802e345438763050ac831732a6c0a126c80c921cfa7aef",
+      "evaluation.py": "4880d0ee9fcf6fc15163204b2edcf4856dc06dfe5aaa3930a9dca236b16d0fd0",
+      "__init__.py": "6f77bebe829dfcc6c5545b6ed57e87ea355244777e5fe8b320589566fd5f9791",
+      "dataset.py": "4425130156f33618fa444ce8390c4f5d6ad578ec50188e9b0fea21741c0d55a5"
+    },
+    "gpu": "NVIDIA RTX A1000 6GB Laptop GPU",
+    "packages": {
+      "torch": "2.6.0",
+      "sentence-transformers": "5.1.2",
+      "transformers": "4.57.1",
+      "numpy": "2.3.4",
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "test_evaluated": false,
+  "selection_rule": "validation average_precision, then binary F1; earliest tie"
+}

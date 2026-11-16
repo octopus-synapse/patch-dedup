@@ -1,0 +1,408 @@
+{
+  "candidate": {
+    "name": "base",
+    "directory": "artifacts/base",
+    "policy": {
+      "binary_threshold": 0.7951657772064209,
+      "thresholds": {
+        "low": 0.6722568273544312,
+        "high": 1.0,
+        "positive_enabled": false,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "validation": {
+      "support": 72,
+      "positive_support": 27,
+      "precision": 0.5882352941176471,
+      "recall": 0.7407407407407407,
+      "f1": 0.6557377049180327,
+      "macro_f1": 0.7013628283626308,
+      "average_precision": 0.6631701186120071,
+      "confusion_matrix": [
+        [
+          31,
+          14
+        ],
+        [
+          7,
+          20
+        ]
+      ],
+      "coverage": 0.19444444444444445,
+      "review_rate": 0.8055555555555556,
+      "review_count": 58,
+      "redundant_count": 0,
+      "not_redundant_count": 14,
+      "selective_precision": null,
+      "negative_predictive_value": 0.9285714285714286
+    }
+  },
+  "predictions": [
+    {
+      "pair_id": "v01-002-p0",
+      "label": 1,
+      "score": 0.9317610859870911
+    },
+    {
+      "pair_id": "v01-002-p1",
+      "label": 1,
+      "score": 0.82209312915802
+    },
+    {
+      "pair_id": "v01-002-p2",
+      "label": 1,
+      "score": 0.8004586696624756
+    },
+    {
+      "pair_id": "v01-002-p3",
+      "label": 0,
+      "score": 0.1824735552072525
+    },
+    {
+      "pair_id": "v01-002-p4",
+      "label": 0,
+      "score": 0.9035592675209045
+    },
+    {
+      "pair_id": "v01-002-p5",
+      "label": 0,
+      "score": 0.7297323942184448
+    },
+    {
+      "pair_id": "v01-002-p6",
+      "label": 0,
+      "score": 0.18661624193191528
+    },
+    {
+      "pair_id": "v01-002-p7",
+      "label": 0,
+      "score": 0.7806103825569153
+    },
+    {
+      "pair_id": "v01-005-p0",
+      "label": 1,
+      "score": 0.9209024906158447
+    },
+    {
+      "pair_id": "v01-005-p1",
+      "label": 1,
+      "score": 0.8364457488059998
+    },
+    {
+      "pair_id": "v01-005-p2",
+      "label": 1,
+      "score": 0.9086625576019287
+    },
+    {
+      "pair_id": "v01-005-p3",
+      "label": 0,
+      "score": 0.4399182200431824
+    },
+    {
+      "pair_id": "v01-005-p4",
+      "label": 0,
+      "score": 0.7309545278549194
+    },
+    {
+      "pair_id": "v01-005-p5",
+      "label": 0,
+      "score": 0.5712946653366089
+    },
+    {
+      "pair_id": "v01-005-p6",
+      "label": 0,
+      "score": 0.38103413581848145
+    },
+    {
+      "pair_id": "v01-005-p7",
+      "label": 0,
+      "score": 0.7251054048538208
+    },
+    {
+      "pair_id": "v01-006-p0",
+      "label": 1,
+      "score": 0.7610117197036743
+    },
+    {
+      "pair_id": "v01-006-p1",
+      "label": 1,
+      "score": 0.6722568273544312
+    },
+    {
+      "pair_id": "v01-006-p2",
+      "label": 1,
+      "score": 0.9079002141952515
+    },
+    {
+      "pair_id": "v01-006-p3",
+      "label": 0,
+      "score": 0.5518895387649536
+    },
+    {
+      "pair_id": "v01-006-p4",
+      "label": 0,
+      "score": 0.6996092796325684
+    },
+    {
+      "pair_id": "v01-006-p5",
+      "label": 0,
+      "score": 0.6583095788955688
+    },
+    {
+      "pair_id": "v01-006-p6",
+      "label": 0,
+      "score": 0.5698144435882568
+    },
+    {
+      "pair_id": "v01-006-p7",
+      "label": 0,
+      "score": 0.8980311155319214
+    },
+    {
+      "pair_id": "v01-027-p0",
+      "label": 1,
+      "score": 0.958625078201294
+    },
+    {
+      "pair_id": "v01-027-p1",
+      "label": 1,
+      "score": 0.9311014413833618
+    },
+    {
+      "pair_id": "v01-027-p2",
+      "label": 1,
+      "score": 0.9541256427764893
+    },
+    {
+      "pair_id": "v01-027-p3",
+      "label": 0,
+      "score": 0.7678861021995544
+    },
+    {
+      "pair_id": "v01-027-p4",
+      "label": 0,
+      "score": 0.7728618383407593
+    },
+    {
+      "pair_id": "v01-027-p5",
+      "label": 0,
+      "score": 0.7392536401748657
+    },
+    {
+      "pair_id": "v01-027-p6",
+      "label": 0,
+      "score": 0.7567890882492065
+    },
+    {
+      "pair_id": "v01-027-p7",
+      "label": 0,
+      "score": 0.7783724069595337
+    },
+    {
+      "pair_id": "v01-034-p0",
+      "label": 1,
+      "score": 0.6752026081085205
+    },
+    {
+      "pair_id": "v01-034-p1",
+      "label": 1,
+      "score": 0.6793596744537354
+    },
+    {
+      "pair_id": "v01-034-p2",
+      "label": 1,
+      "score": 0.9656531810760498
+    },
+    {
+      "pair_id": "v01-034-p3",
+      "label": 0,
+      "score": 0.9153316020965576
+    },
+    {
+      "pair_id": "v01-034-p4",
+      "label": 0,
+      "score": 0.6694642901420593
+    },
+    {
+      "pair_id": "v01-034-p5",
+      "label": 0,
+      "score": 0.7502846717834473
+    },
+    {
+      "pair_id": "v01-034-p6",
+      "label": 0,
+      "score": 0.8975279331207275
+    },
+    {
+      "pair_id": "v01-034-p7",
+      "label": 0,
+      "score": 0.900946855545044
+    },
+    {
+      "pair_id": "v01-037-p0",
+      "label": 1,
+      "score": 0.9771237373352051
+    },
+    {
+      "pair_id": "v01-037-p1",
+      "label": 1,
+      "score": 0.9211674332618713
+    },
+    {
+      "pair_id": "v01-037-p2",
+      "label": 1,
+      "score": 0.9471135139465332
+    },
+    {
+      "pair_id": "v01-037-p3",
+      "label": 0,
+      "score": 0.9098703265190125
+    },
+    {
+      "pair_id": "v01-037-p4",
+      "label": 0,
+      "score": 0.9590591788291931
+    },
+    {
+      "pair_id": "v01-037-p5",
+      "label": 0,
+      "score": 0.651481032371521
+    },
+    {
+      "pair_id": "v01-037-p6",
+      "label": 0,
+      "score": 0.8509320616722107
+    },
+    {
+      "pair_id": "v01-037-p7",
+      "label": 0,
+      "score": 0.9339512586593628
+    },
+    {
+      "pair_id": "v01-043-p0",
+      "label": 1,
+      "score": 0.836078405380249
+    },
+    {
+      "pair_id": "v01-043-p1",
+      "label": 1,
+      "score": 0.90386563539505
+    },
+    {
+      "pair_id": "v01-043-p2",
+      "label": 1,
+      "score": 0.9252106547355652
+    },
+    {
+      "pair_id": "v01-043-p3",
+      "label": 0,
+      "score": 0.8672317266464233
+    },
+    {
+      "pair_id": "v01-043-p4",
+      "label": 0,
+      "score": 0.8096092939376831
+    },
+    {
+      "pair_id": "v01-043-p5",
+      "label": 0,
+      "score": 0.8030343055725098
+    },
+    {
+      "pair_id": "v01-043-p6",
+      "label": 0,
+      "score": 0.7827966213226318
+    },
+    {
+      "pair_id": "v01-043-p7",
+      "label": 0,
+      "score": 0.8690462708473206
+    },
+    {
+      "pair_id": "v01-051-p0",
+      "label": 1,
+      "score": 0.856246829032898
+    },
+    {
+      "pair_id": "v01-051-p1",
+      "label": 1,
+      "score": 0.7325912117958069
+    },
+    {
+      "pair_id": "v01-051-p2",
+      "label": 1,
+      "score": 0.8315848112106323
+    },
+    {
+      "pair_id": "v01-051-p3",
+      "label": 0,
+      "score": 0.7784932851791382
+    },
+    {
+      "pair_id": "v01-051-p4",
+      "label": 0,
+      "score": 0.8229840993881226
+    },
+    {
+      "pair_id": "v01-051-p5",
+      "label": 0,
+      "score": 0.44607239961624146
+    },
+    {
+      "pair_id": "v01-051-p6",
+      "label": 0,
+      "score": 0.6991592645645142
+    },
+    {
+      "pair_id": "v01-051-p7",
+      "label": 0,
+      "score": 0.7703289985656738
+    },
+    {
+      "pair_id": "v01-057-p0",
+      "label": 1,
+      "score": 0.7951657772064209
+    },
+    {
+      "pair_id": "v01-057-p1",
+      "label": 1,
+      "score": 0.6140661239624023
+    },
+    {
+      "pair_id": "v01-057-p2",
+      "label": 1,
+      "score": 0.6938849091529846
+    },
+    {
+      "pair_id": "v01-057-p3",
+      "label": 0,
+      "score": 0.6778619289398193
+    },
+    {
+      "pair_id": "v01-057-p4",
+      "label": 0,
+      "score": 0.7250512838363647
+    },
+    {
+      "pair_id": "v01-057-p5",
+      "label": 0,
+      "score": 0.4430849552154541
+    },
+    {
+      "pair_id": "v01-057-p6",
+      "label": 0,
+      "score": 0.49767157435417175
+    },
+    {
+      "pair_id": "v01-057-p7",
+      "label": 0,
+      "score": 0.6848208904266357
+    }
+  ]
+}
