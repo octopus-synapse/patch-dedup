@@ -1,0 +1,1663 @@
+[
+  {
+    "name": "incumbent",
+    "weights": [
+      1.0
+    ],
+    "policy": {
+      "binary_threshold": 0.3357478678226471,
+      "thresholds": {
+        "low": 0.3383215367794037,
+        "high": 0.47792935371398926,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8052643046537534,
+      "f1": 0.782608695652174,
+      "precision": 0.8181818181818182,
+      "recall": 0.75,
+      "macro_f1": 0.8859738574209697,
+      "confusion_matrix": [
+        [
+          464,
+          4
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9748495003832295,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9924242424242424,
+      "review_rate": 0.007575757575757576
+    }
+  },
+  {
+    "name": "binary-natural",
+    "weights": [
+      1.0
+    ],
+    "policy": {
+      "binary_threshold": 0.4031316637992859,
+      "thresholds": {
+        "low": 0.40167540311813354,
+        "high": 0.4031316637992859,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      1
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8606325988456092,
+      "f1": 0.8095238095238095,
+      "precision": 0.9444444444444444,
+      "recall": 0.7083333333333334,
+      "macro_f1": 0.9005156202608432,
+      "confusion_matrix": [
+        [
+          467,
+          1
+        ],
+        [
+          7,
+          17
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9634989543730493,
+      "f1": 0.9009009009009009,
+      "precision": 0.9259259259259259,
+      "recall": 0.8771929824561403,
+      "macro_f1": 0.9145027380321498,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          7,
+          50
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-balanced",
+    "weights": [
+      1.0
+    ],
+    "policy": {
+      "binary_threshold": 0.4815368056297302,
+      "thresholds": {
+        "low": 0.7262193560600281,
+        "high": 0.9886159896850586,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      2
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8617602796632424,
+      "f1": 0.8260869565217391,
+      "precision": 0.8636363636363636,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.9087790859367757,
+      "confusion_matrix": [
+        [
+          465,
+          3
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9660704017899969,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9848484848484849,
+      "review_rate": 0.015151515151515152
+    }
+  },
+  {
+    "name": "binary-ranking",
+    "weights": [
+      1.0
+    ],
+    "policy": {
+      "binary_threshold": 0.6854417324066162,
+      "thresholds": {
+        "low": 0.627698540687561,
+        "high": 0.6854417324066162,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      3
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8629981741194975,
+      "f1": 0.8181818181818182,
+      "precision": 0.9,
+      "recall": 0.75,
+      "macro_f1": 0.9048355899419729,
+      "confusion_matrix": [
+        [
+          466,
+          2
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9539445824018811,
+      "f1": 0.9203539823008849,
+      "precision": 0.9285714285714286,
+      "recall": 0.9122807017543859,
+      "macro_f1": 0.9303756666471312,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          5,
+          52
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-hard-ranking",
+    "weights": [
+      1.0
+    ],
+    "policy": {
+      "binary_threshold": 0.15748943388462067,
+      "thresholds": {
+        "low": 0.4495740234851837,
+        "high": 0.47492796182632446,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8671827853431524,
+      "f1": 0.8333333333333334,
+      "precision": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "macro_f1": 0.9123931623931625,
+      "confusion_matrix": [
+        [
+          464,
+          4
+        ],
+        [
+          4,
+          20
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9546838580346921,
+      "f1": 0.9217391304347826,
+      "precision": 0.9137931034482759,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9306682229355121,
+      "confusion_matrix": [
+        [
+          70,
+          5
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "assin-three-way",
+    "weights": [
+      1.0
+    ],
+    "policy": {
+      "binary_threshold": 0.504589855670929,
+      "thresholds": {
+        "low": 0.8949308395385742,
+        "high": 0.9354708194732666,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      5
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8419754196279747,
+      "f1": 0.7659574468085106,
+      "precision": 0.782608695652174,
+      "recall": 0.75,
+      "macro_f1": 0.8771089261790685,
+      "confusion_matrix": [
+        [
+          463,
+          5
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9623531685987939,
+      "f1": 0.8928571428571429,
+      "precision": 0.9090909090909091,
+      "recall": 0.8771929824561403,
+      "macro_f1": 0.9069548872180451,
+      "confusion_matrix": [
+        [
+          70,
+          5
+        ],
+        [
+          7,
+          50
+        ]
+      ],
+      "coverage": 0.9924242424242424,
+      "review_rate": 0.007575757575757576
+    }
+  },
+  {
+    "name": "binary-seed42",
+    "weights": [
+      1.0
+    ],
+    "policy": {
+      "binary_threshold": 0.6042296290397644,
+      "thresholds": {
+        "low": 0.7501986026763916,
+        "high": 0.8318967819213867,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      6
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.85382219989264,
+      "f1": 0.8,
+      "precision": 0.8571428571428571,
+      "recall": 0.75,
+      "macro_f1": 0.8952076677316294,
+      "confusion_matrix": [
+        [
+          465,
+          3
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9544051098308587,
+      "f1": 0.918918918918919,
+      "precision": 0.9444444444444444,
+      "recall": 0.8947368421052632,
+      "macro_f1": 0.9300476947535772,
+      "confusion_matrix": [
+        [
+          72,
+          3
+        ],
+        [
+          6,
+          51
+        ]
+      ],
+      "coverage": 0.9848484848484849,
+      "review_rate": 0.015151515151515152
+    }
+  },
+  {
+    "name": "binary-hard-ranking+binary-ranking:0.25",
+    "weights": [
+      0.25,
+      0.75
+    ],
+    "policy": {
+      "binary_threshold": 0.7854629009962082,
+      "thresholds": {
+        "low": 0.7035988569259644,
+        "high": 0.7854629009962082,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      3
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8632800514130471,
+      "f1": 0.8095238095238095,
+      "precision": 0.9444444444444444,
+      "recall": 0.7083333333333334,
+      "macro_f1": 0.9005156202608432,
+      "confusion_matrix": [
+        [
+          467,
+          1
+        ],
+        [
+          7,
+          17
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9550394737172971,
+      "f1": 0.9203539823008849,
+      "precision": 0.9285714285714286,
+      "recall": 0.9122807017543859,
+      "macro_f1": 0.9303756666471312,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          5,
+          52
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-hard-ranking+binary-ranking:0.5",
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "policy": {
+      "binary_threshold": 0.5929701924324036,
+      "thresholds": {
+        "low": 0.47342535853385925,
+        "high": 0.5929701924324036,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      3
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8629196530825548,
+      "f1": 0.8181818181818182,
+      "precision": 0.9,
+      "recall": 0.75,
+      "macro_f1": 0.9048355899419729,
+      "confusion_matrix": [
+        [
+          466,
+          2
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9538373320463096,
+      "f1": 0.9203539823008849,
+      "precision": 0.9285714285714286,
+      "recall": 0.9122807017543859,
+      "macro_f1": 0.9303756666471312,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          5,
+          52
+        ]
+      ],
+      "coverage": 0.9848484848484849,
+      "review_rate": 0.015151515151515152
+    }
+  },
+  {
+    "name": "binary-hard-ranking+binary-ranking:0.75",
+    "weights": [
+      0.75,
+      0.25
+    ],
+    "policy": {
+      "binary_threshold": 0.3666132986545563,
+      "thresholds": {
+        "low": 0.4614996910095215,
+        "high": 0.5467344224452972,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      3
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.864734812402094,
+      "f1": 0.8260869565217391,
+      "precision": 0.8636363636363636,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.9087790859367757,
+      "confusion_matrix": [
+        [
+          465,
+          3
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9577089324330561,
+      "f1": 0.9217391304347826,
+      "precision": 0.9137931034482759,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9306682229355121,
+      "confusion_matrix": [
+        [
+          70,
+          5
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9924242424242424,
+      "review_rate": 0.007575757575757576
+    }
+  },
+  {
+    "name": "binary-hard-ranking+binary-balanced:0.25",
+    "weights": [
+      0.25,
+      0.75
+    ],
+    "policy": {
+      "binary_threshold": 0.44592375308275223,
+      "thresholds": {
+        "low": 0.6343471705913544,
+        "high": 0.9853413701057434,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      2
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8600776542867924,
+      "f1": 0.8085106382978723,
+      "precision": 0.8260869565217391,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.8994527577828743,
+      "confusion_matrix": [
+        [
+          464,
+          4
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9630748643106052,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9772727272727273,
+      "review_rate": 0.022727272727272728
+    }
+  },
+  {
+    "name": "binary-hard-ranking+binary-balanced:0.5",
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "policy": {
+      "binary_threshold": 0.41031070053577423,
+      "thresholds": {
+        "low": 0.4518641084432602,
+        "high": 0.49522268772125244,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      2
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8655595918339472,
+      "f1": 0.8260869565217391,
+      "precision": 0.8636363636363636,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.9087790859367757,
+      "confusion_matrix": [
+        [
+          465,
+          3
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.960688431922632,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-hard-ranking+binary-balanced:0.75",
+    "weights": [
+      0.75,
+      0.25
+    ],
+    "policy": {
+      "binary_threshold": 0.37469764798879623,
+      "thresholds": {
+        "low": 0.45071906596422195,
+        "high": 0.48507532477378845,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      2
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8654745678552896,
+      "f1": 0.8260869565217391,
+      "precision": 0.8636363636363636,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.9087790859367757,
+      "confusion_matrix": [
+        [
+          465,
+          3
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9581561672646335,
+      "f1": 0.9217391304347826,
+      "precision": 0.9137931034482759,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9306682229355121,
+      "confusion_matrix": [
+        [
+          70,
+          5
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9924242424242424,
+      "review_rate": 0.007575757575757576
+    }
+  },
+  {
+    "name": "binary-hard-ranking+incumbent:0.25",
+    "weights": [
+      0.25,
+      0.75
+    ],
+    "policy": {
+      "binary_threshold": 0.25268464838154614,
+      "thresholds": {
+        "low": 0.7286013942211866,
+        "high": 0.7308648377656937,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8519174673765054,
+      "f1": 0.7916666666666666,
+      "precision": 0.7916666666666666,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.8904914529914529,
+      "confusion_matrix": [
+        [
+          463,
+          5
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.974144969936301,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-hard-ranking+incumbent:0.5",
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "policy": {
+      "binary_threshold": 0.6251183599233627,
+      "thresholds": {
+        "low": 0.5668300241231918,
+        "high": 0.6251183599233627,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8738329026002302,
+      "f1": 0.8095238095238095,
+      "precision": 0.9444444444444444,
+      "recall": 0.7083333333333334,
+      "macro_f1": 0.9005156202608432,
+      "confusion_matrix": [
+        [
+          467,
+          1
+        ],
+        [
+          7,
+          17
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9745940720622149,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-hard-ranking+incumbent:0.75",
+    "weights": [
+      0.75,
+      0.25
+    ],
+    "policy": {
+      "binary_threshold": 0.49485690891742706,
+      "thresholds": {
+        "low": 0.42269132286310196,
+        "high": 0.49485690891742706,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.883598649669584,
+      "f1": 0.8181818181818182,
+      "precision": 0.9,
+      "recall": 0.75,
+      "macro_f1": 0.9048355899419729,
+      "confusion_matrix": [
+        [
+          466,
+          2
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9720034671218553,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-ranking+binary-balanced:0.25",
+    "weights": [
+      0.25,
+      0.75
+    ],
+    "policy": {
+      "binary_threshold": 0.47345245629549026,
+      "thresholds": {
+        "low": 0.558446854352951,
+        "high": 0.6051834225654602,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      3,
+      2
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8614820660252442,
+      "f1": 0.8260869565217391,
+      "precision": 0.8636363636363636,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.9087790859367757,
+      "confusion_matrix": [
+        [
+          465,
+          3
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9638877308613052,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-ranking+binary-balanced:0.5",
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "policy": {
+      "binary_threshold": 0.6319361925125122,
+      "thresholds": {
+        "low": 0.581530749797821,
+        "high": 0.6319361925125122,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      3,
+      2
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8616121576033816,
+      "f1": 0.8181818181818182,
+      "precision": 0.9,
+      "recall": 0.75,
+      "macro_f1": 0.9048355899419729,
+      "confusion_matrix": [
+        [
+          466,
+          2
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9614122177805647,
+      "f1": 0.9203539823008849,
+      "precision": 0.9285714285714286,
+      "recall": 0.9122807017543859,
+      "macro_f1": 0.9303756666471312,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          5,
+          52
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-ranking+binary-balanced:0.75",
+    "weights": [
+      0.75,
+      0.25
+    ],
+    "policy": {
+      "binary_threshold": 0.6586889624595642,
+      "thresholds": {
+        "low": 0.604614645242691,
+        "high": 0.6586889624595642,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      3,
+      2
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8637883611121115,
+      "f1": 0.8181818181818182,
+      "precision": 0.9,
+      "recall": 0.75,
+      "macro_f1": 0.9048355899419729,
+      "confusion_matrix": [
+        [
+          466,
+          2
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9576212594168533,
+      "f1": 0.9203539823008849,
+      "precision": 0.9285714285714286,
+      "recall": 0.9122807017543859,
+      "macro_f1": 0.9303756666471312,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          5,
+          52
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-ranking+incumbent:0.25",
+    "weights": [
+      0.25,
+      0.75
+    ],
+    "policy": {
+      "binary_threshold": 0.25634032115340233,
+      "thresholds": {
+        "low": 0.8481021746993065,
+        "high": 0.8984517157077789,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      3,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.856005801392733,
+      "f1": 0.7755102040816326,
+      "precision": 0.76,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.8818727490996399,
+      "confusion_matrix": [
+        [
+          462,
+          6
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9734902062474645,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9848484848484849,
+      "review_rate": 0.015151515151515152
+    }
+  },
+  {
+    "name": "binary-ranking+incumbent:0.5",
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "policy": {
+      "binary_threshold": 0.06336675584316254,
+      "thresholds": {
+        "low": 0.7289211004972458,
+        "high": 0.7741196155548096,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      3,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8739762041724631,
+      "f1": 0.7857142857142857,
+      "precision": 0.6875,
+      "recall": 0.9166666666666666,
+      "macro_f1": 0.8863916256157636,
+      "confusion_matrix": [
+        [
+          458,
+          10
+        ],
+        [
+          2,
+          22
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9736165941619851,
+      "f1": 0.8907563025210085,
+      "precision": 0.8548387096774194,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9005505650536076,
+      "confusion_matrix": [
+        [
+          66,
+          9
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-ranking+incumbent:0.75",
+    "weights": [
+      0.75,
+      0.25
+    ],
+    "policy": {
+      "binary_threshold": 0.78050347417593,
+      "thresholds": {
+        "low": 0.7383848875761032,
+        "high": 0.7532990435138345,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      3,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8818652488218516,
+      "f1": 0.8292682926829268,
+      "precision": 1.0,
+      "recall": 0.7083333333333334,
+      "macro_f1": 0.9109225874867444,
+      "confusion_matrix": [
+        [
+          468,
+          0
+        ],
+        [
+          7,
+          17
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9730115129730951,
+      "f1": 0.9203539823008849,
+      "precision": 0.9285714285714286,
+      "recall": 0.9122807017543859,
+      "macro_f1": 0.9303756666471312,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          5,
+          52
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-balanced+incumbent:0.25",
+    "weights": [
+      0.25,
+      0.75
+    ],
+    "policy": {
+      "binary_threshold": 0.140341286547482,
+      "thresholds": {
+        "low": 0.7634065262973309,
+        "high": 0.8753678202629089,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      2,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8488999730828797,
+      "f1": 0.7843137254901961,
+      "precision": 0.7407407407407407,
+      "recall": 0.8333333333333334,
+      "macro_f1": 0.8862619002584957,
+      "confusion_matrix": [
+        [
+          461,
+          7
+        ],
+        [
+          4,
+          20
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9764887848205125,
+      "f1": 0.9217391304347826,
+      "precision": 0.9137931034482759,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9306682229355121,
+      "confusion_matrix": [
+        [
+          70,
+          5
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9772727272727273,
+      "review_rate": 0.022727272727272728
+    }
+  },
+  {
+    "name": "binary-balanced+incumbent:0.5",
+    "weights": [
+      0.5,
+      0.5
+    ],
+    "policy": {
+      "binary_threshold": 0.628710463643074,
+      "thresholds": {
+        "low": 0.5958963930606842,
+        "high": 0.628710463643074,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      2,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.871424339905209,
+      "f1": 0.8095238095238095,
+      "precision": 0.9444444444444444,
+      "recall": 0.7083333333333334,
+      "macro_f1": 0.9005156202608432,
+      "confusion_matrix": [
+        [
+          467,
+          1
+        ],
+        [
+          7,
+          17
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9764784219450956,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  {
+    "name": "binary-balanced+incumbent:0.75",
+    "weights": [
+      0.75,
+      0.25
+    ],
+    "policy": {
+      "binary_threshold": 0.3678049659356475,
+      "thresholds": {
+        "low": 0.6486979126930237,
+        "high": 0.7571564624086022,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      2,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.8757451268419159,
+      "f1": 0.8085106382978723,
+      "precision": 0.8260869565217391,
+      "recall": 0.7916666666666666,
+      "macro_f1": 0.8994527577828743,
+      "confusion_matrix": [
+        [
+          464,
+          4
+        ],
+        [
+          5,
+          19
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9747618076958054,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 0.9924242424242424,
+      "review_rate": 0.007575757575757576
+    }
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "kind": "average",
+  "indices": [
+    0,
+    1
+  ],
+  "weights": [
+    0.75,
+    0.25
+  ],
+  "calibrator_kind": "identity",
+  "calibrator": {
+    "kind": "identity"
+  },
+  "binary_threshold": 0.49485690891742706,
+  "components": [
+    {
+      "directory": "artifacts/assin-refinement/candidates/binary-hard-ranking/run/model",
+      "model_sha256": "3c79622e838803041db6bda7ddb4af627f8806ec0b3868e0e533506686e51dd4",
+      "aggregation": "mean",
+      "quantized": false
+    },
+    {
+      "directory": "artifacts/assin-finetune/continued/model",
+      "model_sha256": "3def2ad78c0ddb2072804ca5efb4642901e8aeb6380f6a8012679c232fc07dd5",
+      "aggregation": "min",
+      "quantized": false
+    }
+  ]
+}

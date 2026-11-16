@@ -1,0 +1,233 @@
+{
+  "dataset": {
+    "dataset": "nilc-nlp/assin",
+    "revision": "2d4aba156a914804e543cf2565aa133a107dce2a",
+    "dataset_sha256": "1b122d6cc46b81e9c4a92678d21fb2edf2219e9fda358216c22867dbc6e06e78",
+    "subset": "ptbr",
+    "split": "test",
+    "contamination": "No normalized exact text overlap with local data; base pretraining exposure not verified",
+    "license": "Dataset card says unknown; downloaded for local evaluation only"
+  },
+  "external_evaluation": {
+    "graph_sha256": "ac3a330afd6ca2ade8087d7ef2005d1449375872c7a813822aa9ed0d43e6c474",
+    "binary_threshold": 0.47022040711260604,
+    "positive": "PARAPHRASE (2)",
+    "negative": "NONE (0) or ENTAILMENT (1)",
+    "domain": "news; external diagnostic, not resume validation"
+  },
+  "prepared_data": {
+    "train_pairs": 3201,
+    "validation_pairs": 624,
+    "test_pairs": 2000,
+    "files": {
+      "train.jsonl": "66587b137157012452a2cb293b9a97ae6b4b13055c17a99b73831e855fd0ab88",
+      "validation.jsonl": "013c6de309591c00afce8059fee7621b5709bf2dc23503c715b11c708529037a",
+      "test.jsonl": "5d03469a1e45aec4aa2f29ee5717caf7f1270c9806bf54b0ddf490d2ae53331e"
+    },
+    "source_sha256": {
+      "train": "69828b530bc8edcfe8c30f3ebd077f77abfd7055b3dedfc1ef0ac2e0c086c15e",
+      "validation": "181198f7c3e682ddce0a040ea8a7a99dd48f8f4f89bce6ccf5ae8f4d7a292654"
+    }
+  },
+  "candidate_configs": [
+    {
+      "name": "binary-natural",
+      "training": {
+        "seed": 137,
+        "epochs": 4,
+        "batch_size": 4,
+        "gradient_accumulation": 4,
+        "learning_rate": 8e-06,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 6,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "layer_lr_decay": 0.95,
+        "bf16": true,
+        "gradient_checkpointing": true,
+        "patience": 2,
+        "consistency_weight": 0.05,
+        "task": "equivalence_binary",
+        "balanced": false,
+        "ranking_weight": 0.0,
+        "label_smoothing": 0.0
+      },
+      "hard": false
+    },
+    {
+      "name": "binary-balanced",
+      "training": {
+        "seed": 137,
+        "epochs": 4,
+        "batch_size": 4,
+        "gradient_accumulation": 4,
+        "learning_rate": 8e-06,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 6,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "layer_lr_decay": 0.95,
+        "bf16": true,
+        "gradient_checkpointing": true,
+        "patience": 2,
+        "consistency_weight": 0.05,
+        "task": "equivalence_binary",
+        "balanced": true,
+        "ranking_weight": 0.0,
+        "label_smoothing": 0.0
+      },
+      "hard": false
+    },
+    {
+      "name": "binary-ranking",
+      "training": {
+        "seed": 137,
+        "epochs": 4,
+        "batch_size": 4,
+        "gradient_accumulation": 4,
+        "learning_rate": 5e-06,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 6,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "layer_lr_decay": 0.95,
+        "bf16": true,
+        "gradient_checkpointing": true,
+        "patience": 2,
+        "consistency_weight": 0.05,
+        "task": "equivalence_binary",
+        "balanced": true,
+        "ranking_weight": 0.2,
+        "label_smoothing": 0.0
+      },
+      "hard": false
+    },
+    {
+      "name": "binary-hard-ranking",
+      "training": {
+        "seed": 137,
+        "epochs": 4,
+        "batch_size": 4,
+        "gradient_accumulation": 4,
+        "learning_rate": 8e-06,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 6,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "layer_lr_decay": 0.95,
+        "bf16": true,
+        "gradient_checkpointing": true,
+        "patience": 2,
+        "consistency_weight": 0.05,
+        "task": "equivalence_binary",
+        "balanced": true,
+        "ranking_weight": 0.2,
+        "label_smoothing": 0.0
+      },
+      "hard": true
+    },
+    {
+      "name": "assin-three-way",
+      "training": {
+        "seed": 137,
+        "epochs": 4,
+        "batch_size": 4,
+        "gradient_accumulation": 4,
+        "learning_rate": 8e-06,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 6,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "layer_lr_decay": 0.95,
+        "bf16": true,
+        "gradient_checkpointing": true,
+        "patience": 2,
+        "consistency_weight": 0.05,
+        "task": "assin_three_way",
+        "balanced": true,
+        "ranking_weight": 0.0,
+        "label_smoothing": 0.05
+      },
+      "hard": false
+    },
+    {
+      "name": "binary-seed42",
+      "training": {
+        "seed": 42,
+        "epochs": 4,
+        "batch_size": 4,
+        "gradient_accumulation": 4,
+        "learning_rate": 5e-06,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 3,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "layer_lr_decay": 0.95,
+        "bf16": true,
+        "gradient_checkpointing": true,
+        "patience": 2,
+        "consistency_weight": 0.05,
+        "task": "equivalence_binary",
+        "balanced": true,
+        "ranking_weight": 0.1,
+        "label_smoothing": 0.0
+      },
+      "hard": true
+    }
+  ],
+  "code_sha256": {
+    "scripts/refine_assin.py": "2e6fe152579366e8958d4dd6443a57cb3b5dd134699f935fde3e767e8209a730",
+    "src/patchdedup/equivalence.py": "258a112fa54c1b84f9cc5914dee2d70e9d6d4fd5717c1ec446fa45b8eab0b8db",
+    "src/patchdedup/cross_encoder.py": "894b884ac2c54847ab517574c1841e44e2a4a808e5086b60c5aca970e3483aab",
+    "src/patchdedup/nli.py": "bb1c548dcf10b921fd0d4974d3d3068fd90bbdcd603317c349fce8acb1a49bae"
+  },
+  "artifact_sha256": {
+    "artifacts/external-assin-ptbr/metrics.json": "0319ea65870542a94e0e35b6778da17476ab22d2019cb39909c3c61357298cbb",
+    "artifacts/external-assin-ptbr/protocol.json": "71817121efb38bb98ee20a2dbff2a4b376947b68d94e521f20a6018a373da1e9",
+    "artifacts/assin-finetune/comparison.json": "6437f87934a9f6b176f2d19793b4602917e129d884477431156b2886f0ad774f",
+    "artifacts/assin-finetune/protocol.json": "04780706992466ad5ff2bfcec9c7ae671f801ae4c602d263bce02f4908e91dda",
+    "artifacts/assin-refinement/comparison.json": "a5b7ba14ef095581f6c0a72c7d188ab6635858a0dc09f159191d808a6cc749ec",
+    "artifacts/assin-refinement/selection.json": "2809bb0d93fbeae38bd7b1b604685807684e75ee61ca54b9759d3adfdad396c9",
+    "artifacts/assin-refinement/protocol.json": "4d3fddda8527a010a85621974b4be24286941b93d27427164ecb75d67f6684fb",
+    "artifacts/assin-refinement/validation-candidates.json": "d9bd9830401590b3c40175d1c09f19d01983c0cc3a8a2708b432698c6f065fe1",
+    "artifacts/assin-refinement/score-graph.json": "08267c1685bdf0ff7da8378aa4b6d1f638fd8f5eea4e1ed936ec544ad9aa9bb7",
+    "artifacts/assin-refinement/candidates/binary-natural/run/training.json": "b65d70a854ca7b1210aae56b15f76fcc12d55ddbee79021ec12bf33a229017f8",
+    "artifacts/assin-refinement/candidates/binary-balanced/run/training.json": "96f091c7fcc67036afd2069327e2cf3038158944ac9b791798b644b3112c7f3e",
+    "artifacts/assin-refinement/candidates/binary-ranking/run/training.json": "e0dceb40426dfeb5ab21e4dc25724407d0ad953e71ab94566c33c0c9195d6a1a",
+    "artifacts/assin-refinement/candidates/binary-hard-ranking/run/training.json": "86e8b1f21ea071b2dba15e243189b48860f064e680a189643c9489ef3a4da4f3",
+    "artifacts/assin-refinement/candidates/assin-three-way/run/training.json": "52ade380775de33647dbcb635230308be7c4ea8a790cc0bd2c39ec827681dc74",
+    "artifacts/assin-refinement/candidates/binary-seed42/run/training.json": "613ae95d468cf26773492cb10b41fd47d57682a5505d1190f503f5f75df91566"
+  },
+  "paths_relative_to": "repository root",
+  "local_weights_only": true,
+  "test_role": "Known diagnostic; selection used validation only",
+  "first_finetune_selection": {
+    "weight_continued": 1.0,
+    "average_precision": 0.9340618159169719,
+    "f1": 0.8875,
+    "policy": {
+      "binary_threshold": 0.3357478678226471,
+      "thresholds": {
+        "low": 0.3383215367794037,
+        "high": 0.47792935371398926,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "components": [
+      {
+        "directory": "artifacts/assin-finetune/continued/model",
+        "model_sha256": "3def2ad78c0ddb2072804ca5efb4642901e8aeb6380f6a8012679c232fc07dd5"
+      },
+      {
+        "directory": "artifacts/assin-finetune/base-transfer/model",
+        "model_sha256": "067df270b540c57c4d74e23d77623ea8c0915735e896593e434fbc352bc5714a"
+      }
+    ]
+  }
+}

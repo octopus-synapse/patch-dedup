@@ -1,0 +1,88 @@
+{
+  "selected": {
+    "name": "binary-hard-ranking+incumbent:0.75",
+    "weights": [
+      0.75,
+      0.25
+    ],
+    "policy": {
+      "binary_threshold": 0.49485690891742706,
+      "thresholds": {
+        "low": 0.42269132286310196,
+        "high": 0.49485690891742706,
+        "positive_enabled": true,
+        "negative_enabled": true
+      },
+      "selection_split": "validation",
+      "precision_target": 0.9,
+      "negative_predictive_value_target": 0.9,
+      "minimum_support": 5,
+      "decision_policy_version": "0.1.0"
+    },
+    "indices": [
+      4,
+      0
+    ],
+    "metrics": {
+      "support": 492,
+      "positive_support": 24,
+      "average_precision": 0.883598649669584,
+      "f1": 0.8181818181818182,
+      "precision": 0.9,
+      "recall": 0.75,
+      "macro_f1": 0.9048355899419729,
+      "confusion_matrix": [
+        [
+          466,
+          2
+        ],
+        [
+          6,
+          18
+        ]
+      ],
+      "coverage": 0.9979674796747967,
+      "review_rate": 0.0020325203252032522
+    },
+    "professional_development": {
+      "support": 132,
+      "positive_support": 57,
+      "average_precision": 0.9720034671218553,
+      "f1": 0.9298245614035088,
+      "precision": 0.9298245614035088,
+      "recall": 0.9298245614035088,
+      "macro_f1": 0.9382456140350877,
+      "confusion_matrix": [
+        [
+          71,
+          4
+        ],
+        [
+          4,
+          53
+        ]
+      ],
+      "coverage": 1.0,
+      "review_rate": 0.0
+    }
+  },
+  "components": [
+    {
+      "directory": "artifacts/assin-refinement/candidates/binary-hard-ranking/run/model",
+      "model_sha256": "3c79622e838803041db6bda7ddb4af627f8806ec0b3868e0e533506686e51dd4",
+      "aggregation": "mean",
+      "quantized": false
+    },
+    {
+      "directory": "artifacts/assin-finetune/continued/model",
+      "model_sha256": "3def2ad78c0ddb2072804ca5efb4642901e8aeb6380f6a8012679c232fc07dd5",
+      "aggregation": "min",
+      "quantized": false
+    }
+  ],
+  "source_graph_sha256": "08267c1685bdf0ff7da8378aa4b6d1f638fd8f5eea4e1ed936ec544ad9aa9bb7",
+  "validation_pairs": 492,
+  "validation_positives": 24,
+  "professional_development_pairs": 132,
+  "test_used_for_selection": false
+}
