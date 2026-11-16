@@ -47,3 +47,17 @@ def test_refinement_is_training_only(tmp_path):
     assert not (out / "test.jsonl").exists()
     rows = [json.loads(s) for s in (out / "train.jsonl").read_text().splitlines()]
     assert all(r["split"] == "train" and r["scenario_id"].startswith("ref-") for r in rows)
+
+
+def test_fresh_challenge_is_frozen_before_experiments(tmp_path):
+    from patchdedup.dataset import prepare_challenge
+
+    source = tmp_path / "challenge.psv"
+    source.write_text("g1|test|A|B|redundant\ng1|test|A|C|distinct\n")
+    out = tmp_path / "challenge"
+    result = prepare_challenge(source, out)
+    assert result["pairs"] == 2 and result["groups"] == 1
+    assert verify_freeze(out) == result
+    rows = [json.loads(s) for s in (out / "test.jsonl").read_text().splitlines()]
+    assert rows[0]["text_a_id"] == rows[1]["text_a_id"]
+    assert all(r["split"] == "test" for r in rows)

@@ -1,0 +1,39 @@
+{
+  "seed": 42,
+  "repetitions": 2000,
+  "resampling_unit": "scenario_id",
+  "groups": 9,
+  "percentile_95": {
+    "base": {
+      "f1": [
+        0.38596491228070173,
+        0.6666666666666666
+      ],
+      "average_precision": [
+        0.41921827480787593,
+        0.7424463068261334
+      ]
+    },
+    "refined_cosent": {
+      "f1": [
+        0.5806451612903226,
+        0.6923076923076923
+      ],
+      "average_precision": [
+        0.4964521721889365,
+        0.8623494730176617
+      ]
+    }
+  },
+  "selected_minus_base_95": {
+    "f1": [
+      -0.04762278890185872,
+      0.2700744222705772
+    ],
+    "average_precision": [
+      0.014559338099581046,
+      0.16884190322051906
+    ]
+  },
+  "limitation": "Descriptive pilot uncertainty; does not measure template/author/domain shift"
+}

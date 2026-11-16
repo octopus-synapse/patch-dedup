@@ -1,0 +1,48 @@
+n00|software|Integrei o gateway de cobrança ao aplicativo de mensalidades.|Fiz a integração entre o aplicativo de mensalidades e o gateway de cobrança.|redundant
+n00|software|Integrei o gateway de cobrança ao aplicativo de mensalidades.|Integrei ao aplicativo de mensalidades um gateway que aceita cobrança recorrente.|partial_overlap
+n01|software|O formulário de inscrição passou a validar CEP por causa da alteração que entreguei.|Implementei a validação de CEP no formulário de inscrição.|redundant
+n01|software|O formulário de inscrição passou a validar CEP por causa da alteração que entreguei.|O formulário de inscrição passou a validar CPF por causa da alteração que entreguei.|distinct
+n02|software|A consulta de faturas levava 800 ms; com minha otimização passou a levar 400 ms.|Reduzi pela metade a latência da consulta de faturas, antes de 800 ms.|redundant
+n02|software|A consulta de faturas levava 800 ms; com minha otimização passou a levar 400 ms.|A consulta de faturas levava 800 ms; com minha otimização passou a levar 200 ms.|contradictory
+n03|software|Troquei a integração de transferência de arquivos de FTP para SFTP.|Migrei a transferência de arquivos que usava FTP para SFTP.|redundant
+n03|software|Troquei a integração de transferência de arquivos de FTP para SFTP.|Troquei a integração de transferência de arquivos de SFTP para FTP.|contradictory
+n04|software|Desenvolvi um endpoint para cancelar reservas de mesas.|Criei na API a operação de cancelamento de reservas de mesas.|redundant
+n04|software|Desenvolvi um endpoint para cancelar reservas de mesas.|Desenvolvi um endpoint para confirmar reservas de mesas.|distinct
+n05|operacoes|Passei a registrar as avarias dos paletes no recebimento.|Implantei no recebimento o registro de danos nos paletes.|redundant
+n05|operacoes|Passei a registrar as avarias dos paletes no recebimento.|Passei a registrar com fotografias as avarias dos paletes no recebimento.|partial_overlap
+n06|operacoes|Cortei de quatro para duas as etapas de conferência na triagem.|A triagem passou a ter duas etapas de conferência, em vez de quatro, após minha revisão.|redundant
+n06|operacoes|Cortei de quatro para duas as etapas de conferência na triagem.|Cortei de quatro para três as etapas de conferência na triagem.|contradictory
+n07|operacoes|Os carrinhos de movimentação ganharam identificação por setor no sistema que implantei.|Implantei identificação por setor nos carrinhos de movimentação.|redundant
+n07|operacoes|Os carrinhos de movimentação ganharam identificação por setor no sistema que implantei.|Os carrinhos de movimentação ganharam identificação por motorista no sistema que implantei.|distinct
+n08|atendimento|Organizei as transferências de chamadas entre os setores de suporte.|Estruturei o encaminhamento de ligações de um setor de suporte a outro.|redundant
+n08|atendimento|Organizei as transferências de chamadas entre os setores de suporte.|Organizei as transferências automáticas de chamadas entre os setores de suporte.|partial_overlap
+n09|atendimento|Produzi orientações para o atendimento de pedidos extraviados.|Preparei instruções de atendimento sobre extravio de pedidos.|redundant
+n09|atendimento|Produzi orientações para o atendimento de pedidos extraviados.|Produzi orientações para o atendimento de pedidos entregues com atraso.|distinct
+n10|comercio|A quantidade mínima de compra caiu de 12 para 6 unidades na negociação que conduzi.|Negociei a redução do pedido mínimo de doze para seis unidades.|redundant
+n10|comercio|A quantidade mínima de compra caiu de 12 para 6 unidades na negociação que conduzi.|A quantidade mínima de compra caiu de 12 para 3 unidades na negociação que conduzi.|contradictory
+n11|comercio|Atualizei as condições de troca publicadas no site da ótica.|Revisei no site da ótica as informações sobre condições de troca.|redundant
+n11|comercio|Atualizei as condições de troca publicadas no site da ótica.|Atualizei as condições de troca e garantia publicadas no site da ótica.|partial_overlap
+n12|educacao|Organizei a mostra dos projetos de programação dos alunos.|Estruturei a exposição dos trabalhos de programação dos estudantes.|redundant
+n12|educacao|Organizei a mostra dos projetos de programação dos alunos.|Avaliei a mostra dos projetos de programação dos alunos.|distinct
+n13|educacao|Preparei um caderno de atividades de geometria para estudo em casa.|Produzi atividades de geometria reunidas em um caderno para estudo domiciliar.|redundant
+n13|educacao|Preparei um caderno de atividades de geometria para estudo em casa.|Preparei um caderno digital de atividades de geometria para estudo em casa.|partial_overlap
+n14|saude|Revisei a lista de documentos exigidos para agendar exames.|Atualizei a relação dos documentos necessários ao agendamento de exames.|redundant
+n14|saude|Revisei a lista de documentos exigidos para agendar exames.|Revisei a lista de documentos exigidos para retirar exames.|distinct
+n15|saude|O agendamento por telefone caiu de dez para sete minutos depois que reorganizei o fluxo.|Reorganizei o fluxo e reduzi de 10 para 7 minutos o agendamento telefônico.|redundant
+n15|saude|O agendamento por telefone caiu de dez para sete minutos depois que reorganizei o fluxo.|O agendamento por telefone caiu de dez para cinco minutos depois que reorganizei o fluxo.|contradictory
+n16|financeiro|Passei a identificar recebimentos duplicados no relatório de caixa.|Implementei a identificação de entradas duplicadas no relatório de caixa.|redundant
+n16|financeiro|Passei a identificar recebimentos duplicados no relatório de caixa.|Passei a identificar automaticamente recebimentos duplicados no relatório de caixa.|partial_overlap
+n17|financeiro|Montei o demonstrativo de receitas por unidade de negócio.|Construí um demonstrativo que separa as receitas por unidade de negócio.|redundant
+n17|financeiro|Montei o demonstrativo de receitas por unidade de negócio.|Montei o demonstrativo de despesas por unidade de negócio.|distinct
+n18|rh|Organizei o registro dos acordos de trabalho remoto.|Estruturei o cadastro dos acordos de teletrabalho.|redundant
+n18|rh|Organizei o registro dos acordos de trabalho remoto.|Organizei o registro dos acordos individuais de trabalho remoto.|partial_overlap
+n19|marketing|Passei a acompanhar a origem dos inscritos no webinar.|Implantei o acompanhamento dos canais de origem das inscrições no webinar.|redundant
+n19|marketing|Passei a acompanhar a origem dos inscritos no webinar.|Passei a acompanhar a permanência dos inscritos no webinar.|distinct
+n20|industria|Atualizei o cadastro das peças de reposição das esteiras.|Revisei os registros das peças sobressalentes das esteiras.|redundant
+n20|industria|Atualizei o cadastro das peças de reposição das esteiras.|Atualizei o cadastro das peças de reposição das esteiras com fotos das peças.|partial_overlap
+n21|industria|A perda de material no envase caiu de 6% para 3% com minha intervenção.|Minha intervenção reduziu o desperdício no envase de seis para três por cento.|redundant
+n21|industria|A perda de material no envase caiu de 6% para 3% com minha intervenção.|A perda de material no envase caiu de 6% para 1% com minha intervenção.|contradictory
+n22|administracao|Organizei a reserva das salas de reunião pelo calendário compartilhado.|Estruturei o agendamento de salas de reunião em um calendário compartilhado.|redundant
+n22|administracao|Organizei a reserva das salas de reunião pelo calendário compartilhado.|Organizei a reserva das salas de reunião e dos equipamentos pelo calendário compartilhado.|partial_overlap
+n23|servicos|Padronizei o registro de entrada dos visitantes na portaria.|Implantei um padrão para registrar a entrada de visitantes na portaria.|redundant
+n23|servicos|Padronizei o registro de entrada dos visitantes na portaria.|Padronizei o registro de saída dos visitantes na portaria.|distinct

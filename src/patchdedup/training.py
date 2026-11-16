@@ -2,6 +2,7 @@
 
 import importlib.metadata
 import json
+import os
 import platform
 import random
 import subprocess
@@ -14,6 +15,7 @@ from patchdedup.evaluation import evaluate_scores, select_policy
 
 
 def seed_all(seed):
+    os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
     import numpy as np
     import torch
 
@@ -23,6 +25,8 @@ def seed_all(seed):
     torch.set_num_threads(2)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+    torch.backends.cuda.enable_flash_sdp(False)
+    torch.backends.cuda.enable_mem_efficient_sdp(False)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     torch.use_deterministic_algorithms(True, warn_only=True)
@@ -37,12 +41,26 @@ def environment():
         platform=platform.platform(),
         code_commit=commit.stdout.strip() if commit.returncode == 0 else "unavailable",
         source_sha256={p.name: sha256(p) for p in Path(__file__).parent.glob("*.py")},
+        deterministic_warn_only=True,
+        cublas_workspace_config=os.environ.get("CUBLAS_WORKSPACE_CONFIG"),
         gpu=torch.cuda.get_device_name() if torch.cuda.is_available() else None,
         packages={
             name: importlib.metadata.version(name)
             for name in ("torch", "sentence-transformers", "transformers", "numpy", "scikit-learn")
         },
     )
+
+
+def freeze_encoder(model, config):
+    if config.get("freeze_embeddings"):
+        for name, parameter in model.named_parameters():
+            if ".embeddings." in name or name.startswith("embeddings."):
+                parameter.requires_grad_(False)
+    count = config.get("freeze_lower_layers", 0)
+    for name, parameter in model.named_parameters():
+        for layer in range(count):
+            if f"encoder.layer.{layer}." in name:
+                parameter.requires_grad_(False)
 
 
 def train_candidate(initial, train, validation, output, config, device="cpu"):
@@ -59,20 +77,39 @@ def train_candidate(initial, train, validation, output, config, device="cpu"):
     model = encoder.model
     train = [row for row in train if row["binary_label"] is not None]
     encoder.check_lengths([row[key] for row in train + validation for key in ("text_a", "text_b")])
-    loss_class = {"cosine": losses.CosineSimilarityLoss, "cosent": losses.CoSENTLoss}[
-        config["loss"]
-    ]
-    loss_fn = loss_class(model)
+    freeze_encoder(model, config)
+    loss_class = {
+        "cosine": losses.CosineSimilarityLoss,
+        "cosent": losses.CoSENTLoss,
+        "contrastive": losses.ContrastiveLoss,
+        "online_contrastive": losses.OnlineContrastiveLoss,
+    }[config["loss"]]
+    kwargs = {"margin": config.get("margin", 0.5)} if "contrastive" in config["loss"] else {}
+    loss_fn = loss_class(model, **kwargs)
+    sampler = None
+    if config.get("sampling") == "balanced":
+        from collections import Counter
+
+        counts = Counter(r["binary_label"] for r in train)
+        sampler = torch.utils.data.WeightedRandomSampler(
+            [1 / counts[r["binary_label"]] for r in train],
+            len(train),
+            replacement=True,
+            generator=torch.Generator().manual_seed(config["seed"]),
+        )
     loader = torch.utils.data.DataLoader(
         train,
         batch_size=config["batch_size"],
-        shuffle=True,
+        shuffle=sampler is None,
+        sampler=sampler,
         collate_fn=lambda batch: batch,
         generator=torch.Generator().manual_seed(config["seed"]),
     )
     optimizer = torch.optim.AdamW(model.parameters(), lr=config["learning_rate"], weight_decay=0.01)
     tracked = next(
-        p for name, p in model.named_parameters() if name.endswith("attention.self.query.weight")
+        p
+        for name, p in model.named_parameters()
+        if name.endswith("attention.self.query.weight") and p.requires_grad
     )
     initial_parameter = tracked.detach().cpu().clone()
     accumulation = config.get("gradient_accumulation", 1)

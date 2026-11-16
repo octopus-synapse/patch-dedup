@@ -1,0 +1,27 @@
+{
+  "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "base_directory": "artifacts/base",
+  "initial_directory": "artifacts/run-42/selected-model",
+  "dataset": "data/v01",
+  "refinement_dataset": "data/refinement",
+  "fresh_holdout": "data/v02",
+  "seed": 42,
+  "batch_size": 8,
+  "gradient_accumulation": 2,
+  "epochs": 3,
+  "learning_rate": 0.00001,
+  "loss": "cosent",
+  "selection": "validation average_precision, then binary F1; earliest tie",
+  "bi_candidates": [
+    {"name": "contrastive", "loss": "contrastive", "margin": 0.5},
+    {"name": "online_contrastive", "loss": "online_contrastive", "margin": 0.5, "batch_size": 16},
+    {"name": "cosent_balanced", "loss": "cosent", "learning_rate": 0.000005, "sampling": "balanced"},
+    {"name": "cosent_frozen", "loss": "cosent", "epochs": 4, "freeze_embeddings": true, "freeze_lower_layers": 6}
+  ],
+  "cross_candidates": [
+    {"name": "cross_encoder", "epochs": 6, "learning_rate": 0.00002},
+    {"name": "cross_encoder_frozen", "epochs": 6, "learning_rate": 0.00003, "freeze_embeddings": true, "freeze_lower_layers": 6}
+  ],
+  "pair_feature_logistic_C": [1.0, 10.0],
+  "test_policy": "Fresh holdout scored once after all v02 selection; previous tests are diagnostics only"
+}

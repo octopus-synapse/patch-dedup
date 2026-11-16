@@ -1,0 +1,711 @@
+{
+  "policy": {
+    "binary_threshold": 0.40359210011154734,
+    "thresholds": {
+      "low": -1.0,
+      "high": 1.0,
+      "positive_enabled": false,
+      "negative_enabled": false
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "metrics": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.3488372093023256,
+    "recall": 0.5555555555555556,
+    "f1": 0.42857142857142855,
+    "macro_f1": 0.444015444015444,
+    "average_precision": 0.3276672729813207,
+    "confusion_matrix": [
+      [
+        17,
+        28
+      ],
+      [
+        12,
+        15
+      ]
+    ],
+    "coverage": 0.0,
+    "review_rate": 1.0,
+    "review_count": 72,
+    "redundant_count": 0,
+    "not_redundant_count": 0,
+    "selective_precision": null,
+    "negative_predictive_value": null,
+    "hard_negative_false_positive_rate": 0.6222222222222222,
+    "relation_errors": {
+      "contradictory": {
+        "support": 9,
+        "errors": 9
+      },
+      "distinct": {
+        "support": 18,
+        "errors": 9
+      },
+      "partial_overlap": {
+        "support": 18,
+        "errors": 10
+      },
+      "redundant": {
+        "support": 27,
+        "errors": 12
+      }
+    }
+  },
+  "predictions": [
+    {
+      "pair_id": "v01-001-p0",
+      "scenario_id": "v01-001",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5192871601632361,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-001-p1",
+      "scenario_id": "v01-001",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.4139446875009164,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-001-p2",
+      "scenario_id": "v01-001",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.663111279667512,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-001-p3",
+      "scenario_id": "v01-001",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.7120668690253302,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-001-p4",
+      "scenario_id": "v01-001",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.41544169385026314,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-001-p5",
+      "scenario_id": "v01-001",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.6358935881238428,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-001-p6",
+      "scenario_id": "v01-001",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.5358305879439593,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-001-p7",
+      "scenario_id": "v01-001",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.5892762281171968,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p0",
+      "scenario_id": "v01-007",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.4627130070937639,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p1",
+      "scenario_id": "v01-007",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.2690655058028413,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p2",
+      "scenario_id": "v01-007",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.33512798090763707,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p3",
+      "scenario_id": "v01-007",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.530954700683055,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p4",
+      "scenario_id": "v01-007",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.39321090162893046,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p5",
+      "scenario_id": "v01-007",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.6531231615022816,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p6",
+      "scenario_id": "v01-007",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.2613753281238816,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-007-p7",
+      "scenario_id": "v01-007",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.2847898665339917,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p0",
+      "scenario_id": "v01-008",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.3730821078656549,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p1",
+      "scenario_id": "v01-008",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.296339446454348,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p2",
+      "scenario_id": "v01-008",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.32698462711125337,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p3",
+      "scenario_id": "v01-008",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.1381062605966162,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p4",
+      "scenario_id": "v01-008",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.3237360347589703,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p5",
+      "scenario_id": "v01-008",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9684369120073333,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p6",
+      "scenario_id": "v01-008",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.211916486594191,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-008-p7",
+      "scenario_id": "v01-008",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.29446061897576853,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p0",
+      "scenario_id": "v01-014",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.6405327853971146,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p1",
+      "scenario_id": "v01-014",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.4016652309192247,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p2",
+      "scenario_id": "v01-014",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5645535197906584,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p3",
+      "scenario_id": "v01-014",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.33268475319849683,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p4",
+      "scenario_id": "v01-014",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.5199444269316374,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p5",
+      "scenario_id": "v01-014",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9522294750712053,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p6",
+      "scenario_id": "v01-014",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.3187519653710558,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-014-p7",
+      "scenario_id": "v01-014",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.4240058968535842,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p0",
+      "scenario_id": "v01-015",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.3349618624934807,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p1",
+      "scenario_id": "v01-015",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.23683629644548085,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p2",
+      "scenario_id": "v01-015",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.16938110943322487,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p3",
+      "scenario_id": "v01-015",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.6357308323698609,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p4",
+      "scenario_id": "v01-015",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.25524196690940576,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p5",
+      "scenario_id": "v01-015",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9824291402435427,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p6",
+      "scenario_id": "v01-015",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.15507987127636538,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-015-p7",
+      "scenario_id": "v01-015",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.1296487881680918,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p0",
+      "scenario_id": "v01-017",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.39641476586734053,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p1",
+      "scenario_id": "v01-017",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.42209415726606486,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p2",
+      "scenario_id": "v01-017",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.49070020179588825,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p3",
+      "scenario_id": "v01-017",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.10217680199836619,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p4",
+      "scenario_id": "v01-017",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.32330233593456814,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p5",
+      "scenario_id": "v01-017",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.7810205145023562,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p6",
+      "scenario_id": "v01-017",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.1118561226839405,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-017-p7",
+      "scenario_id": "v01-017",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.4451121804014848,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p0",
+      "scenario_id": "v01-040",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.41699530446696015,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p1",
+      "scenario_id": "v01-040",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.40483691816934947,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p2",
+      "scenario_id": "v01-040",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.6063168149001439,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p3",
+      "scenario_id": "v01-040",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.5277708335680231,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p4",
+      "scenario_id": "v01-040",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.34075611018872937,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p5",
+      "scenario_id": "v01-040",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.88841190833066,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p6",
+      "scenario_id": "v01-040",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.19803551837136224,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-040-p7",
+      "scenario_id": "v01-040",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.49032779589298736,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p0",
+      "scenario_id": "v01-047",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.4532931506182295,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p1",
+      "scenario_id": "v01-047",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.3723042483691623,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p2",
+      "scenario_id": "v01-047",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.6085815248125834,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p3",
+      "scenario_id": "v01-047",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.8287116800026487,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p4",
+      "scenario_id": "v01-047",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.450281040360074,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p5",
+      "scenario_id": "v01-047",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9239666732396904,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p6",
+      "scenario_id": "v01-047",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.46272860312368264,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-047-p7",
+      "scenario_id": "v01-047",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.6195100525729336,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p0",
+      "scenario_id": "v01-056",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5791250563766693,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p1",
+      "scenario_id": "v01-056",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.3967757038376209,
+      "binary_prediction": 0,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p2",
+      "scenario_id": "v01-056",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5574097159511413,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p3",
+      "scenario_id": "v01-056",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.7496119253038551,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p4",
+      "scenario_id": "v01-056",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.4670266785359464,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p5",
+      "scenario_id": "v01-056",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9924583068011054,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p6",
+      "scenario_id": "v01-056",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.4660524047208709,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "v01-056-p7",
+      "scenario_id": "v01-056",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.5337332087759229,
+      "binary_prediction": 1,
+      "decision": "review"
+    }
+  ]
+}

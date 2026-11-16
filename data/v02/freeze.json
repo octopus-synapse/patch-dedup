@@ -1,0 +1,15 @@
+{
+  "groups": 24,
+  "pairs": 48,
+  "sha256": {
+    "test.jsonl": "59af8f19c4c157a32b818ee021d34f02fa6178077baf577a37e3c89b603d9931"
+  },
+  "source_sha256": "e9f04b8b9385f2906eb56587e9a822ee344a4a162f94b9d2e9a7237dfb23fa95",
+  "provenance": {
+    "author": "same authoring AI",
+    "human_reviewed": false,
+    "license": "CC-BY-4.0",
+    "purpose": "Fresh scenarios frozen before v02 selection; old tests are diagnostic only",
+    "limitation": "General design informed by earlier aggregate errors; not independent human authorship"
+  }
+}

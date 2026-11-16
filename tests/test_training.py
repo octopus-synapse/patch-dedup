@@ -9,7 +9,7 @@ if importlib.util.find_spec("sentence_transformers") is None:
 from patchdedup.training import train_candidate  # noqa: E402
 
 
-@pytest.mark.parametrize("loss", ["cosine", "cosent"])
+@pytest.mark.parametrize("loss", ["cosine", "cosent", "contrastive", "online_contrastive"])
 def test_training_updates_weights_and_reloads_bundle(tmp_path, loss):
     from sentence_transformers import SentenceTransformer, models
     from transformers import BertConfig, BertModel, BertTokenizerFast
@@ -37,22 +37,22 @@ def test_training_updates_weights_and_reloads_bundle(tmp_path, loss):
     initial = tmp_path / "initial"
     model.save_pretrained(initial, create_model_card=False)
     rows = [
-        dict(text_a="a b", text_b="a b", binary_label=1),
-        dict(text_a="a", text_b="c d", binary_label=0),
-        dict(text_a="c d", text_b="c d", binary_label=1),
+        dict(text_a="a b", text_b="c d", binary_label=1),
+        dict(text_a="a", text_b="a b", binary_label=0),
+        dict(text_a="c d", text_b="a b", binary_label=1),
         dict(text_a="b", text_b="d", binary_label=0),
     ]
     config = dict(
         seed=42,
         epochs=1,
-        batch_size=2,
+        batch_size=4 if loss == "online_contrastive" else 2,
         learning_rate=1e-3,
         gradient_accumulation=1,
         loss=loss,
         base_revision="tiny-random-test-only",
     )
     report = train_candidate(initial, rows, rows, tmp_path / "run", config, device="cpu")
-    assert report["optimizer_steps"] == 2
+    assert report["optimizer_steps"] == (1 if loss == "online_contrastive" else 2)
     assert report["selected_parameter_delta_l2"] > 0
     bundle = tmp_path / "run" / "model"
     result = Comparator(bundle).compare(CompareInput(text_a="a b", text_b="a b"))

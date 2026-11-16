@@ -126,6 +126,55 @@ def prepare_dataset(
     return manifest
 
 
+def prepare_challenge(source: str | Path, output: str | Path) -> dict:
+    source, output = Path(source), Path(output)
+    if output.exists() and any(output.iterdir()):
+        raise FileExistsError("Choose a fresh challenge directory")
+    rows = []
+    indices = Counter()
+    for line in source.read_text(encoding="utf-8").splitlines():
+        group, domain, a, b, relation = line.split("|")
+        scenario = "holdout-v02-" + group
+        record = PairRecord(
+            pair_id=f"{scenario}-{indices[group]}",
+            scenario_id=scenario,
+            text_a_id=scenario + "-" + hashlib.sha256(a.encode()).hexdigest()[:12],
+            text_b_id=scenario + "-" + hashlib.sha256(b.encode()).hexdigest()[:12],
+            text_a=a,
+            text_b=b,
+            relation=relation,
+            binary_label=None if relation == "ambiguous" else int(relation == "redundant"),
+            difficulty="fresh_authored_holdout",
+            domain=domain,
+            source_type="synthetic",
+            review_status="reviewed",
+            annotation_version="0.2.0",
+            split="test",
+        )
+        rows.append(record.model_dump())
+        indices[group] += 1
+    output.mkdir(parents=True, exist_ok=True)
+    target = output / "test.jsonl"
+    target.write_text(
+        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), encoding="utf-8"
+    )
+    manifest = dict(
+        groups=len(indices),
+        pairs=len(rows),
+        sha256={"test.jsonl": sha256(target)},
+        source_sha256=sha256(source),
+        provenance={
+            "author": "same authoring AI",
+            "human_reviewed": False,
+            "license": "CC-BY-4.0",
+            "purpose": "Fresh scenarios frozen before v02 selection; old tests are diagnostic only",
+            "limitation": "General design informed by earlier aggregate errors; not independent human authorship",
+        },
+    )
+    save_json(output / "freeze.json", manifest)
+    return manifest
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", required=True, type=Path)

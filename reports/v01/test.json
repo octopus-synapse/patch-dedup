@@ -1,0 +1,260 @@
+{
+  "methods": {
+    "lexical": {
+      "support": 72,
+      "positive_support": 27,
+      "precision": 0.3488372093023256,
+      "recall": 0.5555555555555556,
+      "f1": 0.42857142857142855,
+      "macro_f1": 0.444015444015444,
+      "average_precision": 0.3276672729813207,
+      "confusion_matrix": [
+        [
+          17,
+          28
+        ],
+        [
+          12,
+          15
+        ]
+      ],
+      "coverage": 0.0,
+      "review_rate": 1.0,
+      "review_count": 72,
+      "redundant_count": 0,
+      "not_redundant_count": 0,
+      "selective_precision": null,
+      "negative_predictive_value": null,
+      "hard_negative_false_positive_rate": 0.6222222222222222,
+      "relation_errors": {
+        "contradictory": {
+          "support": 9,
+          "errors": 9
+        },
+        "distinct": {
+          "support": 18,
+          "errors": 9
+        },
+        "partial_overlap": {
+          "support": 18,
+          "errors": 10
+        },
+        "redundant": {
+          "support": 27,
+          "errors": 12
+        }
+      }
+    },
+    "base": {
+      "support": 72,
+      "positive_support": 27,
+      "precision": 0.46153846153846156,
+      "recall": 0.6666666666666666,
+      "f1": 0.5454545454545454,
+      "macro_f1": 0.5804195804195804,
+      "average_precision": 0.5633612559257457,
+      "confusion_matrix": [
+        [
+          24,
+          21
+        ],
+        [
+          9,
+          18
+        ]
+      ],
+      "coverage": 0.2222222222222222,
+      "review_rate": 0.7777777777777778,
+      "review_count": 56,
+      "redundant_count": 0,
+      "not_redundant_count": 16,
+      "selective_precision": null,
+      "negative_predictive_value": 0.9375,
+      "hard_negative_false_positive_rate": 0.4666666666666667,
+      "relation_errors": {
+        "contradictory": {
+          "support": 9,
+          "errors": 5
+        },
+        "distinct": {
+          "support": 18,
+          "errors": 6
+        },
+        "partial_overlap": {
+          "support": 18,
+          "errors": 10
+        },
+        "redundant": {
+          "support": 27,
+          "errors": 9
+        }
+      }
+    },
+    "initial": {
+      "support": 72,
+      "positive_support": 27,
+      "precision": 0.4426229508196721,
+      "recall": 1.0,
+      "f1": 0.6136363636363636,
+      "macro_f1": 0.5032467532467533,
+      "average_precision": 0.551164024468159,
+      "confusion_matrix": [
+        [
+          11,
+          34
+        ],
+        [
+          0,
+          27
+        ]
+      ],
+      "coverage": 0.4027777777777778,
+      "review_rate": 0.5972222222222222,
+      "review_count": 43,
+      "redundant_count": 14,
+      "not_redundant_count": 15,
+      "selective_precision": 0.5,
+      "negative_predictive_value": 0.9333333333333333,
+      "hard_negative_false_positive_rate": 0.7555555555555555,
+      "relation_errors": {
+        "contradictory": {
+          "support": 9,
+          "errors": 7
+        },
+        "distinct": {
+          "support": 18,
+          "errors": 15
+        },
+        "partial_overlap": {
+          "support": 18,
+          "errors": 12
+        },
+        "redundant": {
+          "support": 27,
+          "errors": 0
+        }
+      }
+    },
+    "refined_cosine": {
+      "support": 72,
+      "positive_support": 27,
+      "precision": 0.6666666666666666,
+      "recall": 0.8148148148148148,
+      "f1": 0.7333333333333333,
+      "macro_f1": 0.7714285714285714,
+      "average_precision": 0.6142575812571623,
+      "confusion_matrix": [
+        [
+          34,
+          11
+        ],
+        [
+          5,
+          22
+        ]
+      ],
+      "coverage": 0.3611111111111111,
+      "review_rate": 0.6388888888888888,
+      "review_count": 46,
+      "redundant_count": 12,
+      "not_redundant_count": 14,
+      "selective_precision": 0.5833333333333334,
+      "negative_predictive_value": 1.0,
+      "hard_negative_false_positive_rate": 0.24444444444444444,
+      "relation_errors": {
+        "contradictory": {
+          "support": 9,
+          "errors": 4
+        },
+        "distinct": {
+          "support": 18,
+          "errors": 3
+        },
+        "partial_overlap": {
+          "support": 18,
+          "errors": 4
+        },
+        "redundant": {
+          "support": 27,
+          "errors": 5
+        }
+      }
+    },
+    "refined_cosent": {
+      "support": 72,
+      "positive_support": 27,
+      "precision": 0.4576271186440678,
+      "recall": 1.0,
+      "f1": 0.627906976744186,
+      "macro_f1": 0.5380914194065758,
+      "average_precision": 0.6749507891258988,
+      "confusion_matrix": [
+        [
+          13,
+          32
+        ],
+        [
+          0,
+          27
+        ]
+      ],
+      "coverage": 0.4166666666666667,
+      "review_rate": 0.5833333333333334,
+      "review_count": 42,
+      "redundant_count": 16,
+      "not_redundant_count": 14,
+      "selective_precision": 0.5,
+      "negative_predictive_value": 1.0,
+      "hard_negative_false_positive_rate": 0.7111111111111111,
+      "relation_errors": {
+        "contradictory": {
+          "support": 9,
+          "errors": 6
+        },
+        "distinct": {
+          "support": 18,
+          "errors": 14
+        },
+        "partial_overlap": {
+          "support": 18,
+          "errors": 12
+        },
+        "redundant": {
+          "support": 27,
+          "errors": 0
+        }
+      }
+    }
+  },
+  "chosen_finetuned": "refined_cosent",
+  "test_pairs": 72,
+  "test_groups": 9,
+  "selection_sha256": "79f48b81609f6946eac9a12fb034c6c392745ee32960021d14b05437ad00ca40",
+  "environment": {
+    "python": "3.11.14",
+    "platform": "Linux-7.1.8+deb13-amd64-x86_64-with-glibc2.41",
+    "code_commit": "aebf67d3d1dfdff3403ecc2e6c1512f3d967d71b",
+    "source_sha256": {
+      "cli.py": "8462dd1c90e06165826a5053c740c2e4379bc4db1a3fafacb38eccc866f007ab",
+      "decision.py": "ce69d18701fb687f0fd94217a121f7ebdd29e9397c0c7a18c899dcede96f5e2a",
+      "encoder.py": "73ff3df57da2d105ce400db563768691500f015010f3f3216e1cb553f7ee1858",
+      "data.py": "5b8143e617f9166f13159f96081b9048b24fe6d80289b181fc165f1c307b7dde",
+      "experiment.py": "d6cac58f617129f20a3518724d53678d6ef204fee35a9e998d1dc1aafd8af891",
+      "training.py": "3abf834c170968cb96d392f69586c4adbd8cc616ba1389ce94c04074440ceea6",
+      "__main__.py": "b466d3224c1cfa96b82f891d496e36e7bd4ad1eb70fcc530b45c29ce62d3f9c4",
+      "schemas.py": "ecb86544d6f71b5dad802e345438763050ac831732a6c0a126c80c921cfa7aef",
+      "evaluation.py": "4880d0ee9fcf6fc15163204b2edcf4856dc06dfe5aaa3930a9dca236b16d0fd0",
+      "__init__.py": "6f77bebe829dfcc6c5545b6ed57e87ea355244777e5fe8b320589566fd5f9791",
+      "dataset.py": "4425130156f33618fa444ce8390c4f5d6ad578ec50188e9b0fea21741c0d55a5"
+    },
+    "gpu": "NVIDIA RTX A1000 6GB Laptop GPU",
+    "packages": {
+      "torch": "2.6.0",
+      "sentence-transformers": "5.1.2",
+      "transformers": "4.57.1",
+      "numpy": "2.3.4",
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "limitation": "Synthetic authored pilot; same AI generated and reviewed; no human validation"
+}
