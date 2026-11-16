@@ -11,10 +11,13 @@ from patchdedup.training import environment, freeze_encoder, seed_all
 
 
 class CrossScorer:
-    def __init__(self, directory, device="cpu", model=None):
+    def __init__(self, directory, device="cpu", model=None, aggregation="min", quantized=False):
         from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
+        if quantized and device != "cpu":
+            raise ValueError("MODEL_UNAVAILABLE: quantized scorer requires CPU")
         self.device = device
+        self.aggregation = aggregation
         self.tokenizer = AutoTokenizer.from_pretrained(directory, local_files_only=True)
         self.model = (
             model
@@ -23,6 +26,14 @@ class CrossScorer:
                 directory, local_files_only=True, use_safetensors=True
             ).to(device)
         )
+        if quantized:
+            import torch
+
+            if device != "cpu":
+                raise ValueError("MODEL_UNAVAILABLE: quantized scorer requires CPU")
+            self.model = torch.quantization.quantize_dynamic(
+                self.model, {torch.nn.Linear}, dtype=torch.qint8
+            )
         self.model.eval()
         self.entailment_index = None
         if self.model.config.num_labels != 1:
@@ -55,7 +66,14 @@ class CrossScorer:
                 else:
                     ab = ab.softmax(-1)[:, self.entailment_index]
                     ba = ba.softmax(-1)[:, self.entailment_index]
-                    values = torch.minimum(ab, ba)
+                    if self.aggregation == "min":
+                        values = torch.minimum(ab, ba)
+                    elif self.aggregation == "mean":
+                        values = (ab + ba) / 2
+                    elif self.aggregation == "geometric":
+                        values = (ab * ba).clamp(min=0).sqrt()
+                    else:
+                        raise ValueError("Unknown entailment aggregation")
                 scores.extend(values.cpu().tolist())
         return scores
 

@@ -1,0 +1,48 @@
+{
+  "name": "nli_minilm",
+  "directory": "artifacts/nli-minilm",
+  "initial_key": "nli_minilm",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.07998612523078918,
+    "thresholds": {
+      "low": 0.09711558371782303,
+      "high": 0.984419047832489,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.7066666666666667,
+    "recall": 0.9298245614035088,
+    "f1": 0.803030303030303,
+    "macro_f1": 0.803030303030303,
+    "average_precision": 0.8038558846015855,
+    "confusion_matrix": [
+      [
+        53,
+        22
+      ],
+      [
+        4,
+        53
+      ]
+    ],
+    "coverage": 0.5681818181818182,
+    "review_rate": 0.4318181818181818,
+    "review_count": 57,
+    "redundant_count": 14,
+    "not_redundant_count": 61,
+    "selective_precision": 0.9285714285714286,
+    "negative_predictive_value": 0.9016393442622951
+  },
+  "cache": "artifacts/v03/cache/nli_minilm-development.npy"
+}

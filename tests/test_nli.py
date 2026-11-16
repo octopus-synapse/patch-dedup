@@ -64,3 +64,8 @@ def test_nli_training_and_symmetric_entailment_reload(tmp_path):
     ba = scorer.score_pairs([dict(r, text_a=r["text_b"], text_b=r["text_a"]) for r in rows[:2]])
     assert len(ab) == 2 and ab == pytest.approx(ba, abs=1e-7)
     assert all(0 <= value <= 1 for value in ab)
+
+
+def test_quantized_backend_rejects_gpu_before_loading_weights(tmp_path):
+    with pytest.raises(ValueError, match="MODEL_UNAVAILABLE"):
+        CrossScorer(tmp_path / "absent", device="cuda", quantized=True)

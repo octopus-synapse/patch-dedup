@@ -1,0 +1,48 @@
+{
+  "name": "nli_deberta",
+  "directory": "artifacts/nli-deberta",
+  "initial_key": "nli_deberta",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.6166313886642456,
+    "thresholds": {
+      "low": 0.9894154071807861,
+      "high": 0.9959849119186401,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.8548387096774194,
+    "recall": 0.9298245614035088,
+    "f1": 0.8907563025210085,
+    "macro_f1": 0.9005505650536076,
+    "average_precision": 0.9213290709334785,
+    "confusion_matrix": [
+      [
+        66,
+        9
+      ],
+      [
+        4,
+        53
+      ]
+    ],
+    "coverage": 0.946969696969697,
+    "review_rate": 0.05303030303030303,
+    "review_count": 7,
+    "redundant_count": 50,
+    "not_redundant_count": 75,
+    "selective_precision": 0.9,
+    "negative_predictive_value": 0.9066666666666666
+  },
+  "cache": "artifacts/v03/cache/nli_deberta-development.npy"
+}
