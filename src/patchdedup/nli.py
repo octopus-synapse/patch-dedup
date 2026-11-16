@@ -24,6 +24,20 @@ def directional_targets(relation, labels):
     }[relation]
 
 
+def directional_supervision_loss(ab, ba, rows, labels, smoothing=0.0):
+    """Apply directional labels only where their orientation is actually known."""
+    import torch
+
+    indices = [i for i, row in enumerate(rows) if row.get("nli_supervision", True)]
+    if not indices:
+        return (ab.sum() + ba.sum()) * 0
+    targets = [directional_targets(rows[i]["relation"], labels) for i in indices]
+    ce = torch.nn.CrossEntropyLoss(label_smoothing=smoothing)
+    target_ab = torch.tensor([t[0] for t in targets], device=ab.device)
+    target_ba = torch.tensor([t[1] for t in targets], device=ba.device)
+    return 0.25 * (ce(ab[indices], target_ab) + ce(ba[indices], target_ba))
+
+
 def predict_logits(scorer, rows, batch_size=8):
     import numpy as np
     import torch
@@ -145,7 +159,6 @@ def train_nli(initial, train, validation, output, config, device="cpu", teacher=
     pos_count = sum(row["binary_label"] for row in train)
     positive_weight = torch.tensor([(len(train) - pos_count) / pos_count], device=device)
     bce = torch.nn.BCEWithLogitsLoss(pos_weight=positive_weight)
-    ce = torch.nn.CrossEntropyLoss(label_smoothing=config.get("label_smoothing", 0.0))
     ema_decay = config.get("ema_decay", 0.0)
     ema = {name: p.detach().clone() for name, p in trainable} if ema_decay else None
     best, history, wait, steps, pruned = (-1.0, -1.0), [], 0, 0, False
@@ -158,9 +171,6 @@ def train_nli(initial, train, validation, output, config, device="cpu", teacher=
             ids, batch = zip(*entries, strict=True)
             batch = list(batch)
             y = torch.tensor([r["binary_label"] for r in batch], dtype=torch.float32, device=device)
-            targets = [directional_targets(r["relation"], labels) for r in batch]
-            targets_ab = torch.tensor([t[0] for t in targets], device=device)
-            targets_ba = torch.tensor([t[1] for t in targets], device=device)
             features_ab, features_ba = scorer.tokenize(batch), scorer.tokenize(batch, reverse=True)
             with torch.autocast(
                 device_type="cuda",
@@ -171,7 +181,9 @@ def train_nli(initial, train, validation, output, config, device="cpu", teacher=
                 odds_ab = ab[:, entail] - torch.logsumexp(ab[:, others], dim=1)
                 odds_ba = ba[:, entail] - torch.logsumexp(ba[:, others], dim=1)
                 loss = 0.5 * bce(torch.minimum(odds_ab, odds_ba), y)
-                loss += 0.25 * (ce(ab, targets_ab) + ce(ba, targets_ba))
+                loss += directional_supervision_loss(
+                    ab, ba, batch, labels, config.get("label_smoothing", 0.0)
+                )
                 if teacher is not None and config.get("distillation_weight", 0):
                     temperature = config.get("temperature", 2.0)
                     student = torch.stack((ab, ba), dim=1).reshape(-1, 3)
