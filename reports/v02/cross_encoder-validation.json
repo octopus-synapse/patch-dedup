@@ -1,0 +1,45 @@
+{
+  "name": "cross_encoder",
+  "directory": "artifacts/extended-42/cross_encoder/model",
+  "kind": "cross_encoder",
+  "policy": {
+    "binary_threshold": 0.40319615602493286,
+    "thresholds": {
+      "low": 0.20058020949363708,
+      "high": 1.0,
+      "positive_enabled": false,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.6875,
+    "recall": 0.8148148148148148,
+    "f1": 0.7457627118644068,
+    "macro_f1": 0.7846460618145563,
+    "average_precision": 0.7011072722166704,
+    "confusion_matrix": [
+      [
+        35,
+        10
+      ],
+      [
+        5,
+        22
+      ]
+    ],
+    "coverage": 0.4444444444444444,
+    "review_rate": 0.5555555555555556,
+    "review_count": 40,
+    "redundant_count": 0,
+    "not_redundant_count": 32,
+    "selective_precision": null,
+    "negative_predictive_value": 0.90625
+  }
+}

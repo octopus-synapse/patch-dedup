@@ -1,0 +1,45 @@
+{
+  "name": "cross_encoder_frozen",
+  "directory": "artifacts/extended-42/cross_encoder_frozen/model",
+  "kind": "cross_encoder",
+  "policy": {
+    "binary_threshold": 0.43186578154563904,
+    "thresholds": {
+      "low": 0.15257886052131653,
+      "high": 1.0,
+      "positive_enabled": false,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.6571428571428571,
+    "recall": 0.8518518518518519,
+    "f1": 0.7419354838709677,
+    "macro_f1": 0.7734067663257278,
+    "average_precision": 0.6770074245823222,
+    "confusion_matrix": [
+      [
+        33,
+        12
+      ],
+      [
+        4,
+        23
+      ]
+    ],
+    "coverage": 0.2916666666666667,
+    "review_rate": 0.7083333333333334,
+    "review_count": 51,
+    "redundant_count": 0,
+    "not_redundant_count": 21,
+    "selective_precision": null,
+    "negative_predictive_value": 0.9047619047619048
+  }
+}

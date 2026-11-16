@@ -1,7 +1,7 @@
-# Contratos 0.1.0
+# Contratos: entrada 0.1.0 e saída 0.2.0
 
 O pacote oferece `CompareInput`, `CompareOutput`, `PairRecord`, `Thresholds` e a
-função `decide(score, thresholds)`. Ainda não existe carregamento de modelo.
+função `decide(score, thresholds)`. A inferência carrega somente bundles locais com manifestos verificados.
 As definições executáveis estão em `src/patchdedup/schemas.py`.
 
 ## Entrada e política
@@ -69,3 +69,28 @@ semântico. Ele mantém índices em memória; não é um processador de corpora 
 
 Erros de uso/leitura da CLI são JSON em stderr (`USAGE_ERROR`, `INPUT_UNAVAILABLE`),
 com exit code 2. Relatório inválido sai em stdout com exit code 1; válido, com 0.
+
+## Inferência implementada e score de decisão
+
+`patchdedup compare --model <bundle> --text-a 'A' --text-b 'B'` roda em CPU por
+padrão (`--device cuda` é opcional). Instale o extra `cpu` ou `ml`; eles são
+mutuamente exclusivos. O primeiro usa wheels CPU, o segundo permite treino CUDA.
+
+A saída 0.2.0 acrescenta `decision_source`, `decision_score` e
+`decision_model_revision`. No bi-encoder, `decision_source=cosine` e os dois
+campos de modelo separado são null. No cross-encoder, `similarity.score` continua
+sendo cosseno dos embeddings; `decision_score` contém o score sigmoid não calibrado
+que realmente orienta a política. A revisão do cross-encoder é registrada à parte.
+Não apresentar esse score como cosseno ou probabilidade calibrada.
+
+`Thresholds` também possui `positive_enabled` e `negative_enabled`, ambos true por
+padrão. A seleção na validação pode desabilitar uma direção sem suporte suficiente;
+nesse caso, os pares daquela região vão para review. A meta de precisão/NPV de 90%
+com suporte mínimo de cinco pares é uma heurística experimental, sem garantia de
+atingir essa precisão em novos dados. Os resultados v01 mostraram esse limite.
+
+O carregamento verifica hashes dos arquivos do bundle. Os textos são tokenizados
+sem truncamento: até 128 tokens por bullet no MiniLM atual; cross-encoder, quando
+presente, também verifica o limite conjunto de 256 tokens. São feitas as duas
+orientações do par e a média dos scores do cross-encoder para preservar simetria.
+Nenhuma chamada a APIs externas é feita durante inferência.

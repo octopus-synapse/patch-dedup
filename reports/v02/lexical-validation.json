@@ -1,0 +1,45 @@
+{
+  "name": "lexical",
+  "directory": "",
+  "kind": "lexical",
+  "policy": {
+    "binary_threshold": 0.34169672598972345,
+    "thresholds": {
+      "low": 0.34169672598972345,
+      "high": 1.0,
+      "positive_enabled": false,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.43333333333333335,
+    "recall": 0.9629629629629629,
+    "f1": 0.5977011494252874,
+    "macro_f1": 0.49183303085299457,
+    "average_precision": 0.3708027821398918,
+    "confusion_matrix": [
+      [
+        11,
+        34
+      ],
+      [
+        1,
+        26
+      ]
+    ],
+    "coverage": 0.16666666666666666,
+    "review_rate": 0.8333333333333334,
+    "review_count": 60,
+    "redundant_count": 0,
+    "not_redundant_count": 12,
+    "selective_precision": null,
+    "negative_predictive_value": 0.9166666666666666
+  }
+}
