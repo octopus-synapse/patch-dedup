@@ -1,0 +1,80 @@
+{
+  "config": {
+    "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+    "base_directory": "artifacts/base",
+    "initial_directory": "artifacts/run-42/selected-model",
+    "dataset": "data/v01",
+    "refinement_dataset": "data/refinement",
+    "fresh_holdout": "data/v02",
+    "seed": 42,
+    "batch_size": 8,
+    "gradient_accumulation": 2,
+    "epochs": 3,
+    "learning_rate": 1e-05,
+    "loss": "cosent",
+    "selection": "validation average_precision, then binary F1; earliest tie",
+    "bi_candidates": [
+      {
+        "name": "contrastive",
+        "loss": "contrastive",
+        "margin": 0.5
+      },
+      {
+        "name": "online_contrastive",
+        "loss": "online_contrastive",
+        "margin": 0.5,
+        "batch_size": 16
+      },
+      {
+        "name": "cosent_balanced",
+        "loss": "cosent",
+        "learning_rate": 5e-06,
+        "sampling": "balanced"
+      },
+      {
+        "name": "cosent_frozen",
+        "loss": "cosent",
+        "epochs": 4,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 6
+      }
+    ],
+    "cross_candidates": [
+      {
+        "name": "cross_encoder",
+        "epochs": 6,
+        "learning_rate": 2e-05
+      },
+      {
+        "name": "cross_encoder_frozen",
+        "epochs": 6,
+        "learning_rate": 3e-05,
+        "freeze_embeddings": true,
+        "freeze_lower_layers": 6
+      }
+    ],
+    "pair_feature_logistic_C": [
+      1.0,
+      10.0
+    ],
+    "test_policy": "Fresh holdout scored once after all v02 selection; previous tests are diagnostics only"
+  },
+  "fresh_holdout": {
+    "groups": 24,
+    "pairs": 48,
+    "sha256": {
+      "test.jsonl": "59af8f19c4c157a32b818ee021d34f02fa6178077baf577a37e3c89b603d9931"
+    },
+    "source_sha256": "e9f04b8b9385f2906eb56587e9a822ee344a4a162f94b9d2e9a7237dfb23fa95",
+    "provenance": {
+      "author": "same authoring AI",
+      "human_reviewed": false,
+      "license": "CC-BY-4.0",
+      "purpose": "Fresh scenarios frozen before v02 selection; old tests are diagnostic only",
+      "limitation": "General design informed by earlier aggregate errors; not independent human authorship"
+    }
+  },
+  "training_pairs": 496,
+  "validation_pairs": 72,
+  "prior_tests_used_for_selection": false
+}

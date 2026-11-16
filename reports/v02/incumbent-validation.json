@@ -1,0 +1,45 @@
+{
+  "name": "incumbent",
+  "directory": "artifacts/run-42/selected-model",
+  "kind": "cosine",
+  "policy": {
+    "binary_threshold": 0.47051626443862915,
+    "thresholds": {
+      "low": 0.5057744979858398,
+      "high": 0.8676812648773193,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.5192307692307693,
+    "recall": 1.0,
+    "f1": 0.6835443037974683,
+    "macro_f1": 0.6494644595910419,
+    "average_precision": 0.7229152368252679,
+    "confusion_matrix": [
+      [
+        20,
+        25
+      ],
+      [
+        0,
+        27
+      ]
+    ],
+    "coverage": 0.4305555555555556,
+    "review_rate": 0.5694444444444444,
+    "review_count": 41,
+    "redundant_count": 8,
+    "not_redundant_count": 23,
+    "selective_precision": 1.0,
+    "negative_predictive_value": 0.9130434782608695
+  }
+}

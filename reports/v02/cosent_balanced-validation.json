@@ -1,0 +1,45 @@
+{
+  "name": "cosent_balanced",
+  "directory": "artifacts/extended-42/cosent_balanced/model",
+  "kind": "cosine",
+  "policy": {
+    "binary_threshold": 0.6639197468757629,
+    "thresholds": {
+      "low": 0.4964098632335663,
+      "high": 0.8445258140563965,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.5945945945945946,
+    "recall": 0.8148148148148148,
+    "f1": 0.6875,
+    "macro_f1": 0.71875,
+    "average_precision": 0.7527715859363884,
+    "confusion_matrix": [
+      [
+        30,
+        15
+      ],
+      [
+        5,
+        22
+      ]
+    ],
+    "coverage": 0.4722222222222222,
+    "review_rate": 0.5277777777777778,
+    "review_count": 38,
+    "redundant_count": 10,
+    "not_redundant_count": 24,
+    "selective_precision": 0.9,
+    "negative_predictive_value": 0.9166666666666666
+  }
+}

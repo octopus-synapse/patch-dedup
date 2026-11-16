@@ -1,0 +1,45 @@
+{
+  "name": "contrastive",
+  "directory": "artifacts/extended-42/contrastive/model",
+  "kind": "cosine",
+  "policy": {
+    "binary_threshold": 0.5507670044898987,
+    "thresholds": {
+      "low": 0.5904079675674438,
+      "high": 0.8942374587059021,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.54,
+    "recall": 1.0,
+    "f1": 0.7012987012987013,
+    "macro_f1": 0.6790075596045746,
+    "average_precision": 0.7632222551191008,
+    "confusion_matrix": [
+      [
+        22,
+        23
+      ],
+      [
+        0,
+        27
+      ]
+    ],
+    "coverage": 0.5,
+    "review_rate": 0.5,
+    "review_count": 36,
+    "redundant_count": 10,
+    "not_redundant_count": 26,
+    "selective_precision": 0.9,
+    "negative_predictive_value": 0.9230769230769231
+  }
+}

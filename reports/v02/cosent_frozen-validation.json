@@ -1,0 +1,45 @@
+{
+  "name": "cosent_frozen",
+  "directory": "artifacts/extended-42/cosent_frozen/model",
+  "kind": "cosine",
+  "policy": {
+    "binary_threshold": 0.47448647022247314,
+    "thresholds": {
+      "low": 0.4975001811981201,
+      "high": 0.8474057912826538,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 72,
+    "positive_support": 27,
+    "precision": 0.5294117647058824,
+    "recall": 1.0,
+    "f1": 0.6923076923076923,
+    "macro_f1": 0.6643356643356644,
+    "average_precision": 0.7605507017018385,
+    "confusion_matrix": [
+      [
+        21,
+        24
+      ],
+      [
+        0,
+        27
+      ]
+    ],
+    "coverage": 0.5,
+    "review_rate": 0.5,
+    "review_count": 36,
+    "redundant_count": 11,
+    "not_redundant_count": 25,
+    "selective_precision": 0.9090909090909091,
+    "negative_predictive_value": 0.92
+  }
+}
