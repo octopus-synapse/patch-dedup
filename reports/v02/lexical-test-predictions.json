@@ -1,0 +1,495 @@
+{
+  "policy": {
+    "binary_threshold": 0.34169672598972345,
+    "thresholds": {
+      "low": 0.34169672598972345,
+      "high": 1.0,
+      "positive_enabled": false,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "metrics": {
+    "support": 48,
+    "positive_support": 24,
+    "precision": 0.4418604651162791,
+    "recall": 0.7916666666666666,
+    "f1": 0.5671641791044776,
+    "macro_f1": 0.2835820895522388,
+    "average_precision": 0.3173059302256198,
+    "confusion_matrix": [
+      [
+        0,
+        24
+      ],
+      [
+        5,
+        19
+      ]
+    ],
+    "coverage": 0.10416666666666667,
+    "review_rate": 0.8958333333333334,
+    "review_count": 43,
+    "redundant_count": 0,
+    "not_redundant_count": 5,
+    "selective_precision": null,
+    "negative_predictive_value": 0.0,
+    "hard_negative_false_positive_rate": 1.0,
+    "relation_errors": {
+      "contradictory": {
+        "support": 6,
+        "errors": 6
+      },
+      "distinct": {
+        "support": 9,
+        "errors": 9
+      },
+      "partial_overlap": {
+        "support": 9,
+        "errors": 9
+      },
+      "redundant": {
+        "support": 24,
+        "errors": 5
+      }
+    }
+  },
+  "predictions": [
+    {
+      "pair_id": "holdout-v02-n00-0",
+      "scenario_id": "holdout-v02-n00",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.672759493456283,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n00-1",
+      "scenario_id": "holdout-v02-n00",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.7164969423856157,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n01-0",
+      "scenario_id": "holdout-v02-n01",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5296801193828515,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n01-1",
+      "scenario_id": "holdout-v02-n01",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.9812791664953957,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n02-0",
+      "scenario_id": "holdout-v02-n02",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.3558735368238824,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n02-1",
+      "scenario_id": "holdout-v02-n02",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9461024424869593,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n03-0",
+      "scenario_id": "holdout-v02-n03",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.6408230622575429,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n03-1",
+      "scenario_id": "holdout-v02-n03",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9606376513489328,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n04-0",
+      "scenario_id": "holdout-v02-n04",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.31866958927916333,
+      "binary_prediction": 0,
+      "decision": "not_redundant"
+    },
+    {
+      "pair_id": "holdout-v02-n04-1",
+      "scenario_id": "holdout-v02-n04",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.8908168329619603,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n05-0",
+      "scenario_id": "holdout-v02-n05",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.4024934146972337,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n05-1",
+      "scenario_id": "holdout-v02-n05",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.8186449211832328,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n06-0",
+      "scenario_id": "holdout-v02-n06",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5390856961249861,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n06-1",
+      "scenario_id": "holdout-v02-n06",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.875349015972691,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n07-0",
+      "scenario_id": "holdout-v02-n07",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.7801472208621392,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n07-1",
+      "scenario_id": "holdout-v02-n07",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.9082639572757216,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n08-0",
+      "scenario_id": "holdout-v02-n08",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.22769907003441323,
+      "binary_prediction": 0,
+      "decision": "not_redundant"
+    },
+    {
+      "pair_id": "holdout-v02-n08-1",
+      "scenario_id": "holdout-v02-n08",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.8794277138368852,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n09-0",
+      "scenario_id": "holdout-v02-n09",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.38385297629794335,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n09-1",
+      "scenario_id": "holdout-v02-n09",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.767536179992186,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n10-0",
+      "scenario_id": "holdout-v02-n10",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.2173189598366543,
+      "binary_prediction": 0,
+      "decision": "not_redundant"
+    },
+    {
+      "pair_id": "holdout-v02-n10-1",
+      "scenario_id": "holdout-v02-n10",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9697118240374855,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n11-0",
+      "scenario_id": "holdout-v02-n11",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.468076997860184,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n11-1",
+      "scenario_id": "holdout-v02-n11",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.9477441552332012,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n12-0",
+      "scenario_id": "holdout-v02-n12",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.33295221126237123,
+      "binary_prediction": 0,
+      "decision": "not_redundant"
+    },
+    {
+      "pair_id": "holdout-v02-n12-1",
+      "scenario_id": "holdout-v02-n12",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.9239954403881497,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n13-0",
+      "scenario_id": "holdout-v02-n13",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.6049709626673043,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n13-1",
+      "scenario_id": "holdout-v02-n13",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.9144140683860867,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n14-0",
+      "scenario_id": "holdout-v02-n14",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.37117011199994787,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n14-1",
+      "scenario_id": "holdout-v02-n14",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.816525186768444,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n15-0",
+      "scenario_id": "holdout-v02-n15",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.4582682863416952,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n15-1",
+      "scenario_id": "holdout-v02-n15",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9199730893121544,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n16-0",
+      "scenario_id": "holdout-v02-n16",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5813508914287616,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n16-1",
+      "scenario_id": "holdout-v02-n16",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.8597619671585781,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n17-0",
+      "scenario_id": "holdout-v02-n17",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.6388648414890993,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n17-1",
+      "scenario_id": "holdout-v02-n17",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.800092212043485,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n18-0",
+      "scenario_id": "holdout-v02-n18",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.4271585469123238,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n18-1",
+      "scenario_id": "holdout-v02-n18",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.9265845175634883,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n19-0",
+      "scenario_id": "holdout-v02-n19",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.3781827459621724,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n19-1",
+      "scenario_id": "holdout-v02-n19",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.813353006086691,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n20-0",
+      "scenario_id": "holdout-v02-n20",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.3955004040557686,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n20-1",
+      "scenario_id": "holdout-v02-n20",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.9058104147134066,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n21-0",
+      "scenario_id": "holdout-v02-n21",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.31194832667396255,
+      "binary_prediction": 0,
+      "decision": "not_redundant"
+    },
+    {
+      "pair_id": "holdout-v02-n21-1",
+      "scenario_id": "holdout-v02-n21",
+      "relation": "contradictory",
+      "label": 0,
+      "score": 0.9598708206453463,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n22-0",
+      "scenario_id": "holdout-v02-n22",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.49987053198694514,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n22-1",
+      "scenario_id": "holdout-v02-n22",
+      "relation": "partial_overlap",
+      "label": 0,
+      "score": 0.8466208100717303,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n23-0",
+      "scenario_id": "holdout-v02-n23",
+      "relation": "redundant",
+      "label": 1,
+      "score": 0.5732293194272498,
+      "binary_prediction": 1,
+      "decision": "review"
+    },
+    {
+      "pair_id": "holdout-v02-n23-1",
+      "scenario_id": "holdout-v02-n23",
+      "relation": "distinct",
+      "label": 0,
+      "score": 0.8118242921949941,
+      "binary_prediction": 1,
+      "decision": "review"
+    }
+  ]
+}

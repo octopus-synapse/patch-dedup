@@ -2,94 +2,113 @@
 
 [![checks](https://github.com/octopus-synapse/patch-dedup/actions/workflows/ci.yml/badge.svg)](https://github.com/octopus-synapse/patch-dedup/actions/workflows/ci.yml)
 
-Fundação experimental para identificar redundância entre bullets profissionais em
-português brasileiro. A proposta é distinguir paráfrases de contribuições próximas
-que acrescentam informação material.
+Experimento de redundância entre bullets profissionais em português: preparação
+de dados, nove treinos locais, baselines, avaliação congelada, CLI e Docker CPU.
 
-**Estado: `0.1.0.dev0`.** Contratos, política de decisão e auditoria de dados estão
-implementados. Ainda não há inferência, checkpoint ajustado ou benchmark. As páginas
-do Hugging Face contêm cards de preparação.
+**O refinamento não generalizou de forma confiável.** O bi-encoder selecionado por
+validação teve AP 0,397 e F1 0,516 no novo holdout; a base teve AP 0,369 e F1 0,531.
+O cross-encoder congelado teve AP 0,679 e F1 0,691 nesse teste, mas não venceu na
+validação. Os resultados completos, inclusive falhas, estão publicados. Os dados
+são sintéticos, gerados e revisados pela mesma IA, sem revisão humana.
 
-| Exemplo | Relação pretendida |
+**Uso de pesquisa. Não recomendado para exclusão automática ou avaliação de pessoas.**
+
+[Modelo e variantes](https://huggingface.co/enzoferracini/patchdedup-ptbr-minilm)
+· [Dataset](https://huggingface.co/datasets/enzoferracini/patchdedup-synthetic-ptbr)
+· [Resultados v02](reports/v02/README.md)
+· [Primeira bateria](reports/v01/README.md)
+
+## O que o experimento distingue
+
+| Par ilustrativo | Relação pretendida |
 |---|---|
 | “Automatizei relatórios com Python.” / “Usei Python para automatizar relatórios.” | Redundância |
 | “Implementei autenticação JWT.” / “Implementei autorização por papéis.” | Contribuições distintas |
 | “Implementei OAuth.” / “Implementei OAuth e recuperação de senha.” | Sobreposição parcial; preservar o fato adicional |
 
-Esses exemplos explicam a taxonomia; não são previsões do software.
+Os exemplos explicam a taxonomia; não são previsões fixadas manualmente.
+Similaridade temática não basta para equivalência de contribuição.
 
 ## Executar
 
-Requer Python 3.11 e [uv](https://docs.astral.sh/uv/). A instalação inicial exige
-acesso ao índice de pacotes; a auditoria não usa rede nem bibliotecas de ML.
+Requer Python 3.11 e [uv](https://docs.astral.sh/uv/). O núcleo de contratos e
+validação não instala bibliotecas de ML:
 
 ```bash
 uv sync --locked
-uv run --locked patchdedup --version
 uv run --locked patchdedup validate-data --input tests/fixtures/pairs.jsonl
 uv run --locked pytest -q
-uv run --locked ruff check .
-uv run --locked ruff format --check .
-uv build
 ```
 
-O comando escreve um manifesto JSON em stdout com SHA-256 do arquivo, contagens,
-erros e avisos. Saída `0`: auditoria aprovada; `1`: dados inválidos; `2`: erro de
-uso ou leitura, descrito em JSON no stderr. Não imprime os textos dos registros.
+Para inferência local em CPU, instale o extra CPU e baixe a revisão publicada:
 
-As seis [fixtures](tests/fixtures/README.md) são testes de software sem revisão de
-rótulos. Aprovar a auditoria confirma invariantes estruturais; a revisão semântica,
-a autorização dos dados e a independência de templates continuam necessárias.
+```bash
+uv sync --locked --extra cpu
+# Use o SHA exato registrado em configs/release.json para reprodução.
+uv run --locked hf download enzoferracini/patchdedup-ptbr-minilm --local-dir artifacts/model
+uv run --locked --extra cpu patchdedup compare --model artifacts/model \
+  --text-a 'Automatizei relatórios com Python.' \
+  --text-b 'Usei Python para automatizar relatórios.'
+```
 
-## Arquitetura
+O download/instalação exige rede; inferência é local. O bundle verifica hashes e
+rejeita entradas longas sem truncamento silencioso. CPU é o padrão. A saída contém
+cosseno, decisão, thresholds e revisões reais. Scores não são probabilidades
+calibradas; a precisão seletiva observada ficou muito abaixo da meta de validação.
+
+A main do Hub preserva o bi-encoder escolhido antes do novo teste. A branch
+`v01-incumbent` preserva a inicialização dos refinamentos adicionais. A branch
+`cross-encoder-frozen` disponibiliza um candidato alternativo com score separado
+para decisão; ela não é uma promoção retrospectiva do vencedor do teste.
+
+## Treino, refinamento e avaliação
 
 ```mermaid
 flowchart LR
-    A[JSONL com os três splits] --> B[Schema e normalização]
-    B --> C[Identidades e vazamento]
-    C --> D[Manifesto JSON e SHA-256]
+    A[Cenários sintéticos] --> B[Split por grupos e hashes]
+    B --> C[Baselines e treinos]
+    C --> D[Seleção na validação]
+    D --> E[Teste congelado]
+    E --> F[Relatório e checkpoints]
 ```
 
-O núcleo usa Pydantic e biblioteca padrão. `schemas` define entrada, saída e pares;
-`decision` aplica thresholds explícitos; `data` audita pares/splits; `cli` expõe a
-auditoria. Os schemas de comparação preparam o contrato para a inferência futura.
-Não existe comando `compare` nesta etapa.
+A primeira bateria usou CosineSimilarityLoss e CoSENT. A adicional comparou
+ContrastiveLoss, OnlineContrastiveLoss, amostragem balanceada, learning rate,
+congelamento e cross-encoders. Foram nove treinos ao todo em GPU RTX A1000 6 GB,
+sem jobs pagos. Resultados negativos e todas as tentativas estão registrados.
 
-A decisão aceita somente cosseno finito em `[-1,1]`: score abaixo de `low` resulta
-em `not_redundant`; a partir de `high`, `redundant`; entre ambos, `review`.
-Não há thresholds operacionais padrão ou probabilidade calibrada. Valores usados
-nos testes não devem orientar uso real.
+O dataset contém 724 pares únicos: 496 de treino, 72 de validação, 72 de teste
+original, 36 de desafio e 48 do holdout adicional. Quatro ambíguos não entram nas
+métricas binárias. Os testes antigos tornaram-se diagnósticos antes da bateria
+adicional; o novo teste foi congelado antes dela. Autoria e estilo compartilhados
+continuam sendo limitações. Veja [dados e licenças](data/README.md).
 
-## Desenvolvimento e próximos marcos
-
-Cada comportamento segue RED → GREEN → REFACTOR antes de um commit verde em inglês
-com Conventional Commits. A CI valida lockfile, lint, formatação, testes, build e
-instalação do wheel fora do repositório. Nenhum job baixa modelo ou publica no Hub.
-
-- [Contribuição e TDD](CONTRIBUTING.md)
+- [Configurações e protocolo](docs/EVALUATION.md)
+- [Artigo técnico](docs/ARTICLE.md)
 - [Contratos e formato dos dados](docs/CONTRACTS.md)
-- [Guia de anotação](docs/ANNOTATION_GUIDELINES.md)
-- [Avaliação planejada e checklist](docs/EVALUATION.md)
-- [Privacidade, licenças e limites](docs/ETHICS.md)
-- [Especificação de referência](docs/SPECIFICATION.md)
+- [TDD e contribuição](CONTRIBUTING.md)
+- [Catálogo de técnicas de ML](docs/TECHNIQUES.md)
+- [Publicação e reprodução](docs/PUBLISHING.md)
 
-O próximo marco é o piloto revisado de 30–50 pares, seguido de splits congelados,
-baselines lexical e MiniLM original, fine-tuning, avaliação independente, CLI de
-inferência e Docker CPU offline. A v0.1.0 completa também exige cards com resultados
-reais e artigo técnico. A especificação preserva propostas e contexto originais;
-o estado executável atual é o descrito neste README.
+## Verificação e Docker
 
-## Hugging Face e licença
+```bash
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv build
+# Testes de ML e checkpoint real; extras cpu e ml são mutuamente exclusivos.
+PATCHDEDUP_MODEL=artifacts/model HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
+  uv run --locked --extra cpu pytest -q
+bash scripts/docker_smoke.sh artifacts/model
+```
 
-[Modelo em preparação](https://huggingface.co/enzoferracini/patchdedup-ptbr-minilm)
-· [Dataset em preparação](https://huggingface.co/datasets/enzoferracini/patchdedup-synthetic-ptbr)
+O Docker usa dependências CPU fixadas, usuário não root, modelo montado read-only
+e execução `--network none`. Pesos e credenciais não entram na imagem. A CI leve
+não baixa modelos; o workflow `model-smoke` é manual. A execução remota está
+bloqueada pelo faturamento da conta GitHub; as verificações locais são registradas.
+Nenhum orçamento ou recurso pago foi habilitado.
 
-Código, documentação original e fixtures: [MIT](LICENSE). A base proposta
-[MiniLM multilíngue](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2)
-tem licença Apache-2.0; seus pesos não estão incluídos aqui. A licença do futuro
-dataset será definida após a auditoria de proveniência. Publicação de cards é
-manual: [procedimento](docs/PUBLISHING.md).
-
-Projeto pessoal independente, sem afiliação ao iFood. Não apaga bullets, avalia
-pessoas ou verifica a veracidade de experiências. Similaridade temática não prova
-redundância, e nenhuma qualidade de modelo foi demonstrada nesta fundação.
+Código e fixtures de software: [MIT](LICENSE). Dados: CC BY 4.0. Pesos derivados:
+Apache-2.0, com [avisos](licenses/NOTICE.md). Projeto independente, sem afiliação
+ao iFood. Não há integração com Patch Careers, Space, API hospedada ou release
+estável que prometa qualidade de produção.

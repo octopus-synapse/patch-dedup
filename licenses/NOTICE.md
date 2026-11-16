@@ -1,7 +1,7 @@
 # Direitos e atribuição
 
 Código original: MIT, conforme LICENSE. Dados em `data/raw/*.psv`, `data/v01/` e
-`data/refinement/`: CC BY 4.0, autoria de Enzo Ferracini Patti com geração e revisão
+`data/refinement/`, `data/challenge/` e `data/v02/`: CC BY 4.0, autoria de Enzo Ferracini Patti com geração e revisão
 pela mesma IA Codex, sem revisão humana ou independente. Atribuir ao projeto
 PatchDedup e preservar proveniência. As fixtures de software continuam sob MIT.
 
