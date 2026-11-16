@@ -49,6 +49,7 @@ def test_nli_training_and_symmetric_entailment_reload(tmp_path):
         learning_rate=0.001,
         gradient_accumulation=1,
         freeze_embeddings=True,
+        gradient_checkpointing=True,
         warmup_ratio=0.1,
         label_smoothing=0.05,
         rdrop=0.1,

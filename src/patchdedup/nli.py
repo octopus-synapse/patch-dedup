@@ -73,7 +73,7 @@ def train_nli(initial, train, validation, output, config, device="cpu", teacher=
             ),
         )
     if config.get("gradient_checkpointing"):
-        model.gradient_checkpointing_enable()
+        model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
         if config.get("lora"):
             model.enable_input_require_grads()
     scorer = CrossScorer(initial, device, model)
