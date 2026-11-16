@@ -1,0 +1,33 @@
+name: checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e
+        with:
+          version: '0.9.7'
+          python-version: '3.11'
+      - run: uv sync --locked
+      - run: uv run --locked ruff check .
+      - run: uv run --locked ruff format --check .
+      - run: uv run --locked pytest -q
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+      - run: uv run --locked patchdedup validate-data --input tests/fixtures/pairs.jsonl
+      - run: uv build
+      - name: Verify installed wheel outside the repository
+        run: |
+          uv venv /tmp/patchdedup-wheel --python 3.11
+          uv pip install --python /tmp/patchdedup-wheel/bin/python dist/*.whl
+          cd /tmp
+          /tmp/patchdedup-wheel/bin/patchdedup --version
+          /tmp/patchdedup-wheel/bin/patchdedup validate-data --input "$GITHUB_WORKSPACE/tests/fixtures/pairs.jsonl"

@@ -1,34 +1,13 @@
 import json
+from pathlib import Path
 
 import pytest
 
 
 @pytest.fixture
 def records():
-    values = []
-    for split in ("train", "validation", "test"):
-        for label in (0, 1):
-            prefix = f"{split}-{label}"
-            values.append(
-                dict(
-                    pair_id=prefix,
-                    scenario_id=f"s-{prefix}",
-                    text_a_id=f"{prefix}-a",
-                    text_b_id=f"{prefix}-b",
-                    text_a=f"Contribuição A {prefix}.",
-                    text_b=f"Contribuição B {prefix}.",
-                    relation="redundant" if label else "distinct",
-                    binary_label=label,
-                    difficulty="fixture",
-                    domain="testing",
-                    language="pt-BR",
-                    source_type="synthetic",
-                    review_status="unreviewed",
-                    annotation_version="0.1.0",
-                    split=split,
-                )
-            )
-    return values
+    path = Path(__file__).parent / "fixtures" / "pairs.jsonl"
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
 
 
 @pytest.fixture
