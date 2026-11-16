@@ -24,6 +24,12 @@ class CrossScorer:
             ).to(device)
         )
         self.model.eval()
+        self.entailment_index = None
+        if self.model.config.num_labels != 1:
+            mapping = {key.casefold(): value for key, value in self.model.config.label2id.items()}
+            if "entailment" not in mapping:
+                raise ValueError("MODEL_UNAVAILABLE: NLI model must identify entailment label")
+            self.entailment_index = mapping["entailment"]
         self.max_length = min(256, self.tokenizer.model_max_length)
 
     def tokenize(self, rows, reverse=False):
@@ -42,9 +48,15 @@ class CrossScorer:
         with torch.inference_mode():
             for index in range(0, len(rows), batch_size):
                 batch = rows[index : index + batch_size]
-                ab = self.model(**self.tokenize(batch)).logits.view(-1).sigmoid()
-                ba = self.model(**self.tokenize(batch, reverse=True)).logits.view(-1).sigmoid()
-                scores.extend(((ab + ba) / 2).cpu().tolist())
+                ab = self.model(**self.tokenize(batch)).logits.float()
+                ba = self.model(**self.tokenize(batch, reverse=True)).logits.float()
+                if self.entailment_index is None:
+                    values = (ab.view(-1).sigmoid() + ba.view(-1).sigmoid()) / 2
+                else:
+                    ab = ab.softmax(-1)[:, self.entailment_index]
+                    ba = ba.softmax(-1)[:, self.entailment_index]
+                    values = torch.minimum(ab, ba)
+                scores.extend(values.cpu().tolist())
         return scores
 
 
