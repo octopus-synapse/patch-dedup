@@ -109,3 +109,21 @@ executor e snapshot do código original. `protocol.json` não é sobrescrito. A 
 aceita somente essa mudança explícita de agendamento; alterações de dados,
 configurações ou treinador continuam sendo rejeitadas. O estado auxiliar é salvo
 em `parallel-status.json`; o resultado final segue em `comparison.json`.
+
+### Retorno ao sequencial durante uma execução
+
+O paralelismo pode piorar o tempo por época nesta GPU já saturada. Nesta execução,
+o usuário pediu o retorno ao sequencial. O auxiliar `sequential_assin_tail.py`
+valida a identidade dos processos, pausa o sexto com SIGSTOP e o retoma com SIGCONT
+quando o quinto sai. Os passos já executados ficam em memória; o sexto continua
+ocupando VRAM enquanto está pausado, mas deixa de competir pelo processamento.
+
+O serviço `patchdedup-assin-sequential-tail.service` acompanha o principal e registra
+`sequential-status.json`. Seu bloco de limpeza retoma o processo em caso de saída
+normal, exceção ou SIGTERM. A identificação inclui o instante de criação do processo,
+para não sinalizar outro processo caso o número de PID seja reutilizado.
+
+Uma reinicialização perde o estado em RAM; a retomada convencional preserva
+checkpoints completos e arquiva os diretórios parciais, como descrito acima.
+A inicialização normal do controlador permanece sequencial; os auxiliares de
+agendamento não são iniciados automaticamente por `refine_assin.sh`.
