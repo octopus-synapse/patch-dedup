@@ -22,8 +22,9 @@ uv build
 ```
 
 Use `uv lock` ao alterar dependências e revise o diff do lockfile. O CI usa
-`--locked` para rejeitar divergência de configuração. Futuras dependências de
-ML devem ser opcionais; testes de checkpoint real precisam de execução separada.
+`--locked` para rejeitar divergência de configuração. As dependências de ML são opcionais: extra `ml` para treino e `cpu` para CPU,
+mutuamente exclusivos. Os testes de checkpoint real usam `PATCHDEDUP_MODEL` e
+precisam de execução separada ou do workflow manual `model-smoke`.
 Não confunda fixtures ou mocks com inferência real.
 
 Mantenha pesos e credenciais fora do Git. Faça o split por cenário antes de formar

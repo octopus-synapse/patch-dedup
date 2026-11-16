@@ -43,7 +43,7 @@ def test_usage_error_is_json(tmp_path):
 def test_version(tmp_path):
     result = run_cli("--version", cwd=tmp_path)
     assert result.returncode == 0
-    assert "0.1.0.dev0" in result.stdout
+    assert "0.2.0.dev0" in result.stdout
 
 
 def test_installed_console_entrypoint(tmp_path):

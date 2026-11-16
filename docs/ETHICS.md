@@ -9,11 +9,12 @@ Use dados sintéticos ou autorizados, sem currículos/PII de terceiros. Registre
 origem e revisão. Não publique credenciais, prompts com dados privados ou corpus
 sem autorização de redistribuição. O auditor não imprime os textos recebidos.
 
-Código, documentação original e fixtures de software: MIT. Não há dataset de
-pesquisa licenciado/publicado ainda; sua licença será definida após auditoria de
-proveniência. A base proposta MiniLM possui Apache-2.0. Antes de publicar um
-derivado, preservar avisos exigidos, confirmar licença e registrar revisão da base.
+Código, documentação original e fixtures de software: MIT. Dados sintéticos de
+pesquisa e fontes: CC BY 4.0, com autoria e revisão pela mesma IA explicitadas.
+A base MiniLM e os pesos derivados preservam Apache-2.0 e avisos de atribuição.
+As revisões da base, inicialização e pesos publicados são registradas no release.
 Não copiar a licença de pesos/dados do PatchInsight para artefatos diferentes.
 
-O trabalho é independente e não tem afiliação ou endosso do iFood. Não há métricas
-de qualidade, economia de tempo ou impacto em candidaturas medidas nesta etapa.
+O trabalho é independente e não tem afiliação ou endosso do iFood. Há métricas experimentais nos conjuntos sintéticos; não há economia de tempo
+ou impacto em candidaturas medidos. A generalização insuficiente e os resultados
+negativos estão publicados. Não apresentar o modelo como pronto para produção.

@@ -45,7 +45,7 @@ Para inferência local em CPU, instale o extra CPU e baixe a revisão publicada:
 ```bash
 uv sync --locked --extra cpu
 # Use o SHA exato registrado em configs/release.json para reprodução.
-uv run --locked hf download enzoferracini/patchdedup-ptbr-minilm --local-dir artifacts/model
+uv run --locked --extra cpu hf download enzoferracini/patchdedup-ptbr-minilm --local-dir artifacts/model
 uv run --locked --extra cpu patchdedup compare --model artifacts/model \
   --text-a 'Automatizei relatórios com Python.' \
   --text-b 'Usei Python para automatizar relatórios.'
