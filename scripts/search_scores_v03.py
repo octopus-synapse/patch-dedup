@@ -27,7 +27,7 @@ def main():
     args = parser.parse_args()
     if (args.reports / "selection.json").exists():
         raise FileExistsError("Score graph selection already frozen")
-    config = json.loads(args.config.read_text())
+    config = json.loads(args.config.read_text(encoding="utf-8"))
     _, dev = data(config)
     y = [r["binary_label"] for r in dev]
     groups = [r["scenario_id"] for r in dev]
@@ -35,7 +35,7 @@ def main():
     columns = []
     raw_candidates = sorted((args.reports / "candidates").glob("*.json"))
     for file in raw_candidates:
-        candidate = json.loads(file.read_text())
+        candidate = json.loads(file.read_text(encoding="utf-8"))
         probabilities = distributions(np.load(candidate["cache"], allow_pickle=False))[:, :, 0]
         for aggregation in ("min", "mean", "geometric"):
             score = (

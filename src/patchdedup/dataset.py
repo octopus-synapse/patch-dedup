@@ -23,7 +23,7 @@ def save_json(path: str | Path, value: dict) -> None:
 
 def verify_freeze(directory: str | Path) -> dict:
     directory = Path(directory)
-    manifest = json.loads((directory / "freeze.json").read_text())
+    manifest = json.loads((directory / "freeze.json").read_text(encoding="utf-8"))
     for name, digest in manifest["sha256"].items():
         if Path(name).name != name or sha256(directory / name) != digest:
             raise ValueError("HASH_MISMATCH: frozen dataset differs from manifest")

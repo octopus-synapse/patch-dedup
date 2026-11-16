@@ -14,7 +14,7 @@ from patchdedup.score_graph import apply_score_graph
 class ScoringPipeline:
     def __init__(self, root, device="cpu"):
         self.root = Path(root)
-        self.graph = json.loads((self.root / "score_graph.json").read_text())
+        self.graph = json.loads((self.root / "score_graph.json").read_text(encoding="utf-8"))
         self.revision = "sha256:" + sha256(self.root / "score_graph.json")
         self.device = device
         self.scorers = []

@@ -16,3 +16,15 @@ def test_v03_groups_are_disjoint_and_augmentation_keeps_train_groups(tmp_path):
         assert not (groups & seen)
         seen |= groups
     assert len(seen) == 60
+
+
+def test_training_data_is_utf8_even_after_process_locale_changes():
+    import subprocess
+    import sys
+
+    code = "import locale; locale.setlocale(locale.LC_CTYPE, 'C'); from patchdedup.v03_data import augmented_training; print(len(augmented_training()))"
+    result = subprocess.run(
+        [sys.executable, "-X", "utf8=0", "-c", code], capture_output=True, text=True
+    )
+    assert result.returncode == 0, result.stderr
+    assert result.stdout.strip() == "744"

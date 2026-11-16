@@ -144,7 +144,7 @@ def final_evaluation(config, output, reports, device):
     output, reports = Path(output), Path(reports)
     if (reports / "test.json").exists() or (output / "test-started.json").exists():
         raise FileExistsError("Test has already been opened; do not reuse for selection")
-    selection = json.loads((output / "selection.json").read_text())
+    selection = json.loads((output / "selection.json").read_text(encoding="utf-8"))
     if config != selection["config"]:
         raise ValueError("Configuration changed after selection")
     if verify_freeze(config["dataset"]) != selection["dataset"]:
@@ -223,7 +223,7 @@ def main():
     parser.add_argument("--reports", type=Path, default=Path("reports/v01"))
     parser.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     args = parser.parse_args()
-    config = json.loads(args.config.read_text())
+    config = json.loads(args.config.read_text(encoding="utf-8"))
     (development if args.stage == "develop" else final_evaluation)(
         config, args.output, args.reports, args.device
     )

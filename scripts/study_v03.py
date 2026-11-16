@@ -14,6 +14,7 @@ from patchdedup.evaluation import evaluate_scores, select_policy
 from patchdedup.experiment import load_rows
 from patchdedup.nli import predict_logits, train_nli
 from patchdedup.v03_data import augmented_training
+from patchdedup.training import seed_all
 
 
 def cleanup():
@@ -71,7 +72,7 @@ def fit(name, initial, initial_key, cfg, config, output, reports, device, teache
             initial, train, development, run, cfg, device, teacher=teacher, trial=trial
         )
     else:
-        report = json.loads((run / "training.json").read_text())
+        report = json.loads((run / "training.json").read_text(encoding="utf-8"))
     candidate = register(name, run / "model", initial_key, config, output, reports, device)
     save_json(reports / f"{name}-training.json", report)
     return candidate, report
@@ -85,7 +86,8 @@ def main():
     parser.add_argument("--reports", type=Path, default=Path("reports/v03"))
     parser.add_argument("--device", choices=["cpu", "cuda"], default="cuda")
     args = parser.parse_args()
-    cfg = json.loads(args.config.read_text())
+    cfg = json.loads(args.config.read_text(encoding="utf-8"))
+    seed_all(cfg["seed"])
     args.output.mkdir(parents=True, exist_ok=True)
     args.reports.mkdir(parents=True, exist_ok=True)
     if args.stage == "baseline":
@@ -144,7 +146,8 @@ def main():
             args.device,
         )
         candidates = [
-            json.loads(p.read_text()) for p in (args.reports / "candidates").glob("*.json")
+            json.loads(p.read_text(encoding="utf-8"))
+            for p in (args.reports / "candidates").glob("*.json")
         ]
         teachers = [c for c in candidates if c["initial_key"] == "nli_deberta"]
         teacher = max(teachers, key=lambda c: c["validation"]["average_precision"])
@@ -229,7 +232,8 @@ def main():
                 raise optuna.TrialPruned()
             return candidate["validation"]["average_precision"]
 
-        remaining = max(0, cfg["hpo_trials"] - len(study.trials))
+        finished = sum(t.state.name in ("COMPLETE", "PRUNED") for t in study.trials)
+        remaining = max(0, cfg["hpo_trials"] - finished)
         if remaining:
             study.optimize(
                 objective,

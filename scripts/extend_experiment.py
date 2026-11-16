@@ -41,7 +41,7 @@ def main():
     parser.add_argument("--reports", type=Path, default=Path("reports/v02"))
     parser.add_argument("--device", choices=["cpu", "cuda"], default="cuda")
     args = parser.parse_args()
-    config = json.loads(args.config.read_text())
+    config = json.loads(args.config.read_text(encoding="utf-8"))
     train, val = data(config)
     if args.output.exists():
         raise FileExistsError("Use a fresh extended run")

@@ -21,10 +21,12 @@ def main():
     args = parser.parse_args()
     if (args.reports / "selection.json").exists():
         raise FileExistsError("Extended selection is already frozen")
-    config = json.loads(args.config.read_text())
+    config = json.loads(args.config.read_text(encoding="utf-8"))
     train, val = data(config)
-    bi = json.loads((args.reports / "bi-development.json").read_text())["candidates"]
-    cross_data = json.loads((args.reports / "cross-development.json").read_text())
+    bi = json.loads((args.reports / "bi-development.json").read_text(encoding="utf-8"))[
+        "candidates"
+    ]
+    cross_data = json.loads((args.reports / "cross-development.json").read_text(encoding="utf-8"))
     cross = cross_data["candidates"]
     lexical = record_candidate(
         "lexical", "", "lexical", lexical_scores(train, val), val, args.reports
@@ -41,7 +43,7 @@ def main():
     best = choose_candidate(bi + cross)
     selected = args.output / "selected-model"
     shutil.copytree(best_bi["directory"], selected)
-    metadata = json.loads((selected / "patchdedup.json").read_text())
+    metadata = json.loads((selected / "patchdedup.json").read_text(encoding="utf-8"))
     metadata.update(
         model_version="0.2.0-experimental",
         decision_source=("cross_encoder" if best["kind"] == "cross_encoder" else "cosine"),

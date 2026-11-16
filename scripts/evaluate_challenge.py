@@ -20,7 +20,7 @@ def main():
     destination = args.reports / "challenge.json"
     if destination.exists():
         raise FileExistsError("Challenge already evaluated; do not retune on it")
-    selection = json.loads((args.output / "selection.json").read_text())
+    selection = json.loads((args.output / "selection.json").read_text(encoding="utf-8"))
     freeze = verify_freeze("data/challenge")
     rows = load_rows("data/challenge/test.jsonl")
     train = load_rows(Path(selection["config"]["dataset"]) / "train.jsonl")

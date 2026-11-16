@@ -27,7 +27,7 @@ def main():
     parser.add_argument("--reports", type=Path, default=Path("reports/v03"))
     parser.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
     args = parser.parse_args()
-    config = json.loads(args.config.read_text())
+    config = json.loads(args.config.read_text(encoding="utf-8"))
     train, development = data(config)
     default = dict(config["default_training"], seed=config["seed"])
     if args.stage == "adapt":
@@ -53,7 +53,7 @@ def main():
             args.device,
         )
     elif args.stage == "pseudo":
-        teacher = json.loads((args.reports / "teacher.json").read_text())
+        teacher = json.loads((args.reports / "teacher.json").read_text(encoding="utf-8"))
         groups = {}
         existing = set()
         for row in train:
@@ -143,7 +143,9 @@ def main():
             ),
         )
         pseudo_path = args.output / "pseudo-train.jsonl"
-        pseudo_path.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in accepted))
+        pseudo_path.write_text(
+            "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in accepted), encoding="utf-8"
+        )
         if not accepted:
             return
         full = train + accepted
@@ -182,7 +184,7 @@ def main():
     else:
         torch.set_num_threads(2)
         candidates = [
-            json.loads(p.read_text())
+            json.loads(p.read_text(encoding="utf-8"))
             for p in (args.reports / "candidates").glob("*.json")
             if "quantized" not in p.name
         ]

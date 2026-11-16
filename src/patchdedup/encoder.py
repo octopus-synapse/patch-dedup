@@ -11,10 +11,10 @@ from patchdedup.schemas import CompareInput, CompareOutput, Thresholds
 def verify_bundle(path: str | Path) -> dict:
     path = Path(path)
     try:
-        manifest = json.loads((path / "manifest.json").read_text())
+        manifest = json.loads((path / "manifest.json").read_text(encoding="utf-8"))
         if not isinstance(manifest, dict) or not manifest:
             raise ValueError("Empty manifest")
-        metadata = json.loads((path / "patchdedup.json").read_text())
+        metadata = json.loads((path / "patchdedup.json").read_text(encoding="utf-8"))
         if not isinstance(metadata, dict):
             raise ValueError("Invalid model metadata")
         embedding = Path(metadata.get("embedding_directory", "."))
@@ -88,8 +88,10 @@ class Comparator:
         path = Path(path)
         verify_bundle(path)
         try:
-            self.metadata = json.loads((path / "patchdedup.json").read_text())
-            self.thresholds = Thresholds(**json.loads((path / "thresholds.json").read_text()))
+            self.metadata = json.loads((path / "patchdedup.json").read_text(encoding="utf-8"))
+            self.thresholds = Thresholds(
+                **json.loads((path / "thresholds.json").read_text(encoding="utf-8"))
+            )
             self.encoder = SentenceEncoder(
                 path / self.metadata.get("embedding_directory", "."), device
             )
@@ -105,7 +107,7 @@ class Comparator:
 
                 self.reranker = CrossScorer(path / "reranker", device)
                 self.reranker_revision = json.loads(
-                    (path / "reranker" / "cross_encoder.json").read_text()
+                    (path / "reranker" / "cross_encoder.json").read_text(encoding="utf-8")
                 )["model_revision"]
         except (OSError, ValueError, KeyError) as exc:
             raise ValueError("MODEL_UNAVAILABLE: cannot load local checkpoint") from exc

@@ -73,7 +73,7 @@ def augmented_training(root="data"):
     rows = [
         json.loads(line)
         for file in (root / "v01/train.jsonl", root / "refinement/train.jsonl")
-        for line in file.read_text().splitlines()
+        for line in file.read_text(encoding="utf-8").splitlines()
     ]
     grouped = {}
     for row in rows:

@@ -14,10 +14,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--reports", type=Path, default=Path("reports/v01"))
     args = parser.parse_args()
-    report = json.loads((args.reports / "test.json").read_text())
+    report = json.loads((args.reports / "test.json").read_text(encoding="utf-8"))
     names = ["base", report["chosen_finetuned"]]
     payloads = {
-        name: json.loads((args.reports / f"{name}-test-predictions.json").read_text())
+        name: json.loads(
+            (args.reports / f"{name}-test-predictions.json").read_text(encoding="utf-8")
+        )
         for name in names
     }
     reference = payloads["base"]["predictions"]

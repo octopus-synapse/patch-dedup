@@ -1,0 +1,12 @@
+{
+  "incidents": [
+    {
+      "type": "locale_encoding",
+      "description": "Process locale became ASCII before data registration; cause not established. All text reads now explicitly UTF-8.",
+      "recovered_checkpoint": "multitask_deberta/model",
+      "lost_completed_training": false,
+      "interrupted_trial": 0,
+      "action": "Stopped initial HPO attempt before scoring and restarted after regression fix"
+    }
+  ]
+}

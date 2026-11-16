@@ -23,7 +23,7 @@ def main():
     args = parser.parse_args()
     if (args.output / "test-started.json").exists() or (args.reports / "test.json").exists():
         raise FileExistsError("Fresh test already opened; no reuse for model selection")
-    selection = json.loads((args.output / "selection.json").read_text())
+    selection = json.loads((args.output / "selection.json").read_text(encoding="utf-8"))
     config = selection["config"]
     if verify_freeze(config["fresh_holdout"]) != selection["fresh_holdout"]:
         raise ValueError("Fresh test changed after selection")
