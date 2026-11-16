@@ -1,0 +1,36 @@
+ch00|software|O upload voltou a funcionar após eu corrigir a validação de MIME.|Corrigi a validação de MIME, restabelecendo o upload.|redundant
+ch00|software|O upload voltou a funcionar após eu corrigir a validação de MIME.|O upload voltou a funcionar após eu corrigir o limite de tamanho.|distinct
+ch01|software|Na busca de produtos, implementei paginação por cursor.|Entreguei paginação baseada em cursor para a busca de produtos.|redundant
+ch01|software|Na busca de produtos, implementei paginação por cursor.|Na busca de produtos, implementei paginação por cursor e ordenação por preço.|partial_overlap
+ch02|software|Deixei de serializar as respostas com XML e passei a usar JSON.|Migrei a serialização das respostas de XML para JSON.|redundant
+ch02|software|Deixei de serializar as respostas com XML e passei a usar JSON.|Deixei de serializar as respostas com JSON e passei a usar XML.|contradictory
+ch03|operacoes|O inventário que eu levava 4 horas para concluir passou a durar 180 minutos.|Reduzi o inventário de quatro para três horas.|redundant
+ch03|operacoes|O inventário que eu levava 4 horas para concluir passou a durar 180 minutos.|Reduzi o inventário de quatro para duas horas.|contradictory
+ch04|atendimento|Passei a registrar no CRM o motivo de cancelamento das assinaturas.|Implementei no CRM o registro dos motivos de cancelamento de assinaturas.|redundant
+ch04|atendimento|Passei a registrar no CRM o motivo de cancelamento das assinaturas.|Passei a registrar no CRM o motivo de renovação das assinaturas.|distinct
+ch05|comercio|Nos anúncios de bicicletas, corrigi as medidas que estavam erradas.|Corrigi os erros nas medidas informadas pelos anúncios de bicicletas.|redundant
+ch05|comercio|Nos anúncios de bicicletas, corrigi as medidas que estavam erradas.|Nos anúncios de bicicletas, corrigi medidas e fotografias incorretas.|partial_overlap
+ch06|educacao|Fiz a mediação de seis encontros do clube de leitura.|Mediei 6 reuniões do clube de leitura.|redundant
+ch06|educacao|Fiz a mediação de seis encontros do clube de leitura.|Fiz o agendamento de seis encontros do clube de leitura.|distinct
+ch07|saude|Substituí os cartazes de orientação da vacinação por versões em fonte ampliada.|Adaptei os cartazes orientativos da vacinação usando letras maiores.|redundant
+ch07|saude|Substituí os cartazes de orientação da vacinação por versões em fonte ampliada.|Substituí os cartazes de orientação da vacinação por versões em fonte ampliada e braile.|partial_overlap
+ch08|financeiro|Com a rotina de importação que escrevi, o extrato do cartão entrou no sistema automaticamente.|Automatizei a entrada de extratos de cartão no sistema com uma rotina que desenvolvi.|redundant
+ch08|financeiro|Com a rotina de importação que escrevi, o extrato do cartão entrou no sistema automaticamente.|Com a rotina de exportação que escrevi, o extrato do cartão saiu do sistema automaticamente.|distinct
+ch09|rh|O cadastro dos estagiários foi atualizado por mim antes do início das atividades.|Atualizei os cadastros dos estagiários previamente ao começo das atividades.|redundant
+ch09|rh|O cadastro dos estagiários foi atualizado por mim antes do início das atividades.|Atualizei os cadastros dos estagiários após o início das atividades.|contradictory
+ch10|marketing|Testei dois títulos para o mesmo anúncio por meio de um experimento A/B.|Conduzi um teste A/B comparando 2 títulos de um anúncio.|redundant
+ch10|marketing|Testei dois títulos para o mesmo anúncio por meio de um experimento A/B.|Testei duas imagens para o mesmo anúncio por meio de um experimento A/B.|distinct
+ch11|industria|A aferição das balanças passou a ocorrer a cada sete dias no processo que estabeleci.|Estabeleci aferição semanal das balanças.|redundant
+ch11|industria|A aferição das balanças passou a ocorrer a cada sete dias no processo que estabeleci.|Estabeleci aferição diária das balanças.|contradictory
+ch12|administracao|Organizei a prestação de contas das viagens internacionais.|Estruturei a prestação de contas referente a viagens ao exterior.|redundant
+ch12|administracao|Organizei a prestação de contas das viagens internacionais.|Organizei a prestação de contas das viagens internacionais de doze gestores.|partial_overlap
+ch13|servicos|Na biblioteca, implantei uma lista de espera para os livros emprestados.|Criei na biblioteca uma fila de reservas para livros já emprestados.|redundant
+ch13|servicos|Na biblioteca, implantei uma lista de espera para os livros emprestados.|Na biblioteca, implantei uma lista de cobrança para livros atrasados.|distinct
+ch14|software|Minha alteração fez o limite de tentativas de login cair de dez para cinco.|Reduzi de 10 para 5 o limite de tentativas de login.|redundant
+ch14|software|Minha alteração fez o limite de tentativas de login cair de dez para cinco.|Minha alteração fez o limite de tentativas de login subir de cinco para dez.|contradictory
+ch15|operacoes|Passei a conferir o lacre antes de liberar os caminhões.|Implantei a checagem do lacre previamente à liberação dos caminhões.|redundant
+ch15|operacoes|Passei a conferir o lacre antes de liberar os caminhões.|Passei a conferir o lacre numerado antes de liberar os caminhões.|partial_overlap
+amb00|software|Ajudei a desenvolver o portal de associados.|Liderei o desenvolvimento do portal de associados.|ambiguous
+amb01|educacao|Apoiei a coordenação da jornada de formação.|Organizei a jornada de formação.|ambiguous
+amb02|comercio|Trabalhei na melhoria do cadastro de parceiros.|Reestruturei o cadastro de parceiros.|ambiguous
+amb03|servicos|Colaborei na preparação do evento municipal.|Fui responsável pela preparação do evento municipal.|ambiguous

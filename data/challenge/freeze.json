@@ -1,0 +1,14 @@
+{
+  "groups": 20,
+  "pairs": 36,
+  "binary_pairs": 32,
+  "sha256": {
+    "test.jsonl": "9740700ffef755210e546ee3663cb71c545e9acc5abf7c609716c5db1b27c856"
+  },
+  "source_sha256": "d04c48fca53c22fc2e30973904f62978bf756b7b5be8ea71a1d96f12179e5be0",
+  "provenance": {
+    "author": "same authoring AI; no human review",
+    "license": "CC-BY-4.0",
+    "purpose": "Separately authored challenge, frozen before development selection; never used for tuning"
+  }
+}

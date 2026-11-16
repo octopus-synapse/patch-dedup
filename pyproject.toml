@@ -11,6 +11,17 @@ requires-python = ">=3.11,<3.12"
 license = "MIT"
 dependencies = ["pydantic==2.12.4"]
 
+[tool.uv]
+conflicts = [[{ extra = "ml" }, { extra = "cpu" }]]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", extra = "cpu" }]
+
 [dependency-groups]
 dev = ["pytest==8.4.2", "ruff==0.14.3"]
 
@@ -27,6 +38,8 @@ ml = [
     "torch==2.6.0",
     "transformers==4.57.1",
 ]
+
+cpu = ["torch==2.6.0", "sentence-transformers==5.1.2", "transformers==4.57.1", "numpy==2.3.4", "safetensors==0.6.2", "huggingface-hub==0.36.0", "scikit-learn==1.7.2"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/patchdedup"]
