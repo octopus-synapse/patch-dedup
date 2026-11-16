@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1.0",
+  "seed": 42,
+  "groups": 20,
+  "pairs": 160,
+  "groups_by_split": {
+    "train": 20
+  },
+  "source_sha256": "cbf531c96059f20f5657de32435272623e8de46e1d08daadaeae206ebcdad2ad",
+  "sha256": {
+    "train.jsonl": "6b3cb804cf877c500aa567b0e583afe9dc684cd5c9fe567cb25593613e28831a"
+  },
+  "provenance": {
+    "source": "refinement.psv",
+    "author": "Codex authoring AI",
+    "reviewer": "same authoring AI; no independent or human review",
+    "human_reviewed": false,
+    "license": "CC-BY-4.0",
+    "limitation": "Shared authored constructions; not representative of real CVs"
+  }
+}

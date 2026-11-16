@@ -56,6 +56,8 @@ class CompareInput(TextPair):
 class Thresholds(Contract):
     low: Score
     high: Score
+    positive_enabled: bool = True
+    negative_enabled: bool = True
 
     @model_validator(mode="after")
     def validate_order(self) -> "Thresholds":

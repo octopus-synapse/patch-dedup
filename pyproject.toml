@@ -17,12 +17,23 @@ dev = ["pytest==8.4.2", "ruff==0.14.3"]
 [project.scripts]
 patchdedup = "patchdedup.cli:main"
 
+[project.optional-dependencies]
+ml = [
+    "huggingface-hub==0.36.0",
+    "numpy==2.3.4",
+    "safetensors==0.6.2",
+    "scikit-learn==1.7.2",
+    "sentence-transformers==5.1.2",
+    "torch==2.6.0",
+    "transformers==4.57.1",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/patchdedup"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-markers = ["real_model: requires a real checkpoint (future milestone)"]
+markers = ["real_model: requires a real checkpoint", "ml: requires ML dependencies"]
 
 [tool.ruff]
 target-version = "py311"

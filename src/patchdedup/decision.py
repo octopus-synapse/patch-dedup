@@ -9,8 +9,8 @@ def decide(score: float, thresholds: Thresholds) -> Decision:
     """Apply an explicit policy; cosine similarity is not a probability."""
     if not math.isfinite(score) or not -1 <= score <= 1:
         raise ValueError("INVALID_SCORE: expected finite cosine in [-1, 1]")
-    if score >= thresholds.high:
+    if thresholds.positive_enabled and score >= thresholds.high:
         return "redundant"
-    if score < thresholds.low:
+    if thresholds.negative_enabled and score < thresholds.low:
         return "not_redundant"
     return "review"

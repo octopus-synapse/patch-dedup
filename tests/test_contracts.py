@@ -151,3 +151,8 @@ def test_output_roundtrip():
 def test_output_consistency(overrides):
     with pytest.raises(ValidationError):
         CompareOutput(**output(**overrides))
+
+
+def test_disabled_policy_directions_abstain():
+    assert decide(1, Thresholds(low=-1, high=1, positive_enabled=False)) == "review"
+    assert decide(-1, Thresholds(low=0, high=1, negative_enabled=False)) == "review"

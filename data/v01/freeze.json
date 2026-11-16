@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0",
+  "seed": 42,
+  "groups": 60,
+  "pairs": 480,
+  "groups_by_split": {
+    "train": 42,
+    "test": 9,
+    "validation": 9
+  },
+  "source_sha256": "4539d298a41c756779270c7ab5f69a179249d9dc89e711fd1c530aa37549c6b1",
+  "sha256": {
+    "train.jsonl": "f1a038ea8e5acd0319d15100e8574aa95e1638190ad81adf58a89fa821150d8e",
+    "validation.jsonl": "12083d803d6c13a295c63eaa8bb311e7a0fa07e407374bb13af1567877166696",
+    "test.jsonl": "c857897c9a5b3a72d33927540810a625f5bc4c2ab8f7ea2abf55d54933d71bbd",
+    "all.jsonl": "32c4154fb356a73d28fadd52339a619f5efc288c024d5dadc437ee4d680ff882"
+  },
+  "provenance": {
+    "source": "scenarios.psv",
+    "author": "Codex authoring AI",
+    "reviewer": "same authoring AI; no independent or human review",
+    "human_reviewed": false,
+    "license": "CC-BY-4.0",
+    "limitation": "Shared authored constructions; not representative of real CVs"
+  }
+}
