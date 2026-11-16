@@ -35,3 +35,26 @@ def test_real_checkpoint_offline_symmetry_and_limits():
     assert model.compare(CompareInput(text_a=a, text_b=a)).similarity.score > 0.999
     with pytest.raises(ValueError, match="INPUT_TOO_LONG"):
         model.compare(CompareInput(text_a="palavra " * 150, text_b=b))
+
+
+@pytest.mark.parametrize("manifest", ['["not-a-map"]', '"not-a-map"', "42"])
+def test_malformed_manifest_is_a_safe_model_error(tmp_path, manifest):
+    (tmp_path / "manifest.json").write_text(manifest)
+    with pytest.raises(ValueError, match="MODEL_UNAVAILABLE"):
+        verify_bundle(tmp_path)
+
+
+def test_valid_manifest_then_digest_tampering(tmp_path):
+    import hashlib
+    import json
+
+    names = ["model.safetensors", "patchdedup.json", "thresholds.json", "modules.json"]
+    manifest = {}
+    for name in names:
+        (tmp_path / name).write_bytes(b"test artifact")
+        manifest[name] = hashlib.sha256(b"test artifact").hexdigest()
+    (tmp_path / "manifest.json").write_text(json.dumps(manifest))
+    assert verify_bundle(tmp_path) == manifest
+    (tmp_path / "model.safetensors").write_bytes(b"tampered artifact")
+    with pytest.raises(ValueError, match="MODEL_UNAVAILABLE"):
+        verify_bundle(tmp_path)

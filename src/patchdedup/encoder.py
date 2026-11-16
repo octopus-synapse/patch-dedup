@@ -12,7 +12,7 @@ def verify_bundle(path: str | Path) -> dict:
     path = Path(path)
     try:
         manifest = json.loads((path / "manifest.json").read_text())
-        if not manifest:
+        if not isinstance(manifest, dict) or not manifest:
             raise ValueError("Empty manifest")
         required = {"model.safetensors", "patchdedup.json", "thresholds.json", "modules.json"}
         if not required <= manifest.keys():
