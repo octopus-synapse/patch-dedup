@@ -38,9 +38,14 @@ class CrossScorer:
         self.entailment_index = None
         if self.model.config.num_labels != 1:
             mapping = {key.casefold(): value for key, value in self.model.config.label2id.items()}
-            if "entailment" not in mapping:
+            positive_label = (
+                "paraphrase"
+                if getattr(self.model.config, "patchdedup_task", None) == "assin_three_way"
+                else "entailment"
+            )
+            if positive_label not in mapping:
                 raise ValueError("MODEL_UNAVAILABLE: NLI model must identify entailment label")
-            self.entailment_index = mapping["entailment"]
+            self.entailment_index = mapping[positive_label]
         self.max_length = min(256, self.tokenizer.model_max_length)
 
     def tokenize(self, rows, reverse=False):
