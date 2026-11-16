@@ -1,0 +1,182 @@
+{
+  "conformal": {
+    "alpha": 0.1,
+    "q": 0.045632243156433105,
+    "calibration_pairs": 20,
+    "thresholds": {
+      "low": 0.04563224315643311,
+      "high": 0.9543677568435669,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "assumption": "Marginal coverage requires exchangeability; not a precision guarantee or domain-shift protection"
+  },
+  "groups": 10,
+  "metrics": {
+    "brier": 0.0008147826080385686,
+    "log_loss": 0.014280481777521087,
+    "expected_calibration_error_10_bins": 0.013847661967156456
+  },
+  "graph_sha256": "26cf84ad3fdc84c8fc9ce7feb3068c21ca0afdeb248892cae1a75885ff5dbc94",
+  "predictions": [
+    {
+      "pair_id": "v03-z00-0",
+      "label": 1,
+      "score": 0.9912312626838684,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z00-1",
+      "label": 0,
+      "score": 0.002996714087203145,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z01-0",
+      "label": 1,
+      "score": 0.9966400861740112,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z01-1",
+      "label": 0,
+      "score": 0.0036681590136140585,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z07-0",
+      "label": 1,
+      "score": 0.9543677568435669,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z07-1",
+      "label": 0,
+      "score": 0.0014934708597138524,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z22-0",
+      "label": 1,
+      "score": 0.9863927960395813,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z22-1",
+      "label": 0,
+      "score": 0.001061604474671185,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z28-0",
+      "label": 1,
+      "score": 0.9552320241928101,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z28-1",
+      "label": 0,
+      "score": 0.0023084382992237806,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z36-0",
+      "label": 1,
+      "score": 0.995764970779419,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z36-1",
+      "label": 0,
+      "score": 0.0008660281309857965,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z38-0",
+      "label": 1,
+      "score": 0.8932697772979736,
+      "prediction_set": []
+    },
+    {
+      "pair_id": "v03-z38-1",
+      "label": 0,
+      "score": 0.001007842947728932,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z46-0",
+      "label": 1,
+      "score": 0.9800689220428467,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z46-1",
+      "label": 0,
+      "score": 0.0011189234210178256,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z52-0",
+      "label": 1,
+      "score": 0.9911338686943054,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z52-1",
+      "label": 0,
+      "score": 0.0013531551230698824,
+      "prediction_set": [
+        0
+      ]
+    },
+    {
+      "pair_id": "v03-z53-0",
+      "label": 1,
+      "score": 0.9965967535972595,
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "pair_id": "v03-z53-1",
+      "label": 0,
+      "score": 0.0017771213315427303,
+      "prediction_set": [
+        0
+      ]
+    }
+  ],
+  "limitation": "Only twenty calibration pairs; coverage assumes exchangeability and does not guarantee precision"
+}

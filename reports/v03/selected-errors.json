@@ -1,0 +1,69 @@
+{
+  "errors": [
+    {
+      "text_a": "Medi a participação dos alunos nas discussões do fórum.",
+      "text_b": "Moderei a participação dos alunos nas discussões do fórum.",
+      "language": "pt-BR",
+      "pair_id": "v03-z26-1",
+      "scenario_id": "v03-z26",
+      "text_a_id": "v03-z26-9d99b32333fa",
+      "text_b_id": "v03-z26-073da364028f",
+      "relation": "distinct",
+      "binary_label": 0,
+      "difficulty": "fresh_authored_v03",
+      "domain": "educacao",
+      "source_type": "synthetic",
+      "review_status": "reviewed",
+      "annotation_version": "0.3.0",
+      "split": "test",
+      "score": 0.9590722322463989,
+      "binary_prediction": 1,
+      "decision": "redundant",
+      "prediction_set": [
+        1
+      ]
+    },
+    {
+      "text_a": "Criei uma lista de conferência para a abertura da recepção.",
+      "text_b": "Elaborei um checklist usado na abertura da recepção.",
+      "language": "pt-BR",
+      "pair_id": "v03-z34-0",
+      "scenario_id": "v03-z34",
+      "text_a_id": "v03-z34-b181b9ca90f1",
+      "text_b_id": "v03-z34-649b9a191f32",
+      "relation": "redundant",
+      "binary_label": 1,
+      "difficulty": "fresh_authored_v03",
+      "domain": "saude",
+      "source_type": "synthetic",
+      "review_status": "reviewed",
+      "annotation_version": "0.3.0",
+      "split": "test",
+      "score": 0.2682221233844757,
+      "binary_prediction": 0,
+      "decision": "review",
+      "prediction_set": []
+    },
+    {
+      "text_a": "Organizei a previsão dos recebimentos de mensalidades.",
+      "text_b": "Organizei a previsão dos pagamentos de mensalidades.",
+      "language": "pt-BR",
+      "pair_id": "v03-z35-1",
+      "scenario_id": "v03-z35",
+      "text_a_id": "v03-z35-96267d4be47c",
+      "text_b_id": "v03-z35-2f25104b7c27",
+      "relation": "distinct",
+      "binary_label": 0,
+      "difficulty": "fresh_authored_v03",
+      "domain": "financeiro",
+      "source_type": "synthetic",
+      "review_status": "reviewed",
+      "annotation_version": "0.3.0",
+      "split": "test",
+      "score": 0.769632875919342,
+      "binary_prediction": 1,
+      "decision": "review",
+      "prediction_set": []
+    }
+  ]
+}

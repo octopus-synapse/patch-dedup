@@ -1,0 +1,49 @@
+{
+  "name": "hpo_5_quantized",
+  "directory": "artifacts/v03/hpo_5/model",
+  "initial_key": "nli_deberta",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.04660326987504959,
+    "thresholds": {
+      "low": -1.0,
+      "high": 1.0,
+      "positive_enabled": false,
+      "negative_enabled": false
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.4409448818897638,
+    "recall": 0.9824561403508771,
+    "f1": 0.6086956521739131,
+    "macro_f1": 0.35434782608695653,
+    "average_precision": 0.46361539285209685,
+    "confusion_matrix": [
+      [
+        4,
+        71
+      ],
+      [
+        1,
+        56
+      ]
+    ],
+    "coverage": 0.0,
+    "review_rate": 1.0,
+    "review_count": 132,
+    "redundant_count": 0,
+    "not_redundant_count": 0,
+    "selective_precision": null,
+    "negative_predictive_value": null
+  },
+  "cache": "artifacts/v03/cache/hpo_5_quantized-development.npy",
+  "quantized": true
+}

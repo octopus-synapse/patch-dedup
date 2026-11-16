@@ -1,0 +1,109 @@
+{
+  "metrics": {
+    "support": 40,
+    "positive_support": 20,
+    "precision": 0.9047619047619048,
+    "recall": 0.95,
+    "f1": 0.926829268292683,
+    "macro_f1": 0.9249530956848031,
+    "average_precision": 0.9654822598375734,
+    "confusion_matrix": [
+      [
+        18,
+        2
+      ],
+      [
+        1,
+        19
+      ]
+    ],
+    "coverage": 0.725,
+    "review_rate": 0.275,
+    "review_count": 11,
+    "redundant_count": 13,
+    "not_redundant_count": 16,
+    "selective_precision": 0.9230769230769231,
+    "negative_predictive_value": 1.0,
+    "brier": 0.06604008436517425,
+    "log_loss": 0.2141391290632432,
+    "expected_calibration_error_10_bins": 0.09712082056939834,
+    "conformal_marginal_coverage": 0.7,
+    "mean_prediction_set_size": 0.725,
+    "empty_set_rate": 0.275
+  },
+  "primary_pretrained_baseline": {
+    "support": 40,
+    "positive_support": 20,
+    "precision": 0.8333333333333334,
+    "recall": 1.0,
+    "f1": 0.9090909090909091,
+    "macro_f1": 0.898989898989899,
+    "average_precision": 0.9837163561076604,
+    "confusion_matrix": [
+      [
+        16,
+        4
+      ],
+      [
+        0,
+        20
+      ]
+    ],
+    "coverage": 1.0,
+    "review_rate": 0.0,
+    "review_count": 0,
+    "redundant_count": 21,
+    "not_redundant_count": 19,
+    "selective_precision": 0.9047619047619048,
+    "negative_predictive_value": 0.9473684210526315
+  },
+  "previous_v02_embedding_baseline": {
+    "support": 40,
+    "positive_support": 20,
+    "precision": 0.42857142857142855,
+    "recall": 0.6,
+    "f1": 0.5,
+    "macro_f1": 0.375,
+    "average_precision": 0.3900716464805338,
+    "confusion_matrix": [
+      [
+        4,
+        16
+      ],
+      [
+        8,
+        12
+      ]
+    ],
+    "coverage": 0.35,
+    "review_rate": 0.65,
+    "review_count": 26,
+    "redundant_count": 13,
+    "not_redundant_count": 1,
+    "selective_precision": 0.23076923076923078,
+    "negative_predictive_value": 0.0
+  },
+  "test_pairs": 40,
+  "test_groups": 20,
+  "graph_sha256": "26cf84ad3fdc84c8fc9ce7feb3068c21ca0afdeb248892cae1a75885ff5dbc94",
+  "components": [
+    {
+      "name": "hpo_5::min",
+      "directory": "artifacts/v03/hpo_5/model",
+      "initial_key": "nli_deberta",
+      "aggregation": "min",
+      "quantized": false,
+      "model_sha256": "058be8f2224e2f995de5fd3c7b4b14bc3df19abc7874be82793727af2c1b68bf"
+    }
+  ],
+  "policy": {
+    "binary_threshold": 0.4262998700141907,
+    "thresholds": {
+      "low": 0.04563224315643311,
+      "high": 0.9543677568435669,
+      "positive_enabled": true,
+      "negative_enabled": true
+    }
+  },
+  "limitation": "Same AI author; not human-independent or representative of actual resumes"
+}

@@ -1,0 +1,505 @@
+{
+  "reviewed_by_human": false,
+  "examples": [
+    {
+      "pair_id": "v01-048-pseudo-8",
+      "scenario_id": "v01-048",
+      "text_a_id": "v01-048-c",
+      "text_b_id": "v01-048-e",
+      "text_a": "Removi a marcação UTM dos links da newsletter.",
+      "text_b": "Implementei marcação UTM e revisei a redação dos links da newsletter.",
+      "priority": 1.3489314317703247,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-052-pseudo-8",
+      "scenario_id": "v01-052",
+      "text_a_id": "v01-052-c",
+      "text_b_id": "v01-052-e",
+      "text_a": "Retirei a rastreabilidade por lote da produção de tintas.",
+      "text_b": "Implantei rastreabilidade por lote e inspeção de cor na produção de tintas.",
+      "priority": 1.231332540512085,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-013-pseudo-7",
+      "scenario_id": "ref-013",
+      "text_a_id": "ref-013-c",
+      "text_b_id": "ref-013-d",
+      "text_a": "Não organizei o atendimento na recepção do laboratório.",
+      "text_b": "Organizei o atendimento na coleta do laboratório.",
+      "priority": 1.2183237075805664,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-032-pseudo-7",
+      "scenario_id": "v01-032",
+      "text_a_id": "v01-032-c",
+      "text_b_id": "v01-032-d",
+      "text_a": "Não padronizei a conferência de validade dos insumos da clínica.",
+      "text_b": "Padronizei a conferência de temperatura dos insumos da clínica.",
+      "priority": 1.2133007049560547,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-054-pseudo-7",
+      "scenario_id": "v01-054",
+      "text_a_id": "v01-054-c",
+      "text_b_id": "v01-054-d",
+      "text_a": "Não digitalizei os contratos de locação do escritório.",
+      "text_b": "Renegociei os contratos de locação do escritório.",
+      "priority": 1.1940960884094238,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-009-pseudo-7",
+      "scenario_id": "ref-009",
+      "text_a_id": "ref-009-c",
+      "text_b_id": "ref-009-d",
+      "text_a": "Não revisei as descrições dos produtos de jardinagem.",
+      "text_b": "Revisei as fotografias dos produtos de jardinagem.",
+      "priority": 1.1616413593292236,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-008-pseudo-7",
+      "scenario_id": "ref-008",
+      "text_a_id": "ref-008-c",
+      "text_b_id": "ref-008-d",
+      "text_a": "Organizei o plantão do atendimento aos sábados.",
+      "text_b": "Supervisionei a qualidade do atendimento aos domingos.",
+      "priority": 1.0517942905426025,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-014-pseudo-12",
+      "scenario_id": "ref-014",
+      "text_a_id": "ref-014-d",
+      "text_b_id": "ref-014-e",
+      "text_a": "Automatizei a exportação de extratos bancários em Python.",
+      "text_b": "Automatizei a importação diária de extratos bancários em Python.",
+      "priority": 1.0301837921142578,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-014-pseudo-7",
+      "scenario_id": "ref-014",
+      "text_a_id": "ref-014-c",
+      "text_b_id": "ref-014-d",
+      "text_a": "Não automatizei a importação de extratos bancários em Python.",
+      "text_b": "Automatizei a exportação de extratos bancários em Python.",
+      "priority": 1.0150867700576782,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-042-pseudo-7",
+      "scenario_id": "v01-042",
+      "text_a_id": "v01-042-c",
+      "text_b_id": "v01-042-d",
+      "text_a": "Não estruturei um roteiro de integração para novos funcionários.",
+      "text_b": "Apliquei uma pesquisa sobre a integração dos novos funcionários.",
+      "priority": 0.9976118803024292,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-018-pseudo-12",
+      "scenario_id": "ref-018",
+      "text_a_id": "ref-018-d",
+      "text_b_id": "ref-018-e",
+      "text_a": "Inspecionei o peso de 200 embalagens.",
+      "text_b": "Inspecionei por amostragem a vedação de 200 embalagens.",
+      "priority": 0.8662576675415039,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-058-pseudo-7",
+      "scenario_id": "v01-058",
+      "text_a_id": "v01-058-c",
+      "text_b_id": "v01-058-d",
+      "text_a": "Planejei a escala mensal da equipe de limpeza.",
+      "text_b": "Inspecionei a execução dos serviços da equipe de limpeza.",
+      "priority": 0.8275957703590393,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-050-pseudo-7",
+      "scenario_id": "v01-050",
+      "text_a_id": "v01-050-c",
+      "text_b_id": "v01-050-d",
+      "text_a": "Reduzi em 22% o refugo na linha de corte.",
+      "text_b": "Reduzi em 12% o tempo de setup da linha de corte.",
+      "priority": 0.8079819679260254,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-025-pseudo-7",
+      "scenario_id": "v01-025",
+      "text_a_id": "v01-025-c",
+      "text_b_id": "v01-025-d",
+      "text_a": "Negociei prazo de pagamento de 30 dias com fornecedores de papelaria.",
+      "text_b": "Negociei prazo de entrega de 45 dias com fornecedores de papelaria.",
+      "priority": 0.794252872467041,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-018-pseudo-12",
+      "scenario_id": "v01-018",
+      "text_a_id": "v01-018-d",
+      "text_b_id": "v01-018-e",
+      "text_a": "Analisei as respostas da pesquisa de satisfação dos chamados.",
+      "text_b": "Implantei pesquisa de satisfação após o encerramento e analisei suas respostas.",
+      "priority": 0.7896363735198975,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-016-pseudo-12",
+      "scenario_id": "ref-016",
+      "text_a_id": "ref-016-d",
+      "text_b_id": "ref-016-e",
+      "text_a": "Analisei as entrevistas de desligamento da equipe comercial.",
+      "text_b": "Organizei entrevistas anônimas de desligamento da equipe comercial.",
+      "priority": 0.7827141284942627,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-038-pseudo-7",
+      "scenario_id": "v01-038",
+      "text_a_id": "v01-038-c",
+      "text_b_id": "v01-038-d",
+      "text_a": "Revisei a classificação contábil de 180 lançamentos.",
+      "text_b": "Registrei 80 novos lançamentos contábeis.",
+      "priority": 0.7711153030395508,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-052-pseudo-7",
+      "scenario_id": "v01-052",
+      "text_a_id": "v01-052-c",
+      "text_b_id": "v01-052-d",
+      "text_a": "Retirei a rastreabilidade por lote da produção de tintas.",
+      "text_b": "Implantei inspeção de cor na produção de tintas.",
+      "priority": 0.769500195980072,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-011-pseudo-12",
+      "scenario_id": "v01-011",
+      "text_a_id": "v01-011-d",
+      "text_b_id": "v01-011-e",
+      "text_a": "Reduzi de 60 para 40 minutos o tempo de embalagem dos pedidos.",
+      "text_b": "Reduzi de 60 para 40 minutos a separação dos pedidos e redesenhei o endereçamento do estoque.",
+      "priority": 0.7391018867492676,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-003-pseudo-7",
+      "scenario_id": "v01-003",
+      "text_a_id": "v01-003-c",
+      "text_b_id": "v01-003-d",
+      "text_a": "Migrei o banco de clientes de PostgreSQL para MySQL.",
+      "text_b": "Criei backups do banco de clientes no PostgreSQL.",
+      "priority": 0.7289089560508728,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-011-pseudo-7",
+      "scenario_id": "v01-011",
+      "text_a_id": "v01-011-c",
+      "text_b_id": "v01-011-d",
+      "text_a": "Reduzi de 60 para 20 minutos o tempo de separação dos pedidos.",
+      "text_b": "Reduzi de 60 para 40 minutos o tempo de embalagem dos pedidos.",
+      "priority": 0.7262675762176514,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-029-pseudo-7",
+      "scenario_id": "v01-029",
+      "text_a_id": "v01-029-c",
+      "text_b_id": "v01-029-d",
+      "text_a": "Criei um acompanhamento mensal de frequência escolar.",
+      "text_b": "Realizei visitas domiciliares a estudantes com faltas.",
+      "priority": 0.703568160533905,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-006-pseudo-8",
+      "scenario_id": "ref-006",
+      "text_a_id": "ref-006-c",
+      "text_b_id": "ref-006-e",
+      "text_a": "Desativei a leitura de código de barras na expedição.",
+      "text_b": "Implantei leitura de código de barras integrada ao ERP na expedição.",
+      "priority": 0.6864834427833557,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-044-pseudo-7",
+      "scenario_id": "v01-044",
+      "text_a_id": "v01-044-c",
+      "text_b_id": "v01-044-d",
+      "text_a": "Não preparei um guia de benefícios em formato acessível.",
+      "text_b": "Negociei novos benefícios com fornecedores.",
+      "priority": 0.6837878227233887,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-018-pseudo-7",
+      "scenario_id": "v01-018",
+      "text_a_id": "v01-018-c",
+      "text_b_id": "v01-018-d",
+      "text_a": "Implantei pesquisa de satisfação antes do início do atendimento dos chamados.",
+      "text_b": "Analisei as respostas da pesquisa de satisfação dos chamados.",
+      "priority": 0.6745691299438477,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-010-pseudo-7",
+      "scenario_id": "v01-010",
+      "text_a_id": "v01-010-c",
+      "text_b_id": "v01-010-d",
+      "text_a": "Não padronizei a inspeção de recebimento com um checklist.",
+      "text_b": "Treinei os inspetores para operar o equipamento de medição.",
+      "priority": 0.6596861481666565,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-035-pseudo-7",
+      "scenario_id": "v01-035",
+      "text_a_id": "v01-035-c",
+      "text_b_id": "v01-035-d",
+      "text_a": "Não elaborei instruções de agendamento em linguagem simples.",
+      "text_b": "Traduzi as instruções de agendamento para espanhol.",
+      "priority": 0.6412206888198853,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-012-pseudo-7",
+      "scenario_id": "v01-012",
+      "text_a_id": "v01-012-c",
+      "text_b_id": "v01-012-d",
+      "text_a": "Mantive exclusivamente em papel os registros de manutenção preventiva dos veículos.",
+      "text_b": "Planejei o calendário de manutenção corretiva dos veículos.",
+      "priority": 0.6383050680160522,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-036-pseudo-7",
+      "scenario_id": "v01-036",
+      "text_a_id": "v01-036-c",
+      "text_b_id": "v01-036-d",
+      "text_a": "Monitorei mensalmente o estoque de materiais descartáveis.",
+      "text_b": "Solicitei a compra dos materiais descartáveis.",
+      "priority": 0.6308265924453735,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-009-pseudo-7",
+      "scenario_id": "v01-009",
+      "text_a_id": "v01-009-c",
+      "text_b_id": "v01-009-d",
+      "text_a": "Interrompi a contagem cíclica no estoque de peças.",
+      "text_b": "Redefini o ponto de reposição das peças em estoque.",
+      "priority": 0.6279217004776001,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-059-pseudo-7",
+      "scenario_id": "v01-059",
+      "text_a_id": "v01-059-c",
+      "text_b_id": "v01-059-d",
+      "text_a": "Não criei um controle de empréstimo de ferramentas da oficina.",
+      "text_b": "Realizei a manutenção das ferramentas da oficina.",
+      "priority": 0.6267289519309998,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-021-pseudo-7",
+      "scenario_id": "v01-021",
+      "text_a_id": "v01-021-c",
+      "text_b_id": "v01-021-d",
+      "text_a": "Cadastrei 220 produtos no catálogo da loja virtual.",
+      "text_b": "Revisei os preços dos produtos da loja virtual.",
+      "priority": 0.6248533129692078,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-012-pseudo-12",
+      "scenario_id": "v01-012",
+      "text_a_id": "v01-012-d",
+      "text_b_id": "v01-012-e",
+      "text_a": "Planejei o calendário de manutenção corretiva dos veículos.",
+      "text_b": "Digitalizei os registros de manutenção preventiva dos veículos e configurei lembretes.",
+      "priority": 0.6100834012031555,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-005-pseudo-12",
+      "scenario_id": "ref-005",
+      "text_a_id": "ref-005-d",
+      "text_b_id": "ref-005-e",
+      "text_a": "Reduzi a espera no descarregamento de 90 para 60 minutos.",
+      "text_b": "Reduzi a espera no carregamento de 90 para 60 minutos reorganizando as docas.",
+      "priority": 0.6013025045394897,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-046-pseudo-7",
+      "scenario_id": "v01-046",
+      "text_a_id": "v01-046-c",
+      "text_b_id": "v01-046-d",
+      "text_a": "Não criei um calendário editorial para as redes sociais da cafeteria.",
+      "text_b": "Produzi fotografias para as redes sociais da cafeteria.",
+      "priority": 0.5974702835083008,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-048-pseudo-7",
+      "scenario_id": "v01-048",
+      "text_a_id": "v01-048-c",
+      "text_b_id": "v01-048-d",
+      "text_a": "Removi a marcação UTM dos links da newsletter.",
+      "text_b": "Revisei a redação dos links da newsletter.",
+      "priority": 0.591884970664978,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-024-pseudo-7",
+      "scenario_id": "v01-024",
+      "text_a_id": "v01-024-c",
+      "text_b_id": "v01-024-d",
+      "text_a": "Reduzi em 20% as perdas por vencimento no setor de laticínios.",
+      "text_b": "Reduzi em 10% as perdas por avaria no setor de laticínios.",
+      "priority": 0.5885752439498901,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-009-pseudo-8",
+      "scenario_id": "v01-009",
+      "text_a_id": "v01-009-c",
+      "text_b_id": "v01-009-e",
+      "text_a": "Interrompi a contagem cíclica no estoque de peças.",
+      "text_b": "Implantei contagem cíclica no estoque de peças e defini pontos de reposição.",
+      "priority": 0.5873469710350037,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-018-pseudo-8",
+      "scenario_id": "v01-018",
+      "text_a_id": "v01-018-c",
+      "text_b_id": "v01-018-e",
+      "text_a": "Implantei pesquisa de satisfação antes do início do atendimento dos chamados.",
+      "text_b": "Implantei pesquisa de satisfação após o encerramento e analisei suas respostas.",
+      "priority": 0.577898383140564,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-013-pseudo-8",
+      "scenario_id": "v01-013",
+      "text_a_id": "v01-013-c",
+      "text_b_id": "v01-013-e",
+      "text_a": "Conciliei mensalmente as devoluções com os saldos do armazém.",
+      "text_b": "Conciliei semanalmente as devoluções com os saldos do armazém e autorizei os reembolsos.",
+      "priority": 0.568240225315094,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-049-pseudo-7",
+      "scenario_id": "v01-049",
+      "text_a_id": "v01-049-c",
+      "text_b_id": "v01-049-d",
+      "text_a": "Organizei entrevistas com vinte clientes sobre a embalagem.",
+      "text_b": "Analisei as respostas de dez clientes sobre a embalagem.",
+      "priority": 0.564660906791687,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-008-pseudo-12",
+      "scenario_id": "ref-008",
+      "text_a_id": "ref-008-d",
+      "text_b_id": "ref-008-e",
+      "text_a": "Supervisionei a qualidade do atendimento aos domingos.",
+      "text_b": "Organizei o plantão remoto do atendimento aos domingos.",
+      "priority": 0.5456371307373047,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-028-pseudo-8",
+      "scenario_id": "v01-028",
+      "text_a_id": "v01-028-c",
+      "text_b_id": "v01-028-e",
+      "text_a": "Organizei uma feira de ciências com dezoito grupos de estudantes.",
+      "text_b": "Organizei a feira de ciências e orientei oito grupos na elaboração dos projetos.",
+      "priority": 0.5444495677947998,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-009-pseudo-12",
+      "scenario_id": "ref-009",
+      "text_a_id": "ref-009-d",
+      "text_b_id": "ref-009-e",
+      "text_a": "Revisei as fotografias dos produtos de jardinagem.",
+      "text_b": "Revisei as descrições em português e espanhol dos produtos de jardinagem.",
+      "priority": 0.5344517230987549,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-013-pseudo-12",
+      "scenario_id": "ref-013",
+      "text_a_id": "ref-013-d",
+      "text_b_id": "ref-013-e",
+      "text_a": "Organizei o atendimento na coleta do laboratório.",
+      "text_b": "Organizei o atendimento prioritário na recepção do laboratório.",
+      "priority": 0.5231175422668457,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-017-pseudo-12",
+      "scenario_id": "ref-017",
+      "text_a_id": "ref-017-d",
+      "text_b_id": "ref-017-e",
+      "text_a": "Acompanhei o custo por aquisição dos anúncios de busca.",
+      "text_b": "Acompanhei diariamente o custo por clique dos anúncios de busca.",
+      "priority": 0.521499752998352,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "ref-000-pseudo-7",
+      "scenario_id": "ref-000",
+      "text_a_id": "ref-000-c",
+      "text_b_id": "ref-000-d",
+      "text_a": "Reduzi o processamento noturno de 120 para 30 minutos com paralelismo.",
+      "text_b": "Reduzi o processamento noturno de 120 para 60 minutos com cache.",
+      "priority": 0.5158712267875671,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-003-pseudo-8",
+      "scenario_id": "v01-003",
+      "text_a_id": "v01-003-c",
+      "text_b_id": "v01-003-e",
+      "text_a": "Migrei o banco de clientes de PostgreSQL para MySQL.",
+      "text_b": "Migrei o banco de clientes de MySQL para PostgreSQL e configurei backups diários.",
+      "priority": 0.5054405927658081,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-029-pseudo-12",
+      "scenario_id": "v01-029",
+      "text_a_id": "v01-029-d",
+      "text_b_id": "v01-029-e",
+      "text_a": "Realizei visitas domiciliares a estudantes com faltas.",
+      "text_b": "Criei acompanhamento semanal de frequência e fiz visitas a estudantes com faltas.",
+      "priority": 0.5043163895606995,
+      "status": "pending_human_review"
+    },
+    {
+      "pair_id": "v01-028-pseudo-7",
+      "scenario_id": "v01-028",
+      "text_a_id": "v01-028-c",
+      "text_b_id": "v01-028-d",
+      "text_a": "Organizei uma feira de ciências com dezoito grupos de estudantes.",
+      "text_b": "Orientei oito grupos na elaboração dos projetos da feira de ciências.",
+      "priority": 0.5001720786094666,
+      "status": "pending_human_review"
+    }
+  ]
+}

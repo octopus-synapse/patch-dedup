@@ -1,0 +1,48 @@
+{
+  "name": "hpo_4",
+  "directory": "artifacts/v03/hpo_4/model",
+  "initial_key": "nli_deberta",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.6800931096076965,
+    "thresholds": {
+      "low": 0.08298470824956894,
+      "high": 0.08366965502500534,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.9473684210526315,
+    "recall": 0.9473684210526315,
+    "f1": 0.9473684210526315,
+    "macro_f1": 0.9536842105263157,
+    "average_precision": 0.9764930448445364,
+    "confusion_matrix": [
+      [
+        72,
+        3
+      ],
+      [
+        3,
+        54
+      ]
+    ],
+    "coverage": 0.9924242424242424,
+    "review_rate": 0.007575757575757576,
+    "review_count": 1,
+    "redundant_count": 61,
+    "not_redundant_count": 70,
+    "selective_precision": 0.9016393442622951,
+    "negative_predictive_value": 0.9714285714285714
+  },
+  "cache": "artifacts/v03/cache/hpo_4-development.npy"
+}

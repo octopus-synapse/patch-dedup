@@ -1,0 +1,48 @@
+{
+  "name": "distilled_minilm",
+  "directory": "artifacts/v03/distilled_minilm/model",
+  "initial_key": "nli_minilm",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.24491722881793976,
+    "thresholds": {
+      "low": 0.3741615414619446,
+      "high": 0.8780362010002136,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.7432432432432432,
+    "recall": 0.9649122807017544,
+    "f1": 0.8396946564885496,
+    "macro_f1": 0.8408999598232221,
+    "average_precision": 0.8610905147402146,
+    "confusion_matrix": [
+      [
+        56,
+        19
+      ],
+      [
+        2,
+        55
+      ]
+    ],
+    "coverage": 0.6590909090909091,
+    "review_rate": 0.3409090909090909,
+    "review_count": 45,
+    "redundant_count": 23,
+    "not_redundant_count": 64,
+    "selective_precision": 0.9130434782608695,
+    "negative_predictive_value": 0.90625
+  },
+  "cache": "artifacts/v03/cache/distilled_minilm-development.npy"
+}

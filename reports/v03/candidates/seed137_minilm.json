@@ -1,0 +1,48 @@
+{
+  "name": "seed137_minilm",
+  "directory": "artifacts/v03/seed137_minilm/model",
+  "initial_key": "nli_minilm",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.2587929964065552,
+    "thresholds": {
+      "low": 0.2971934676170349,
+      "high": 0.8262629508972168,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.75,
+    "recall": 0.9473684210526315,
+    "f1": 0.8372093023255814,
+    "macro_f1": 0.8408268733850129,
+    "average_precision": 0.864283156278871,
+    "confusion_matrix": [
+      [
+        57,
+        18
+      ],
+      [
+        3,
+        54
+      ]
+    ],
+    "coverage": 0.6666666666666666,
+    "review_rate": 0.3333333333333333,
+    "review_count": 44,
+    "redundant_count": 23,
+    "not_redundant_count": 65,
+    "selective_precision": 0.9130434782608695,
+    "negative_predictive_value": 0.9076923076923077
+  },
+  "cache": "artifacts/v03/cache/seed137_minilm-development.npy"
+}

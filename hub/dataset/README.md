@@ -5,10 +5,20 @@ license: cc-by-4.0
 task_categories:
 - text-classification
 size_categories:
-- n<1K
+- 1K<n<10K
 configs:
-- config_name: refined
+- config_name: v03
   default: true
+  data_files:
+  - split: train
+    path: v03/train.jsonl
+  - split: validation
+    path: v03/validation.jsonl
+  - split: calibration
+    path: v03/calibration.jsonl
+  - split: test
+    path: v03/test.jsonl
+- config_name: refined
   data_files:
   - split: train
     path: refined/train.jsonl
@@ -94,3 +104,13 @@ Projeto independente, sem afiliação ao iFood.
 
 [GitHub, protocolos e relatórios](https://github.com/octopus-synapse/patch-dedup)
 · [Modelo experimental](https://huggingface.co/enzoferracini/patchdedup-ptbr-minilm)
+
+## Bateria v03
+
+A configuração v03 inclui 744 pares de treino, 132 de desenvolvimento, 20 de
+calibração e 40 de teste novo. Os 248 pares adicionais de treino são combinações
+dos mesmos cenários; nenhum cenário de avaliação foi incorporado ao treino.
+Pseudo-rótulos, quando presentes, estão em v03/pseudo_train.jsonl, não fazem parte
+do treino padrão e não foram revisados por humanos. A coluna split dos registros
+de calibração conserva validation por compatibilidade; o arquivo/manifesto
+distingue seu papel reservado. Os dados de todas as versões são sintéticos.

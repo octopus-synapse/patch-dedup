@@ -1,0 +1,9 @@
+{
+  "source": "hpo_5",
+  "cpu_threads": 2,
+  "median_seconds_per_four_pairs": {
+    "float32": 0.5209903990000271,
+    "int8": 0.35144217200002004
+  },
+  "precision": "dynamic int8 Linear; embeddings float32"
+}

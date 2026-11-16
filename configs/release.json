@@ -1,11 +1,20 @@
 {
-  "status": "experimental-v02",
-  "model_id": "enzoferracini/patchdedup-ptbr-minilm",
-  "model_revision": "f0b6377fe50954527f7619832598da13f22e7afc",
+  "status": "experimental-v03",
+  "model_id": "enzoferracini/patchdedup-ptbr-mdeberta",
+  "model_revision": "f12d3936968d37b80a750c4a691e66b09edd83a9",
   "dataset_id": "enzoferracini/patchdedup-synthetic-ptbr",
-  "dataset_revision": "bd82cf6fdcb3d9ae58ddf9aac8da6620469b22bd",
-  "incumbent_revision": "52e056e0980fc4ec4f01b3074ed3167f18606852",
-  "cross_encoder_frozen_revision": "0d1e828a9431216b0e57f8b9607d4ed471dcf822",
-  "selected_embedding": "online_contrastive",
-  "note": "Historical published v02; further development uses fresh selection and evaluation"
+  "dataset_revision": "5b19111ab4f8f351e2e630a464594f5533bf64a4",
+  "history": {
+    "v02": {
+      "status": "experimental-v02",
+      "model_id": "enzoferracini/patchdedup-ptbr-minilm",
+      "model_revision": "f0b6377fe50954527f7619832598da13f22e7afc",
+      "dataset_id": "enzoferracini/patchdedup-synthetic-ptbr",
+      "dataset_revision": "bd82cf6fdcb3d9ae58ddf9aac8da6620469b22bd",
+      "incumbent_revision": "52e056e0980fc4ec4f01b3074ed3167f18606852",
+      "cross_encoder_frozen_revision": "0d1e828a9431216b0e57f8b9607d4ed471dcf822",
+      "selected_embedding": "online_contrastive",
+      "note": "Historical published v02; further development uses fresh selection and evaluation"
+    }
+  }
 }

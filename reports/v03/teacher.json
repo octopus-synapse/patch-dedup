@@ -1,0 +1,48 @@
+{
+  "name": "multitask_deberta",
+  "directory": "artifacts/v03/multitask_deberta/model",
+  "initial_key": "nli_deberta",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.3526493012905121,
+    "thresholds": {
+      "low": 0.46919283270835876,
+      "high": 0.4728550910949707,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.8983050847457628,
+    "recall": 0.9298245614035088,
+    "f1": 0.9137931034482759,
+    "macro_f1": 0.9231127679403541,
+    "average_precision": 0.9448769491431617,
+    "confusion_matrix": [
+      [
+        69,
+        6
+      ],
+      [
+        4,
+        53
+      ]
+    ],
+    "coverage": 0.9924242424242424,
+    "review_rate": 0.007575757575757576,
+    "review_count": 1,
+    "redundant_count": 56,
+    "not_redundant_count": 75,
+    "selective_precision": 0.9107142857142857,
+    "negative_predictive_value": 0.92
+  },
+  "cache": "artifacts/v03/cache/multitask_deberta-development.npy"
+}

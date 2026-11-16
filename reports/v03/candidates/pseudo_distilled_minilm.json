@@ -1,0 +1,48 @@
+{
+  "name": "pseudo_distilled_minilm",
+  "directory": "artifacts/v03/pseudo_distilled_minilm/model",
+  "initial_key": "nli_minilm",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.28828057646751404,
+    "thresholds": {
+      "low": 0.3499458432197571,
+      "high": 0.8395451307296753,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.7605633802816901,
+    "recall": 0.9473684210526315,
+    "f1": 0.84375,
+    "macro_f1": 0.8483455882352942,
+    "average_precision": 0.8615387173943199,
+    "confusion_matrix": [
+      [
+        58,
+        17
+      ],
+      [
+        3,
+        54
+      ]
+    ],
+    "coverage": 0.6590909090909091,
+    "review_rate": 0.3409090909090909,
+    "review_count": 45,
+    "redundant_count": 23,
+    "not_redundant_count": 64,
+    "selective_precision": 0.9130434782608695,
+    "negative_predictive_value": 0.90625
+  },
+  "cache": "artifacts/v03/cache/pseudo_distilled_minilm-development.npy"
+}

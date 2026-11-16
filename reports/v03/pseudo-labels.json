@@ -1,0 +1,8 @@
+{
+  "candidates": 558,
+  "accepted": 59,
+  "confidence": 0.98,
+  "teacher": "multitask_deberta",
+  "agreement": "NLI MiniLM directional argmax agreement",
+  "annotation": "machine pseudo labels; no human review"
+}

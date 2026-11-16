@@ -1,0 +1,48 @@
+{
+  "name": "hpo_7",
+  "directory": "artifacts/v03/hpo_7/model",
+  "initial_key": "nli_minilm",
+  "kind": "nli",
+  "aggregation": "min",
+  "policy": {
+    "binary_threshold": 0.26674771308898926,
+    "thresholds": {
+      "low": 0.322396844625473,
+      "high": 0.7723069190979004,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "validation": {
+    "support": 132,
+    "positive_support": 57,
+    "precision": 0.803030303030303,
+    "recall": 0.9298245614035088,
+    "f1": 0.8617886178861789,
+    "macro_f1": 0.870610620999827,
+    "average_precision": 0.8806500891758665,
+    "confusion_matrix": [
+      [
+        62,
+        13
+      ],
+      [
+        4,
+        53
+      ]
+    ],
+    "coverage": 0.7121212121212122,
+    "review_rate": 0.2878787878787879,
+    "review_count": 38,
+    "redundant_count": 24,
+    "not_redundant_count": 70,
+    "selective_precision": 0.9166666666666666,
+    "negative_predictive_value": 0.9
+  },
+  "cache": "artifacts/v03/cache/hpo_7-development.npy"
+}
