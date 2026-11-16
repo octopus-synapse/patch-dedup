@@ -83,3 +83,17 @@ def test_compare_empty_text_is_safe(tmp_path):
     )
     assert result.returncode == 2
     assert json.loads(result.stderr)["error"]["code"] == "EMPTY_TEXT"
+
+
+def test_batch_missing_input_is_safe_and_does_not_load_model(tmp_path):
+    result = run_cli(
+        "batch",
+        "--model",
+        str(tmp_path / "missing-model"),
+        "--input",
+        str(tmp_path / "private-file.jsonl"),
+        cwd=tmp_path,
+    )
+    assert result.returncode == 2
+    assert json.loads(result.stderr)["error"]["code"] == "INPUT_UNAVAILABLE"
+    assert "private-file" not in result.stderr and result.stdout == ""

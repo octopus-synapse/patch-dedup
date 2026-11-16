@@ -1,4 +1,4 @@
-# Contratos: entrada 0.1.0 e saída 0.2.0
+# Contratos: entrada 0.1.0 e saídas 0.2.0/0.3.0
 
 O pacote oferece `CompareInput`, `CompareOutput`, `PairRecord`, `Thresholds` e a
 função `decide(score, thresholds)`. A inferência carrega somente bundles locais com manifestos verificados.
@@ -10,17 +10,18 @@ As definições executáveis estão em `src/patchdedup/schemas.py`.
 `text_b`. Textos são normalizados para Unicode NFC e espaços simples. Rejeita
 texto vazio, Unicode não representável em UTF-8, mais de 1.500 caracteres após
 normalização, idioma/versão não suportados e campos desconhecidos. Não altera
-caixa, números, negações ou pontuação. O limite de tokens será validado pelo
-futuro tokenizer, sem truncamento silencioso.
+caixa, números, negações ou pontuação. O tokenizer valida o limite de tokens do
+checkpoint, sem truncamento silencioso.
 
 `Thresholds(low=..., high=...)` exige `-1 <= low < high <= 1`, sem defaults.
 `decide` rejeita score não finito ou fora de `[-1,1]` com `INVALID_SCORE`.
 Score `< low`: `not_redundant`; score `>= high`: `redundant`; restante: `review`.
-Os limites não possuem evidência experimental até seleção na validação.
+Os limites vêm do bundle e do seu protocolo de seleção/calibração; não garantem
+o mesmo desempenho em novos domínios.
 
 `CompareOutput` segue os campos da seção 8 da especificação. Exige versões e
 revisão não vazias, score válido, decisão coerente e `requires_review` equivalente
-a `decision == "review"`. O produtor futuro deverá registrar commit do Hub ou
+a `decision == "review"`. O produtor registra commit do Hub ou
 hash do bundle em `model_revision`; o schema não consulta o Hub. Uma decisão
 positiva continuará sendo sugestão para revisão humana.
 
@@ -92,5 +93,37 @@ atingir essa precisão em novos dados. Os resultados v01 mostraram esse limite.
 O carregamento verifica hashes dos arquivos do bundle. Os textos são tokenizados
 sem truncamento: até 128 tokens por bullet no MiniLM atual; cross-encoder, quando
 presente, também verifica o limite conjunto de 256 tokens. São feitas as duas
-orientações do par e a média dos scores do cross-encoder para preservar simetria.
+orientações do par e a agregação definida no bundle para preservar simetria.
+O v03 publicado usa o mínimo dos scores NLI nas duas direções; cabeças binárias
+usam a média dos sigmoids.
 Nenhuma chamada a APIs externas é feita durante inferência.
+
+## Inferência em lote
+
+`patchdedup batch --model <bundle> --input pares.jsonl` aceita um `CompareInput`
+por linha ou stdin com `--input -`. Reutiliza uma instância de `Comparator` e
+processa os pares sequencialmente. Saída JSONL: `{"line": N, "result": ...}` ou
+`{"line": N, "error": {"code": ..., "message": ...}}`. Não inclui os textos.
+Linhas em branco são ignoradas, preservando a numeração física; linhas acima de
+64 KiB recebem `INPUT_TOO_LONG` e são descartadas por inteiro, sem truncamento.
+
+Exit codes: 0 se todos os registros foram processados; 1 se houve erros por registro;
+2 para inicialização/leitura ou `EMPTY_INPUT`. Erros de registro ficam em stdout
+junto aos resultados; erros globais ficam em stderr. Entradas inválidas não
+interrompem os registros seguintes. Os limites do comparador e a declaração de
+idioma `pt-BR` também se aplicam ao lote. Veja o [guia Docker](DOCKER.md).
+
+
+## Pipeline v03
+
+A saída `schema_version=0.3.0` usa `score_graph.json` para combinar os componentes
+locais e aplicar a transformação de scores registrada. `decision_score.metric` é
+`pair_score`; `similarity.metric` permanece `cosine`. `decision_model_revision`
+identifica o hash do grafo e `model_revision` identifica o componente principal.
+O manifesto verifica os arquivos dos componentes e do encoder de embeddings.
+
+`prediction_set` registra os rótulos do conjunto conformal, enquanto `decision`
+segue os thresholds do bundle. No v03 publicado, ambos derivam da calibração
+reservada em 20 pares. Cobertura conformal pressupõe intercambiabilidade e não
+garante precisão ou proteção contra mudança de domínio. A transformação identity
+do grafo atual não produz probabilidades calibradas.

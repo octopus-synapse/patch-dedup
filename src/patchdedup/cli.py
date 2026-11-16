@@ -3,6 +3,7 @@
 import argparse
 import json
 import sys
+from contextlib import nullcontext
 
 from patchdedup import __version__
 from pydantic import ValidationError
@@ -36,7 +37,26 @@ def main(argv: list[str] | None = None) -> int:
     compare.add_argument("--text-a", required=True)
     compare.add_argument("--text-b", required=True)
     compare.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
+    batch = commands.add_parser("batch", help="Compare JSONL pairs loading the local model once")
+    batch.add_argument("--model", required=True)
+    batch.add_argument("--input", required=True, help="UTF-8 JSONL file, or - for stdin")
+    batch.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     args = parser.parse_args(argv)
+    if args.command == "batch":
+        from patchdedup.batch import compare_stream, error
+
+        def factory():
+            from patchdedup.encoder import Comparator
+
+            return Comparator(args.model, args.device)
+
+        try:
+            source = nullcontext(sys.stdin.buffer) if args.input == "-" else open(args.input, "rb")
+            with source as stream:
+                return compare_stream(stream, factory, sys.stdout, sys.stderr)
+        except OSError:
+            print(json.dumps(error("INPUT_UNAVAILABLE", "Cannot read input.")), file=sys.stderr)
+            return 2
     if args.command == "compare":
         try:
             from patchdedup.encoder import Comparator
