@@ -18,7 +18,10 @@ def test_directional_labels_preserve_partial_information():
     assert directional_targets("distinct", labels) == (1, 1)
 
 
-def test_nli_training_and_symmetric_entailment_reload(tmp_path):
+def test_nli_training_and_symmetric_entailment_reload(tmp_path, monkeypatch):
+    from unittest.mock import Mock
+
+    import patchdedup.nli as nli
     from transformers import BertConfig, BertForSequenceClassification, BertTokenizerFast
 
     initial = tmp_path / "tiny-nli"
@@ -55,8 +58,12 @@ def test_nli_training_and_symmetric_entailment_reload(tmp_path):
         rdrop=0.1,
         ema_decay=0.9,
         bf16=False,
+        ranking_weight=0.2,
     )
+    ranking = Mock(wraps=nli.pairwise_ranking_loss)
+    monkeypatch.setattr(nli, "pairwise_ranking_loss", ranking)
     result = train_nli(initial, rows, rows, tmp_path / "run", cfg, device="cpu")
+    assert ranking.call_count == 3
     assert result["optimizer_steps"] == 3
     assert result["selected_parameter_delta_l2"] > 0
     scorer = CrossScorer(tmp_path / "run" / "model")
@@ -69,3 +76,17 @@ def test_nli_training_and_symmetric_entailment_reload(tmp_path):
 def test_quantized_backend_rejects_gpu_before_loading_weights(tmp_path):
     with pytest.raises(ValueError, match="MODEL_UNAVAILABLE"):
         CrossScorer(tmp_path / "absent", device="cuda", quantized=True)
+
+
+def test_pairwise_ranking_loss_penalizes_wrong_order_and_handles_one_class():
+    import torch
+    from patchdedup.nli import pairwise_ranking_loss
+
+    y = torch.tensor([1.0, 0.0])
+    correct = pairwise_ranking_loss(torch.tensor([3.0, -3.0]), y)
+    wrong = pairwise_ranking_loss(torch.tensor([-3.0, 3.0]), y)
+    assert correct < wrong
+    s = torch.tensor([1.0, 2.0], requires_grad=True)
+    empty = pairwise_ranking_loss(s, torch.ones(2))
+    empty.backward()
+    assert empty.item() == 0 and s.grad is not None

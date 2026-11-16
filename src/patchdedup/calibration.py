@@ -47,7 +47,7 @@ def apply_calibrator(calibration, scores):
     raise ValueError("Unknown calibrator")
 
 
-def binary_threshold(y, scores):
+def binary_threshold(y, scores, metric="macro_f1"):
     """Choose macro F1 cutoff on fitting folds, never their held-out groups."""
     y, s = np.asarray(y), np.asarray(scores)
     choices = np.unique(np.concatenate(([0.0, 1.0], s)))
@@ -58,10 +58,13 @@ def binary_threshold(y, scores):
     fn = (~pred & (y[:, None] == 1)).sum(0)
     positive = 2 * tp / np.maximum(2 * tp + fp + fn, 1)
     negative = 2 * tn / np.maximum(2 * tn + fp + fn, 1)
+    if metric not in ("macro_f1", "f1"):
+        raise ValueError("Unknown threshold metric")
+    primary = (positive + negative) / 2 if metric == "macro_f1" else positive
     index = max(
         range(len(choices)),
         key=lambda i: (
-            float((positive[i] + negative[i]) / 2),
+            float(primary[i]),
             float(positive[i]),
             -abs(choices[i] - 0.5),
         ),

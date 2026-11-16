@@ -58,7 +58,7 @@ def apply_score_graph(graph, matrix):
     return apply_calibrator(graph["calibrator"], combine_scores(graph, matrix))
 
 
-def crossfit_graph(matrix, y, groups, template):
+def crossfit_graph(matrix, y, groups, template, threshold_metric="macro_f1"):
     x, y = np.asarray(matrix, dtype=float), np.asarray(y)
     oof = np.zeros(len(y))
     raw_oof = np.zeros(len(y))
@@ -68,7 +68,9 @@ def crossfit_graph(matrix, y, groups, template):
     for train, valid in folds:
         graph = fit_score_graph(x[train], y[train], template)
         p = apply_score_graph(graph, x[valid])
-        cutoff = binary_threshold(y[train], apply_score_graph(graph, x[train]))
+        cutoff = binary_threshold(
+            y[train], apply_score_graph(graph, x[train]), metric=threshold_metric
+        )
         oof[valid] = p
         raw_oof[valid] = combine_scores(graph, x[valid])
         binary[valid] = (p >= cutoff).astype(int)
@@ -78,6 +80,7 @@ def crossfit_graph(matrix, y, groups, template):
                 validation_groups=len(set(np.asarray(groups)[valid])),
                 macro_f1=float(f1_score(y[valid], binary[valid], average="macro")),
                 average_precision=float(average_precision_score(y[valid], p)),
+                binary_threshold=cutoff,
             )
         )
     return dict(

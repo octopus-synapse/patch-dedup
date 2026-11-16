@@ -14,6 +14,16 @@ from patchdedup.evaluation import evaluate_scores, select_policy
 from patchdedup.training import environment, freeze_encoder, seed_all
 
 
+def pairwise_ranking_loss(scores, targets, margin=0.0):
+    """Logistic ranking surrogate; only within training batches, never holdouts."""
+    import torch
+
+    positive, negative = scores[targets == 1], scores[targets == 0]
+    if not len(positive) or not len(negative):
+        return scores.sum() * 0
+    return torch.nn.functional.softplus(negative[:, None] - positive[None, :] + margin).mean()
+
+
 def directional_targets(relation, labels):
     entail, neutral, contradiction = (labels[k] for k in ("entailment", "neutral", "contradiction"))
     return {
@@ -184,6 +194,10 @@ def train_nli(initial, train, validation, output, config, device="cpu", teacher=
                 loss += directional_supervision_loss(
                     ab, ba, batch, labels, config.get("label_smoothing", 0.0)
                 )
+                if config.get("ranking_weight", 0):
+                    loss += config["ranking_weight"] * pairwise_ranking_loss(
+                        torch.minimum(odds_ab, odds_ba), y, config.get("ranking_margin", 0.0)
+                    )
                 if teacher is not None and config.get("distillation_weight", 0):
                     temperature = config.get("temperature", 2.0)
                     student = torch.stack((ab, ba), dim=1).reshape(-1, 3)
@@ -238,6 +252,10 @@ def train_nli(initial, train, validation, output, config, device="cpu", teacher=
         history.append(row)
         print(json.dumps(row), flush=True)
         objective = (metrics["average_precision"], metrics["macro_f1"])
+        if "minimum_f1" in config:
+            from patchdedup.target_search import metric_key
+
+            objective = metric_key(metrics, minimum_f1=config["minimum_f1"])
         if objective > best:
             best, selected_epoch, selected_policy, wait = objective, epoch + 1, policy, 0
             selected_delta = float(
@@ -274,6 +292,7 @@ def train_nli(initial, train, validation, output, config, device="cpu", teacher=
         duration_seconds=time.monotonic() - started,
         environment=environment(),
         objective="multitask directional NLI CE and symmetric redundancy BCE",
+        ranking_weight=config.get("ranking_weight", 0.0),
         score="minimum bidirectional entailment softmax; uncalibrated",
     )
     if config.get("lora"):
