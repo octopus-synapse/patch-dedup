@@ -78,13 +78,32 @@ class Comparator:
             self.metadata = json.loads((path / "patchdedup.json").read_text())
             self.thresholds = Thresholds(**json.loads((path / "thresholds.json").read_text()))
             self.encoder = SentenceEncoder(path, device)
+            self.reranker = None
+            self.reranker_revision = None
+            if self.metadata.get("decision_source") == "cross_encoder":
+                from patchdedup.cross_encoder import CrossScorer
+
+                self.reranker = CrossScorer(path / "reranker", device)
+                self.reranker_revision = json.loads(
+                    (path / "reranker" / "cross_encoder.json").read_text()
+                )["model_revision"]
         except (OSError, ValueError, KeyError) as exc:
             raise ValueError("MODEL_UNAVAILABLE: cannot load local checkpoint") from exc
 
     def compare(self, request: CompareInput) -> CompareOutput:
         score = self.encoder.score_pairs([request.model_dump()])[0]
-        decision = decide(score, self.thresholds)
+        decision_value = score
+        score_fields = {}
+        if self.reranker is not None:
+            decision_value = self.reranker.score_pairs([request.model_dump()])[0]
+            score_fields = dict(
+                decision_source="cross_encoder",
+                decision_score={"metric": "uncalibrated_sigmoid", "score": decision_value},
+                decision_model_revision=self.reranker_revision,
+            )
+        decision = decide(decision_value, self.thresholds)
         return CompareOutput(
+            **score_fields,
             model_version=self.metadata["model_version"],
             model_revision=self.metadata["model_revision"],
             decision_policy_version=self.metadata["decision_policy_version"],

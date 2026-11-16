@@ -71,14 +71,22 @@ class Similarity(Contract):
     score: Score
 
 
+class DecisionScore(Contract):
+    metric: Literal["uncalibrated_sigmoid"] = "uncalibrated_sigmoid"
+    score: Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)]
+
+
 class CompareOutput(Contract):
-    schema_version: Literal["0.1.0"] = "0.1.0"
+    schema_version: Literal["0.1.0", "0.2.0"] = "0.2.0"
     model_version: Identifier
     model_revision: Identifier
     decision_policy_version: Identifier
     language: Literal["pt-BR"] = "pt-BR"
     similarity: Similarity
     decision: Decision
+    decision_source: Literal["cosine", "cross_encoder"] = "cosine"
+    decision_score: DecisionScore | None = None
+    decision_model_revision: Identifier | None = None
     thresholds: Thresholds
     requires_review: bool
     warnings: list[str] = Field(
@@ -89,7 +97,18 @@ class CompareOutput(Contract):
     def validate_decision(self) -> "CompareOutput":
         from patchdedup.decision import decide
 
-        if self.decision != decide(self.similarity.score, self.thresholds):
+        score = self.similarity.score
+        if self.decision_source == "cross_encoder":
+            if (
+                self.schema_version != "0.2.0"
+                or self.decision_score is None
+                or not self.decision_model_revision
+            ):
+                raise ValueError("Cross encoder requires schema 0.2.0, score and revision")
+            score = self.decision_score.score
+        elif self.decision_score is not None or self.decision_model_revision is not None:
+            raise ValueError("Cosine policy cannot include a separate decision model")
+        if self.decision != decide(score, self.thresholds):
             raise ValueError("Decision does not match score and thresholds")
         if self.requires_review != (self.decision == "review"):
             raise ValueError("requires_review must match decision")

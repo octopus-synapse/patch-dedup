@@ -156,3 +156,23 @@ def test_output_consistency(overrides):
 def test_disabled_policy_directions_abstain():
     assert decide(1, Thresholds(low=-1, high=1, positive_enabled=False)) == "review"
     assert decide(-1, Thresholds(low=0, high=1, negative_enabled=False)) == "review"
+
+
+def test_joint_pair_score_is_separate_from_cosine():
+    value = CompareOutput(
+        **output(
+            schema_version="0.2.0",
+            similarity={"metric": "cosine", "score": 0.95},
+            decision="review",
+            decision_source="cross_encoder",
+            decision_model_revision="sha256:cross-test",
+            decision_score={"metric": "uncalibrated_sigmoid", "score": 0.5},
+        )
+    )
+    assert value.similarity.score == 0.95
+    assert value.decision_score.score == 0.5
+
+
+def test_joint_pair_backend_requires_score_and_revision():
+    with pytest.raises(ValidationError):
+        CompareOutput(**output(schema_version="0.2.0", decision_source="cross_encoder"))
