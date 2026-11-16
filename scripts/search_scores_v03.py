@@ -110,6 +110,8 @@ def main():
     )
     indices = graph["indices"]
     graph["components"] = [components[i] for i in indices]
+    for component in graph["components"]:
+        component["model_sha256"] = sha256(Path(component["directory"]) / "model.safetensors")
     graph["indices"] = list(range(len(indices)))
     graph["binary_threshold"] = binary_threshold(y, best["oof_scores"])
     save_json(args.output / "selected-score-graph.json", graph)

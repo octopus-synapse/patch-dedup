@@ -1,6 +1,8 @@
 """Evaluate frozen component descriptors without touching training or policy selection."""
 
 import gc
+from pathlib import Path
+from patchdedup.dataset import sha256
 
 import numpy as np
 
@@ -12,6 +14,12 @@ def component_matrix(components, rows, device="cpu"):
 
     columns = []
     for component in components:
+        if (
+            component.get("model_sha256")
+            and sha256(Path(component["directory"]) / "model.safetensors")
+            != component["model_sha256"]
+        ):
+            raise ValueError("Selected component changed after selection")
         effective = "cpu" if component.get("quantized") else device
         scorer = CrossScorer(
             component["directory"],

@@ -15,3 +15,8 @@
   Preserve material facts, provenance, source revisions and dataset hashes.
 - Keep credentials, private text and weights out of Git. Hub publishing is manual,
   uses explicit files and requires verifying destination contents and revisions.
+
+- Keep `src/patchdedup/`; the user explicitly retained this layout.
+- v03 has reserved development/calibration/test groups. Never use the final test
+  for choosing models, thresholds or the score graph. Use the completion controller
+  to resume work; do not duplicate an active local GPU worker.

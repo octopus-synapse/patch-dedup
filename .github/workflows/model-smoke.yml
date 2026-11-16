@@ -15,8 +15,9 @@ jobs:
       - run: uv sync --locked --extra cpu
       - name: Download the published pinned revision
         run: |
+          MODEL_ID=$(python -c "import json; print(json.load(open('configs/release.json'))['model_id'])")
           MODEL_REVISION=$(python -c "import json; print(json.load(open('configs/release.json'))['model_revision'])")
-          uv run --locked --extra cpu hf download enzoferracini/patchdedup-ptbr-minilm --revision "$MODEL_REVISION" --local-dir artifacts/hub-model
+          uv run --locked --extra cpu hf download "$MODEL_ID" --revision "$MODEL_REVISION" --local-dir artifacts/hub-model
       - name: Unit, integration and real offline inference checks
         run: uv run --locked --extra cpu pytest -q
         env:

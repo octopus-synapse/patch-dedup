@@ -72,7 +72,10 @@ def main():
         for c in legacy_selection["candidates"]
         if c["name"] == legacy_selection["chosen_finetuned"]
     )
-    legacy_scores = score_checkpoint(legacy["directory"], rows, args.device)
+    legacy_directory = Path(legacy["directory"])
+    if not legacy_directory.exists():
+        legacy_directory = Path("artifacts/extended-42/selected-model")
+    legacy_scores = score_checkpoint(legacy_directory, rows, args.device)
     legacy_metrics = evaluate_scores(y, legacy_scores, legacy["policy"])
     save_json(
         args.reports / "test.json",
