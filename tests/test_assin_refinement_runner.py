@@ -48,8 +48,24 @@ def test_freeze_rejects_changed_protocol_and_writes_utf8(tmp_path):
         module.freeze(file, {"changed": True})
 
 
-def test_selection_data_loading_does_not_read_test(monkeypatch):
+def test_selection_data_loading_does_not_read_test(tmp_path, monkeypatch):
+    import hashlib
+
     module = runner()
+    monkeypatch.setattr(module, "PREVIOUS", tmp_path)
+    rows = {
+        "train": [dict(scenario_id="train", text_a="treino a", text_b="treino b")],
+        "validation": [
+            dict(scenario_id="assin-val", text_a="val a", text_b="val b", source="nilc-nlp/assin"),
+            dict(scenario_id="professional-val", text_a="local a", text_b="local b"),
+        ],
+    }
+    hashes = {}
+    for split, records in rows.items():
+        path = tmp_path / f"{split}.jsonl"
+        path.write_text("".join(json.dumps(row) + "\n" for row in records), encoding="utf-8")
+        hashes[path.name] = hashlib.sha256(path.read_bytes()).hexdigest()
+    module.save(tmp_path / "protocol.json", {"files": hashes})
     original = Path.read_text
 
     def protected(path, *args, **kwargs):
