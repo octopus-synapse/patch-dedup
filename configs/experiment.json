@@ -1,0 +1,17 @@
+{
+  "base_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "base_revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "base_directory": "artifacts/base",
+  "dataset": "data/v01",
+  "refinement_dataset": "data/refinement",
+  "seed": 42,
+  "epochs": 3,
+  "batch_size": 8,
+  "gradient_accumulation": 2,
+  "learning_rate": 0.00002,
+  "refinement_learning_rate": 0.00001,
+  "loss": "cosine",
+  "selection": "validation average_precision, then binary F1; earliest tie",
+  "refinement_candidates": ["cosine", "cosent"],
+  "test_policy": "Score once after all candidate and threshold selection is frozen"
+}

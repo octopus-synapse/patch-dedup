@@ -5,7 +5,10 @@ import json
 import sys
 
 from patchdedup import __version__
+from pydantic import ValidationError
+
 from patchdedup.data import audit_file
+from patchdedup.schemas import CompareInput
 
 
 class Parser(argparse.ArgumentParser):
@@ -28,7 +31,34 @@ def main(argv: list[str] | None = None) -> int:
         "validate-data", help="Audit a JSONL file containing all three splits"
     )
     audit.add_argument("--input", required=True, help="UTF-8 JSONL path")
+    compare = commands.add_parser("compare", help="Compare two texts using a verified local bundle")
+    compare.add_argument("--model", required=True)
+    compare.add_argument("--text-a", required=True)
+    compare.add_argument("--text-b", required=True)
+    compare.add_argument("--device", choices=["cpu", "cuda"], default="cpu")
     args = parser.parse_args(argv)
+    if args.command == "compare":
+        try:
+            from patchdedup.encoder import Comparator
+
+            request = CompareInput(text_a=args.text_a, text_b=args.text_b)
+            result = Comparator(args.model, args.device).compare(request)
+            print(result.model_dump_json())
+            return 0
+        except ValidationError as exc:
+            code = exc.errors(include_input=False)[0]["type"]
+            if code not in {"EMPTY_TEXT", "INPUT_TOO_LONG", "INVALID_UTF8"}:
+                code = "INVALID_INPUT"
+        except ImportError:
+            code = "ML_DEPENDENCIES_UNAVAILABLE"
+        except ValueError as exc:
+            code = str(exc).split(":", 1)[0]
+            if code not in {"MODEL_UNAVAILABLE", "INPUT_TOO_LONG", "INVALID_SCORE"}:
+                code = "MODEL_UNAVAILABLE"
+        print(
+            json.dumps({"error": {"code": code, "message": "Comparison failed."}}), file=sys.stderr
+        )
+        return 2
     try:
         report = audit_file(args.input)
     except OSError:

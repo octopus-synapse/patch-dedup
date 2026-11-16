@@ -57,6 +57,29 @@ def test_installed_console_entrypoint(tmp_path):
     assert "validate-data" in result.stdout
 
 
-def test_inference_is_not_exposed(tmp_path):
+def test_compare_requires_explicit_arguments(tmp_path):
     result = run_cli("compare", cwd=tmp_path)
     assert result.returncode == 2
+
+
+def test_compare_missing_bundle(tmp_path):
+    result = run_cli(
+        "compare",
+        "--model",
+        str(tmp_path / "absent"),
+        "--text-a",
+        "A",
+        "--text-b",
+        "B",
+        cwd=tmp_path,
+    )
+    assert result.returncode == 2
+    assert json.loads(result.stderr)["error"]["code"] == "MODEL_UNAVAILABLE"
+
+
+def test_compare_empty_text_is_safe(tmp_path):
+    result = run_cli(
+        "compare", "--model", str(tmp_path), "--text-a", " ", "--text-b", "B", cwd=tmp_path
+    )
+    assert result.returncode == 2
+    assert json.loads(result.stderr)["error"]["code"] == "EMPTY_TEXT"
