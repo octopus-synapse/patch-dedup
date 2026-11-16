@@ -17,6 +17,7 @@ from patchdedup.evaluation import evaluate_scores, select_policy
 from patchdedup.nli import predict_logits, train_nli
 from patchdedup.pseudo import consensus_relation
 from patchdedup.schemas import PairRecord
+from patchdedup.training import seed_all
 
 
 def main():
@@ -28,6 +29,7 @@ def main():
     parser.add_argument("--device", default="cuda", choices=["cpu", "cuda"])
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
+    seed_all(config["seed"])
     train, development = data(config)
     default = dict(config["default_training"], seed=config["seed"])
     if args.stage == "adapt":

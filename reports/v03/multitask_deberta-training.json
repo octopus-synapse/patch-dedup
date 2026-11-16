@@ -1,0 +1,203 @@
+{
+  "config": {
+    "epochs": 4,
+    "batch_size": 4,
+    "gradient_accumulation": 4,
+    "learning_rate": 5e-06,
+    "freeze_embeddings": true,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "label_smoothing": 0.05,
+    "patience": 2,
+    "bf16": true,
+    "layer_lr_decay": 0.95,
+    "seed": 42,
+    "freeze_lower_layers": 6,
+    "ema_decay": 0.98,
+    "rdrop": 0.05,
+    "gradient_checkpointing": true
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.8962864430360896,
+      "validation": {
+        "support": 132,
+        "positive_support": 57,
+        "precision": 0.8688524590163934,
+        "recall": 0.9298245614035088,
+        "f1": 0.8983050847457628,
+        "macro_f1": 0.9080566519619224,
+        "average_precision": 0.9225863360216421,
+        "confusion_matrix": [
+          [
+            67,
+            8
+          ],
+          [
+            4,
+            53
+          ]
+        ],
+        "coverage": 0.9393939393939394,
+        "review_rate": 0.06060606060606061,
+        "review_count": 8,
+        "redundant_count": 48,
+        "not_redundant_count": 76,
+        "selective_precision": 0.9166666666666666,
+        "negative_predictive_value": 0.9078947368421053
+      }
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.4647027288553535,
+      "validation": {
+        "support": 132,
+        "positive_support": 57,
+        "precision": 0.8688524590163934,
+        "recall": 0.9298245614035088,
+        "f1": 0.8983050847457628,
+        "macro_f1": 0.9080566519619224,
+        "average_precision": 0.9310488445741425,
+        "confusion_matrix": [
+          [
+            67,
+            8
+          ],
+          [
+            4,
+            53
+          ]
+        ],
+        "coverage": 0.9621212121212122,
+        "review_rate": 0.03787878787878788,
+        "review_count": 5,
+        "redundant_count": 53,
+        "not_redundant_count": 74,
+        "selective_precision": 0.9056603773584906,
+        "negative_predictive_value": 0.9054054054054054
+      }
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.38983178843734084,
+      "validation": {
+        "support": 132,
+        "positive_support": 57,
+        "precision": 0.896551724137931,
+        "recall": 0.9122807017543859,
+        "f1": 0.9043478260869565,
+        "macro_f1": 0.9152611613656259,
+        "average_precision": 0.9417975766576183,
+        "confusion_matrix": [
+          [
+            69,
+            6
+          ],
+          [
+            5,
+            52
+          ]
+        ],
+        "coverage": 0.9848484848484849,
+        "review_rate": 0.015151515151515152,
+        "review_count": 2,
+        "redundant_count": 54,
+        "not_redundant_count": 76,
+        "selective_precision": 0.9074074074074074,
+        "negative_predictive_value": 0.9078947368421053
+      }
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.3866710865129066,
+      "validation": {
+        "support": 132,
+        "positive_support": 57,
+        "precision": 0.8983050847457628,
+        "recall": 0.9298245614035088,
+        "f1": 0.9137931034482759,
+        "macro_f1": 0.9231127679403541,
+        "average_precision": 0.9448769491431617,
+        "confusion_matrix": [
+          [
+            69,
+            6
+          ],
+          [
+            4,
+            53
+          ]
+        ],
+        "coverage": 0.9924242424242424,
+        "review_rate": 0.007575757575757576,
+        "review_count": 1,
+        "redundant_count": 56,
+        "not_redundant_count": 75,
+        "selective_precision": 0.9107142857142857,
+        "negative_predictive_value": 0.92
+      }
+    }
+  ],
+  "selected_epoch": 4,
+  "selected_parameter_delta_l2": 0.03376656398177147,
+  "optimizer_steps": 188,
+  "pruned": false,
+  "policy": {
+    "binary_threshold": 0.3526492714881897,
+    "thresholds": {
+      "low": 0.46919289231300354,
+      "high": 0.4728550910949707,
+      "positive_enabled": true,
+      "negative_enabled": true
+    },
+    "selection_split": "validation",
+    "precision_target": 0.9,
+    "negative_predictive_value_target": 0.9,
+    "minimum_support": 5,
+    "decision_policy_version": "0.1.0"
+  },
+  "training_pairs": 744,
+  "validation_pairs": 132,
+  "trainable_parameters": 43514883,
+  "total_parameters": 278811651,
+  "duration_seconds": 1554.2861375080029,
+  "environment": {
+    "python": "3.11.14",
+    "platform": "Linux-7.1.8+deb13-amd64-x86_64-with-glibc2.41",
+    "code_commit": "6f54813980df0f1ab8056d7fa7e7e33ff66b8871",
+    "source_sha256": {
+      "cli.py": "8462dd1c90e06165826a5053c740c2e4379bc4db1a3fafacb38eccc866f007ab",
+      "decision.py": "ce69d18701fb687f0fd94217a121f7ebdd29e9397c0c7a18c899dcede96f5e2a",
+      "calibration.py": "d999744c3ed24167540740e010d98deb96ab23e01570f2de24d2e12d8758a044",
+      "pipeline.py": "1ad7ce1337cf4e8b74549cbc49088f3456d07ec85c905783e86992611d1c4a29",
+      "encoder.py": "8e5392f0233e9824dee1e7d5f4e7f542be5921cf4193f0ff84660d19711c96e4",
+      "nli.py": "f74b06c83c66bb6d6f500b01ee9831f56422e8aad44e2355bff48ab1c1b27558",
+      "pseudo.py": "b974fd870e6bf614131d097fa7f49aba77696d3b29f164a3ea1c094d7383ef74",
+      "data.py": "5b8143e617f9166f13159f96081b9048b24fe6d80289b181fc165f1c307b7dde",
+      "experiment.py": "d6cac58f617129f20a3518724d53678d6ef204fee35a9e998d1dc1aafd8af891",
+      "score_graph.py": "252d95a1ba60fe26cfab1e9e57eb47b51ddf04d7b706ea52ced1f5376bd0f9ed",
+      "domain_adaptation.py": "cab4001a9da57af5aad758d43ffcb1cb76c5cc6c97eac2c7a6c92f45a076ed8f",
+      "training.py": "2a375b311b3a9e3e5d773e0b0f974ff859dd4f232d639c8176302128142aa8c0",
+      "__main__.py": "b466d3224c1cfa96b82f891d496e36e7bd4ad1eb70fcc530b45c29ce62d3f9c4",
+      "cross_encoder.py": "2fd31598b2ae3e039ffcbab908c1c6b190aa6aba74d117f5658fc2fde89b5437",
+      "schemas.py": "361128ca989504938a2bf8977cbf0b1be49bee9296c5da4903b05736e149535c",
+      "evaluation.py": "4880d0ee9fcf6fc15163204b2edcf4856dc06dfe5aaa3930a9dca236b16d0fd0",
+      "__init__.py": "8f3ef65a08808435e85992bcb80379e0a060dab973ffbe2b5e193bc924766681",
+      "v03_data.py": "187402e98c0c9b7a5703aaeeff244b60f76410a24a889dddbe8d73e5fdb14767",
+      "dataset.py": "40c6153527279d43d66d60de10dc0cb1bfbcba07df11a64d18ad810d56bfb149"
+    },
+    "deterministic_warn_only": true,
+    "cublas_workspace_config": ":4096:8",
+    "gpu": "NVIDIA RTX A1000 6GB Laptop GPU",
+    "packages": {
+      "torch": "2.6.0",
+      "sentence-transformers": "5.1.2",
+      "transformers": "4.57.1",
+      "numpy": "2.3.4",
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "objective": "multitask directional NLI CE and symmetric redundancy BCE",
+  "score": "minimum bidirectional entailment softmax; uncalibrated"
+}
