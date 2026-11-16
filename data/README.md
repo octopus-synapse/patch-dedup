@@ -56,6 +56,15 @@ reprodução, incluindo revisão da fonte e hashes dos arquivos preparados. A fi
 da fonte no snapshot registra licença desconhecida; o corpus ASSIN não é
 redistribuído nem recebe a licença dos nossos textos sintéticos.
 
+## Piloto de currículos externos
+
+Um [piloto local](../reports/real-resume-pilot/README.md) reúne 100 pares em inglês
+de cinco currículos identificados como reais e anonimizados pelo publicador,
+com anotação por IA e sem revisão humana. Textos, PDFs, contexto e manifestos ficam
+em `artifacts/real_resume_pilot/`, fora do Git e do treinamento atual. A seleção
+contém negativos e casos inconclusivos, sem positivos; não é um teste independente
+nem valida desempenho bilíngue.
+
 ## Licenças
 
 Dados sintéticos autorais: CC BY 4.0. Atribuição: Enzo Ferracini Patti / PatchDedup,
