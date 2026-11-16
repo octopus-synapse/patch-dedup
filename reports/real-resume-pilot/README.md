@@ -25,11 +25,48 @@ Textos iguais de empregos diferentes não podem receber automaticamente o rótul
 mesma contribuição. Casos de contexto insuficiente têm alvo nulo.
 
 Todos os documentos foram atribuídos a desenvolvimento antes da construção dos pares.
-Não há teste final independente nesta amostra. Não houve treinamento, inferência,
+Não há teste final independente nesta amostra. Na preparação não houve treinamento, inferência,
 seleção de modelos ou acesso aos testes congelados do PatchDedup. Os dados não foram
 integrados ao pipeline nem publicados. O piloto pode apoiar investigação de falsos
 positivos; a ausência de positivos impede uma avaliação geral de redundância.
 Não demonstra qualidade em português nem em inglês.
+
+## Diagnóstico posterior do modelo local
+
+O [resultado agregado](diagnostic.json) registra inferência real nos 100 pares usando
+o refinamento ASSIN local, com grafo, pesos e limiares já selecionados. Esta execução
+não avaliou o bundle v03 publicado. Nenhum texto foi truncado ou rejeitado.
+
+| Grupo | Pares | Resultado |
+|---|---:|---|
+| Negativos anotados pela IA | 88 | 88 não redundantes; zero falsos positivos |
+| Contexto insuficiente | 12 | 12 não redundantes; excluídos da contagem de acertos/erros |
+
+O maior score foi 0,007877; o limiar binário permaneceu 0,494857. São scores de decisão
+não calibrados, sem cálculo de cosseno. Sem positivos e com cinco grupos dependentes,
+esse resultado não mede sensibilidade nem comprova qualidade geral em inglês.
+
+Seis controles construídos à parte verificaram a execução: duas duplicações exatas
+em inglês, duas paráfrases simples (inglês e português) e dois negativos (um por
+idioma). Os quatro positivos foram classificados como redundantes e os dois
+negativos como não redundantes. São checagens pontuais, não um benchmark bilíngue;
+não foram misturados aos 100 pares reais.
+
+A revisão pela mesma IA autora manteve os rótulos provisórios e os 12 inconclusivos.
+Os arquivos locais `diagnostics/local-assin-v1/analysis.md`, `review.csv`,
+`predictions.json`, `protocol.json` e `manifest.json` preservam análise, previsões e
+proveniência. O CSV foi reexportado em UTF-8 após uma falha de codificação, usando
+as previsões salvas, sem repetir a inferência. Os hashes dos insumos foram
+reverificados. Não houve treino, alteração de limiares ou leitura de testes congelados.
+
+Reprodução: `uv run --locked --extra ml python scripts/diagnose_resume_pilot.py
+--device cuda --output artifacts/real_resume_pilot/diagnostics/nova-rodada`.
+O executor exige diretório novo, preserva contexto e separa inconclusivos e rejeições.
+Testes de software cobrem essas separações e exportação Unicode em locale ASCII;
+essas fixtures não medem qualidade do modelo.
+Após o diagnóstico: 151 testes passaram, um foi ignorado; Ruff e build passaram.
+Também foram conferidos os 100 scores contra a soma ponderada dos componentes,
+os limites de tokens, a planilha e todos os hashes dos insumos e artefatos.
 
 ## Integridade dos artefatos locais
 

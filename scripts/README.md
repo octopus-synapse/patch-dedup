@@ -14,6 +14,7 @@ experimentos, verificações e preparação de artefatos.
 | Executar o primeiro fine-tuning ASSIN | `uv run --locked --extra ml python scripts/finetune_assin.py` |
 | Retomar o refinamento ASSIN | `bash scripts/refine_assin.sh --background` |
 | Exportar métricas ASSIN para o Git | `uv run --locked python scripts/export_assin_reports.py` |
+| Diagnosticar o piloto externo de currículos | `uv run --locked --extra ml python scripts/diagnose_resume_pilot.py --device cuda` |
 
 Os executores retomam checkpoints concluídos e mantêm artefatos em `artifacts/`.
 Um arquivo `comparison.json` existente representa uma rodada concluída; o mesmo

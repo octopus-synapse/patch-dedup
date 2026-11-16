@@ -1,0 +1,104 @@
+{
+  "summary": {
+    "input_count": 100,
+    "scored_count": 100,
+    "rejected_count": 0,
+    "scored_negative_count": 88,
+    "binary_false_positive_count": 0,
+    "binary_false_positive_rate": 0.0,
+    "negative_decisions": {
+      "not_redundant": 88
+    },
+    "inconclusive_count": 12,
+    "inconclusive_decisions": {
+      "not_redundant": 12
+    },
+    "limitations": [
+      "AI annotations without independent human review",
+      "English purposive sample from five publisher-declared real documents",
+      "No positive labels: no general F1, AP, recall or bilingual-quality claim",
+      "Repeated excerpts and shared document context: observations are dependent",
+      "Thresholds inherited from Portuguese development, not validated for English",
+      "Scores are uncalibrated decision scores, not cosine or probabilities"
+    ],
+    "duration_seconds": 16.564405834000354
+  },
+  "model": "local ASSIN refinement, not published v03",
+  "input_pairs_sha256": "899cbeeb3fe664452a875f791271ab5827a265ebf2329e02a4853615765deee1",
+  "selected_graph_sha256": "08267c1685bdf0ff7da8378aa4b6d1f638fd8f5eea4e1ed936ec544ad9aa9bb7",
+  "binary_threshold": 0.49485690891742706,
+  "thresholds": {
+    "low": 0.42269132286310196,
+    "high": 0.49485690891742706,
+    "positive_enabled": true,
+    "negative_enabled": true
+  },
+  "components": [
+    {
+      "model_sha256": "3c79622e838803041db6bda7ddb4af627f8806ec0b3868e0e533506686e51dd4",
+      "aggregation": "mean"
+    },
+    {
+      "model_sha256": "3def2ad78c0ddb2072804ca5efb4642901e8aeb6380f6a8012679c232fc07dd5",
+      "aggregation": "min"
+    }
+  ],
+  "component_weights": [
+    0.75,
+    0.25
+  ],
+  "decision_score_range": [
+    0.002102051308611408,
+    0.007877150317654014
+  ],
+  "controls": [
+    {
+      "id": "en_identity_context",
+      "target": 1,
+      "decision_score": 0.9586515426635742,
+      "decision": "redundant"
+    },
+    {
+      "id": "en_identity_raw",
+      "target": 1,
+      "decision_score": 0.9847173541784286,
+      "decision": "redundant"
+    },
+    {
+      "id": "en_paraphrase",
+      "target": 1,
+      "decision_score": 0.9956525564193726,
+      "decision": "redundant"
+    },
+    {
+      "id": "pt_paraphrase",
+      "target": 1,
+      "decision_score": 0.9962972700595856,
+      "decision": "redundant"
+    },
+    {
+      "id": "en_distinct",
+      "target": 0,
+      "decision_score": 0.0029216220136731863,
+      "decision": "not_redundant"
+    },
+    {
+      "id": "pt_distinct",
+      "target": 0,
+      "decision_score": 0.0025478769093751907,
+      "decision": "not_redundant"
+    }
+  ],
+  "controls_are_constructed_not_real_benchmark": true,
+  "diagnostics_file_sha256": {
+    "analysis.md": "b399389c7b87d27a75e7cd4e22b827331b95f92da4663d3e37613315ac75ba32",
+    "controls.json": "a678fb0550cd76ec049dfd9a6309bf84af78f53e5ef3da084dbccb707c533b76",
+    "export-recovery.json": "74a10fdf1ea1e31345547d5118a3c5a8c5726d8e411bf78d5af68e4307a9672c",
+    "predictions.json": "d046f8a3093b6a40c4b5608a791b053ceacbff08b580ef309bd2e00e11cf3944",
+    "protocol.json": "6a8dadb67ee84d23ad83ce5df3d984d7f3528bd43a10cc753ae28c8beda1d4b6",
+    "review.csv": "d204f7a8b527f17290cb2b1ae322b165637914f1019eb1bd149c009912ca2241",
+    "summary.json": "dfa5fdcd50134d2e4a2bc170c931b930776f83c0c6bee84f31a4a09daa147c04"
+  },
+  "training_performed": false,
+  "thresholds_changed": false
+}
