@@ -61,3 +61,27 @@ def test_fresh_challenge_is_frozen_before_experiments(tmp_path):
     rows = [json.loads(s) for s in (out / "test.jsonl").read_text().splitlines()]
     assert rows[0]["text_a_id"] == rows[1]["text_a_id"]
     assert all(r["split"] == "test" for r in rows)
+
+
+def test_committed_research_data_has_no_identity_leakage(tmp_path):
+    from pathlib import Path
+    from patchdedup.data import audit_file
+
+    root = Path(__file__).resolve().parents[1]
+    for directory in ("v01", "refinement", "challenge", "v02"):
+        verify_freeze(root / "data" / directory)
+    combined = tmp_path / "all-research.jsonl"
+    combined.write_bytes(
+        b"".join(
+            (root / name).read_bytes()
+            for name in (
+                "data/v01/all.jsonl",
+                "data/refinement/train.jsonl",
+                "data/challenge/test.jsonl",
+                "data/v02/test.jsonl",
+            )
+        )
+    )
+    result = audit_file(combined)
+    assert result["valid"], result["errors"]
+    assert result["binary_records"] == 720

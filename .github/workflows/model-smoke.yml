@@ -1,0 +1,25 @@
+name: model-smoke
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  published-cpu-checkpoint:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e
+        with:
+          version: '0.9.7'
+          python-version: '3.11'
+      - run: uv sync --locked --extra cpu
+      - name: Download the published pinned revision
+        run: |
+          MODEL_REVISION=$(python -c "import json; print(json.load(open('configs/release.json'))['model_revision'])")
+          uv run --locked --extra cpu hf download enzoferracini/patchdedup-ptbr-minilm --revision "$MODEL_REVISION" --local-dir artifacts/hub-model
+      - name: Unit, integration and real offline inference checks
+        run: uv run --locked --extra cpu pytest -q
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+          PATCHDEDUP_MODEL: artifacts/hub-model
