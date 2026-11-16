@@ -87,3 +87,25 @@ A busca histórica `target-search` com peso de ranking não nulo teve contribui�
 efetiva duplicada; seus scores e checkpoints são preservados, sem reescrever os
 resultados. A primeira rodada ASSIN tinha `ranking_weight=0`, portanto não foi
 afetada. A nova rodada tem testes explícitos da magnitude da contribuição.
+
+## Dois últimos candidatos em paralelo
+
+A pedido do usuário, o agendamento pode sobrepor `assin-three-way` e `binary-seed42`.
+O quarto candidato termina antes; o controlador principal continua sendo o dono
+do lock global. Um processo auxiliar aguarda o quinto adquirir seu lock e memória
+livre suficiente, e inicia o sexto usando exatamente sua configuração congelada.
+Cada candidato possui um lock próprio: o controlador principal aguarda ou pula o
+sexto quando ele já estiver em execução ou concluído. Não são dois treinos do mesmo
+candidato. O processo auxiliar acompanha o serviço principal por uma dependência
+systemd; parar o serviço principal também para esse auxiliar.
+
+O sexto usa no máximo 45% da memória CUDA (aproximadamente 2,7 GiB nesta GPU de
+6 GiB). Ele só começa se houver pelo menos 3.277 MiB livres. Se falhar, seus arquivos
+parciais são preservados e o controlador principal tenta novamente sozinho, sem o
+teto adicional. Na mesma GPU já ocupada, não há promessa de redução de tempo.
+
+A alteração fica em `scheduling-amendment.json`, com hashes anterior e novo do
+executor e snapshot do código original. `protocol.json` não é sobrescrito. A retomada
+aceita somente essa mudança explícita de agendamento; alterações de dados,
+configurações ou treinador continuam sendo rejeitadas. O estado auxiliar é salvo
+em `parallel-status.json`; o resultado final segue em `comparison.json`.

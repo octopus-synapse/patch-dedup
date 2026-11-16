@@ -37,6 +37,40 @@ def freeze(path, value):
         save(path, value)
 
 
+def freeze_run_protocol(path, value):
+    """Accept an explicit scheduling amendment without rewriting the research protocol."""
+    if path.exists() and read(path) != value:
+        amendment_path = path.parent / "scheduling-amendment.json"
+        if not amendment_path.exists():
+            raise ValueError("Frozen protocol changed without a scheduling amendment")
+        previous, amendment = read(path), read(amendment_path)
+        expected = dict(previous, code_sha256=dict(previous["code_sha256"]))
+        runner = "scripts/refine_assin.py"
+        valid = (
+            amendment.get("user_requested") is True
+            and amendment.get("candidate_configs_changed") is False
+            and previous["code_sha256"][runner] == amendment.get("previous_runner_sha256")
+            and value["code_sha256"][runner] == amendment.get("current_runner_sha256")
+        )
+        expected["code_sha256"][runner] = amendment.get("current_runner_sha256")
+        if not valid or expected != value:
+            raise ValueError("Scheduling amendment cannot change training or data protocol")
+        return
+    freeze(path, value)
+
+
+@contextlib.contextmanager
+def candidate_lock(path):
+    """Wait for the same candidate, then recheck its completed checkpoint."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as stream:
+        fcntl.flock(stream, fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            fcntl.flock(stream, fcntl.LOCK_UN)
+
+
 @contextlib.contextmanager
 def exclusive_lock(path):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -119,6 +153,22 @@ def candidate_grid(epochs):
 
 
 def worker(args):
+    with candidate_lock(args.output / "locks" / f"{args.worker}.lock"):
+        completed = args.output / "candidates" / args.worker / "run/training.json"
+        if completed.exists():
+            return
+        fraction = os.environ.get("PATCHDEDUP_CUDA_MEMORY_FRACTION")
+        if fraction is not None:
+            import torch
+
+            value = float(fraction)
+            if args.device != "cuda" or not 0 < value <= 0.5:
+                raise ValueError("Parallel worker memory fraction must lie in (0,0.5]")
+            torch.cuda.set_per_process_memory_fraction(value)
+        run_worker(args)
+
+
+def run_worker(args):
     import numpy as np
     from patchdedup.equivalence import train_equivalence
 
@@ -439,7 +489,7 @@ def run(args):
                 paid_services=False,
                 publishes=False,
             )
-            freeze(args.output / "protocol.json", protocol)
+            freeze_run_protocol(args.output / "protocol.json", protocol)
             if (args.output / "selection.json").exists():
                 selected = read(args.output / "selection.json")
             else:
