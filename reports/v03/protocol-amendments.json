@@ -1,0 +1,10 @@
+{
+  "reason": "User selected mDeBERTa as primary candidate before any v03 final test access",
+  "hpo_backbones": [
+    "nli_minilm",
+    "nli_deberta"
+  ],
+  "gpu_checkpointing": "Disabled in future HPO trials to trade spare VRAM for throughput; retained in original ablations",
+  "final_test_opened": false,
+  "calibration_opened": false
+}

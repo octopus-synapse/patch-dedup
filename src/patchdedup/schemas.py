@@ -72,19 +72,21 @@ class Similarity(Contract):
 
 
 class DecisionScore(Contract):
-    metric: Literal["uncalibrated_sigmoid"] = "uncalibrated_sigmoid"
+    metric: Literal["uncalibrated_sigmoid", "nli_entailment", "pair_score"] = "uncalibrated_sigmoid"
     score: Annotated[float, Field(ge=0, le=1, allow_inf_nan=False)]
 
 
 class CompareOutput(Contract):
-    schema_version: Literal["0.1.0", "0.2.0"] = "0.2.0"
+    schema_version: Literal["0.1.0", "0.2.0", "0.3.0"] = "0.2.0"
     model_version: Identifier
     model_revision: Identifier
+    embedding_model_revision: Identifier | None = None
     decision_policy_version: Identifier
     language: Literal["pt-BR"] = "pt-BR"
     similarity: Similarity
     decision: Decision
-    decision_source: Literal["cosine", "cross_encoder"] = "cosine"
+    decision_source: Literal["cosine", "cross_encoder", "ensemble"] = "cosine"
+    prediction_set: list[Literal["redundant", "not_redundant"]] | None = None
     decision_score: DecisionScore | None = None
     decision_model_revision: Identifier | None = None
     thresholds: Thresholds
@@ -98,9 +100,9 @@ class CompareOutput(Contract):
         from patchdedup.decision import decide
 
         score = self.similarity.score
-        if self.decision_source == "cross_encoder":
+        if self.decision_source in ("cross_encoder", "ensemble"):
             if (
-                self.schema_version != "0.2.0"
+                self.schema_version not in ("0.2.0", "0.3.0")
                 or self.decision_score is None
                 or not self.decision_model_revision
             ):
@@ -112,6 +114,12 @@ class CompareOutput(Contract):
             raise ValueError("Decision does not match score and thresholds")
         if self.requires_review != (self.decision == "review"):
             raise ValueError("requires_review must match decision")
+        if self.prediction_set is not None:
+            if len(set(self.prediction_set)) != len(self.prediction_set):
+                raise ValueError("Prediction set must contain unique classes")
+            expected = self.prediction_set[0] if len(self.prediction_set) == 1 else "review"
+            if self.decision != expected:
+                raise ValueError("Decision does not match conformal prediction set")
         return self
 
 

@@ -14,7 +14,20 @@ def verify_bundle(path: str | Path) -> dict:
         manifest = json.loads((path / "manifest.json").read_text())
         if not isinstance(manifest, dict) or not manifest:
             raise ValueError("Empty manifest")
-        required = {"model.safetensors", "patchdedup.json", "thresholds.json", "modules.json"}
+        metadata = json.loads((path / "patchdedup.json").read_text())
+        if not isinstance(metadata, dict):
+            raise ValueError("Invalid model metadata")
+        embedding = Path(metadata.get("embedding_directory", "."))
+        if embedding.is_absolute() or ".." in embedding.parts:
+            raise ValueError("Invalid embedding directory")
+        required = {
+            "model.safetensors",
+            "patchdedup.json",
+            "thresholds.json",
+            str(embedding / "modules.json"),
+        }
+        if metadata.get("score_pipeline"):
+            required.add("score_graph.json")
         if not required <= manifest.keys():
             raise ValueError("Incomplete manifest")
         for name, digest in manifest.items():
@@ -77,10 +90,17 @@ class Comparator:
         try:
             self.metadata = json.loads((path / "patchdedup.json").read_text())
             self.thresholds = Thresholds(**json.loads((path / "thresholds.json").read_text()))
-            self.encoder = SentenceEncoder(path, device)
+            self.encoder = SentenceEncoder(
+                path / self.metadata.get("embedding_directory", "."), device
+            )
             self.reranker = None
+            self.pipeline = None
             self.reranker_revision = None
-            if self.metadata.get("decision_source") == "cross_encoder":
+            if self.metadata.get("score_pipeline"):
+                from patchdedup.pipeline import ScoringPipeline
+
+                self.pipeline = ScoringPipeline(path, device)
+            elif self.metadata.get("decision_source") == "cross_encoder":
                 from patchdedup.cross_encoder import CrossScorer
 
                 self.reranker = CrossScorer(path / "reranker", device)
@@ -94,11 +114,24 @@ class Comparator:
         score = self.encoder.score_pairs([request.model_dump()])[0]
         decision_value = score
         score_fields = {}
-        if self.reranker is not None:
+        if self.pipeline is not None:
+            decision_value = float(self.pipeline.score_pairs([request.model_dump()])[0])
+            sets = self.pipeline.sets([decision_value])[0]
+            score_fields = dict(
+                schema_version="0.3.0",
+                decision_source=self.metadata["decision_source"],
+                decision_score={"metric": "pair_score", "score": decision_value},
+                decision_model_revision=self.pipeline.revision,
+                prediction_set=[("redundant" if label else "not_redundant") for label in sets],
+            )
+        elif self.reranker is not None:
             decision_value = self.reranker.score_pairs([request.model_dump()])[0]
             score_fields = dict(
                 decision_source="cross_encoder",
-                decision_score={"metric": "uncalibrated_sigmoid", "score": decision_value},
+                decision_score={
+                    "metric": self.metadata.get("decision_metric", "uncalibrated_sigmoid"),
+                    "score": decision_value,
+                },
                 decision_model_revision=self.reranker_revision,
             )
         decision = decide(decision_value, self.thresholds)
@@ -106,6 +139,7 @@ class Comparator:
             **score_fields,
             model_version=self.metadata["model_version"],
             model_revision=self.metadata["model_revision"],
+            embedding_model_revision=self.metadata.get("embedding_model_revision"),
             decision_policy_version=self.metadata["decision_policy_version"],
             similarity={"metric": "cosine", "score": score},
             decision=decision,

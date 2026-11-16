@@ -2,29 +2,94 @@
   "seed": 42,
   "training_source": "original train plus within-scenario counterfactual combinations",
   "training_pairs": 744,
-  "development": ["data/v01/validation.jsonl", "data/v03/development.jsonl"],
+  "development": [
+    "data/v01/validation.jsonl",
+    "data/v03/development.jsonl"
+  ],
   "calibration": "data/v03/calibration.jsonl",
   "test": "data/v03/test.jsonl",
   "folds": 3,
   "selection": "cross-fitted macro F1, then average precision; earliest tie",
   "nli_models": {
-    "nli_minilm": {"directory": "artifacts/nli-minilm", "repo": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli", "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca", "license": "mit"},
-    "nli_deberta": {"directory": "artifacts/nli-deberta", "repo": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli", "revision": "8adb042d524ecd5c26d3e3ba0e3fbcf7e2d0864c", "license": "mit"}
+    "nli_minilm": {
+      "directory": "artifacts/nli-minilm",
+      "repo": "MoritzLaurer/multilingual-MiniLMv2-L6-mnli-xnli",
+      "revision": "0a71e92a985b6e1ad1828cf67ce9c459639c1dca",
+      "license": "mit"
+    },
+    "nli_deberta": {
+      "directory": "artifacts/nli-deberta",
+      "repo": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+      "revision": "8adb042d524ecd5c26d3e3ba0e3fbcf7e2d0864c",
+      "license": "mit"
+    }
   },
-  "default_training": {"epochs": 3, "batch_size": 8, "gradient_accumulation": 2, "learning_rate": 0.00001, "freeze_embeddings": true, "warmup_ratio": 0.1, "weight_decay": 0.01, "label_smoothing": 0.05, "patience": 2, "bf16": true, "layer_lr_decay": 0.95},
+  "default_training": {
+    "epochs": 3,
+    "batch_size": 8,
+    "gradient_accumulation": 2,
+    "learning_rate": 1e-05,
+    "freeze_embeddings": true,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "label_smoothing": 0.05,
+    "patience": 2,
+    "bf16": true,
+    "layer_lr_decay": 0.95
+  },
   "hpo_trials": 6,
   "hpo_max_epochs": 2,
   "hpo_sampler": "TPE with two random startup trials; Hyperband pruning",
-  "large_finetune": {"epochs": 4, "batch_size": 4, "gradient_accumulation": 4, "learning_rate": 0.000005, "freeze_lower_layers": 6, "ema_decay": 0.98, "rdrop": 0.05, "gradient_checkpointing": true},
-  "lora": {"epochs": 3, "batch_size": 4, "gradient_accumulation": 4, "learning_rate": 0.00003, "lora": true, "gradient_checkpointing": true},
-  "distillation": {"epochs": 3, "distillation_weight": 0.3, "temperature": 2, "hard_sampling": true, "rdrop": 0.1, "ema_decay": 0.98},
+  "large_finetune": {
+    "epochs": 4,
+    "batch_size": 4,
+    "gradient_accumulation": 4,
+    "learning_rate": 5e-06,
+    "freeze_lower_layers": 6,
+    "ema_decay": 0.98,
+    "rdrop": 0.05,
+    "gradient_checkpointing": true
+  },
+  "lora": {
+    "epochs": 3,
+    "batch_size": 4,
+    "gradient_accumulation": 4,
+    "learning_rate": 3e-05,
+    "lora": true,
+    "gradient_checkpointing": true
+  },
+  "distillation": {
+    "epochs": 3,
+    "distillation_weight": 0.3,
+    "temperature": 2,
+    "hard_sampling": true,
+    "rdrop": 0.1,
+    "ema_decay": 0.98
+  },
   "additional_seed": 137,
   "domain_adaptation_steps": 40,
-  "calibrators": ["identity", "sigmoid", "isotonic"],
-  "ensembles": ["equal averaging", "nonnegative weighted averaging", "stacking"],
+  "calibrators": [
+    "identity",
+    "sigmoid",
+    "isotonic"
+  ],
+  "ensembles": [
+    "equal averaging",
+    "nonnegative weighted averaging",
+    "stacking"
+  ],
   "ensemble_weight_trials": 48,
   "conformal_alpha": 0.1,
   "cpu_quantization": "dynamic int8 evaluated as a development candidate",
   "test_policy": "Open once only after scoring graph and calibration are frozen; old tests remain diagnostic",
-  "limitations": ["Same AI author and reviewer; no human review", "Calibration only twenty pairs", "Cross-fitting is for selection, not an independent test"]
+  "limitations": [
+    "Same AI author and reviewer; no human review",
+    "Calibration only twenty pairs",
+    "Cross-fitting is for selection, not an independent test"
+  ],
+  "hpo_backbones": [
+    "nli_minilm",
+    "nli_deberta"
+  ],
+  "preferred_backbone": "nli_deberta"
 }

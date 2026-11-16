@@ -197,6 +197,8 @@ def main():
         )
 
         def objective(trial):
+            backbone = trial.suggest_categorical("backbone", cfg["hpo_backbones"])
+            large = backbone == "nli_deberta"
             settings = dict(
                 cfg["default_training"],
                 seed=cfg["seed"],
@@ -205,12 +207,17 @@ def main():
                 weight_decay=trial.suggest_float("weight_decay", 0.01, 0.1),
                 label_smoothing=trial.suggest_categorical("label_smoothing", [0.0, 0.05, 0.1]),
                 rdrop=trial.suggest_categorical("rdrop", [0.0, 0.1]),
-                freeze_lower_layers=trial.suggest_categorical("freeze_lower_layers", [0, 3]),
+                freeze_lower_layers=trial.suggest_categorical(
+                    "freeze_lower_layers", [6, 9] if large else [0, 3]
+                ),
+                batch_size=4 if large else 8,
+                gradient_accumulation=4 if large else 2,
+                gradient_checkpointing=False,
             )
             candidate, report = fit(
                 f"hpo_{trial.number}",
-                cfg["nli_models"]["nli_minilm"]["directory"],
-                "nli_minilm",
+                cfg["nli_models"][backbone]["directory"],
+                backbone,
                 settings,
                 cfg,
                 args.output,
@@ -224,7 +231,12 @@ def main():
 
         remaining = max(0, cfg["hpo_trials"] - len(study.trials))
         if remaining:
-            study.optimize(objective, n_trials=remaining, gc_after_trial=True)
+            study.optimize(
+                objective,
+                n_trials=remaining,
+                gc_after_trial=True,
+                catch=(torch.cuda.OutOfMemoryError,),
+            )
         save_json(
             args.reports / "hpo.json",
             dict(

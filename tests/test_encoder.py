@@ -51,8 +51,9 @@ def test_valid_manifest_then_digest_tampering(tmp_path):
     names = ["model.safetensors", "patchdedup.json", "thresholds.json", "modules.json"]
     manifest = {}
     for name in names:
-        (tmp_path / name).write_bytes(b"test artifact")
-        manifest[name] = hashlib.sha256(b"test artifact").hexdigest()
+        payload = b"{}" if name == "patchdedup.json" else b"test artifact"
+        (tmp_path / name).write_bytes(payload)
+        manifest[name] = hashlib.sha256(payload).hexdigest()
     (tmp_path / "manifest.json").write_text(json.dumps(manifest))
     assert verify_bundle(tmp_path) == manifest
     (tmp_path / "model.safetensors").write_bytes(b"tampered artifact")

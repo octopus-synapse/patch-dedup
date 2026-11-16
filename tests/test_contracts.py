@@ -176,3 +176,24 @@ def test_joint_pair_score_is_separate_from_cosine():
 def test_joint_pair_backend_requires_score_and_revision():
     with pytest.raises(ValidationError):
         CompareOutput(**output(schema_version="0.2.0", decision_source="cross_encoder"))
+
+
+def test_ensemble_score_and_conformal_set_are_explicit():
+    value = CompareOutput(
+        **output(
+            schema_version="0.3.0",
+            similarity={"metric": "cosine", "score": 0.1},
+            decision="redundant",
+            requires_review=False,
+            decision_source="ensemble",
+            decision_model_revision="sha256:graph",
+            decision_score={"metric": "pair_score", "score": 0.9},
+            prediction_set=["redundant"],
+        )
+    )
+    assert value.prediction_set == ["redundant"]
+
+
+def test_conformal_set_cannot_disagree_with_review_decision():
+    with pytest.raises(ValidationError):
+        CompareOutput(**output(schema_version="0.3.0", prediction_set=["redundant"]))
